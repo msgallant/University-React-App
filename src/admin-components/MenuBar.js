@@ -1,6 +1,6 @@
 import '@fortawesome/fontawesome-free/js/all.js';
 import { useState } from 'react';
-import CreateAccount from './CreateAccount'
+import AccountForm from './AccountForm';
 
 
 
@@ -14,6 +14,11 @@ const MenuBar = () => {
                         " Create Student Account", " View Student Accounts", " Create Course", " View Current Courses"]
 
     const pageNamesPrefixes = [" Create ", " View "]
+
+    const closeForm = () => {
+        setShowThisPage('')
+    }
+    
 
     return (
         <div>
@@ -65,7 +70,8 @@ const MenuBar = () => {
                 {/* if page name has prefix ' create ' */}
                 {console.log("page matching: " + pageNamesPrefixes[0] + showThisPage)}              
                 {pageNamesPrefixes[0] === showThisPage.toString().substring(0, pageNamesPrefixes[0].length) 
-                && <CreateAccount accType={showThisPage.toString().substring(pageNamesPrefixes[0].length)}/>}
+                && <AccountForm accType={showThisPage.toString().substring(pageNamesPrefixes[0].length)}
+                onComplete={closeForm}/>}
                
             </div>
 

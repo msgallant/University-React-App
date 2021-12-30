@@ -1,0 +1,67 @@
+{
+  "Accounts": [
+    {
+      "accountType": "Admin Account",
+      "firstName": "h",
+      "middleName": "h",
+      "lastName": "h",
+      "email": "h",
+      "password": "h",
+      "id": "h"
+    },
+    {
+      "accountType": "Admin Account",
+      "firstName": "hfg",
+      "middleName": "hggf",
+      "lastName": "hfg",
+      "email": "thr",
+      "password": "tr",
+      "id": "thr"
+    },
+    {
+      "accountType": "Admin Account",
+      "firstName": "g",
+      "middleName": "g",
+      "lastName": "g",
+      "email": "g",
+      "password": "g",
+      "id": "g"
+    },
+    {
+      "accountType": "Professor Account",
+      "firstName": "g",
+      "middleName": "g",
+      "lastName": "g",
+      "email": "g65",
+      "password": "g",
+      "id": "g65"
+    },
+    {
+      "accountType": "Student Account",
+      "firstName": "g",
+      "middleName": "g",
+      "lastName": "g",
+      "email": "g655443",
+      "password": "g",
+      "id": "g655443"
+    },
+    {
+      "accountType": "Admin Account",
+      "firstName": "hrt",
+      "middleName": "htr",
+      "lastName": "htrj",
+      "email": "tjhf",
+      "password": "thr",
+      "id": "tjhf"
+    },
+    {
+      "accountType": "Admin Account",
+      "firstName": "fgb",
+      "middleName": "bg",
+      "lastName": "bg",
+      "email": "bfgv",
+      "password": "b",
+      "id": "bfgv"
+    }
+  ]
+}

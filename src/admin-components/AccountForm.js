@@ -1,13 +1,22 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import PropTypes from 'prop-types'
+import { newAccount } from "./newAccount";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../actions";
 
-const CreateAccount = ({ accType }) => {
+const AccountForm = ({accType, onComplete}) => {
     const [firstName, setFirstName] = useState('')
     const [middleName, setMiddleName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    
+    const dispatch = useDispatch()
+    const { CreateAccount } = bindActionCreators(actionCreators, dispatch)
 
     const onSubmit = (e) => {
+        console.log("submitting")
         e.preventDefault()
 
         if (!firstName) {
@@ -23,10 +32,18 @@ const CreateAccount = ({ accType }) => {
             return
         }
 
-        //onAdd
-
+        newAccount.accountType = accType
+        newAccount.firstName = firstName
+        newAccount.middleName = middleName
+        newAccount.lastName = lastName
+        newAccount.email = email
+        newAccount.password = password
+        newAccount.id = email
+        
+        CreateAccount(newAccount)
+        onComplete()
     }
-
+    
     return (
         <form onSubmit={onSubmit}> 
 
@@ -82,6 +99,10 @@ const CreateAccount = ({ accType }) => {
             onChange={(e) => setPassword(e.target.value)}
             />  
         </div>
+
+        <div>
+            <input type='submit' value='Create Account' />
+        </div>
        
         
         </form>
@@ -90,4 +111,11 @@ const CreateAccount = ({ accType }) => {
     )
 }
 
-export default CreateAccount
+AccountForm.propTypes = {
+    accType: PropTypes.string.isRequired,
+    newAccount: PropTypes.object
+}
+
+
+
+export default AccountForm

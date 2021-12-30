@@ -16,12 +16,28 @@ code {
   color: black;
 }
 
-.icon-color {
+.menu-icon-color {
   color: black;
 }
 
-.icon-color:hover {
+.menu-icon-color:hover {
   color:green;
+}
+
+.select-div-color {
+  background-color: white
+}
+
+.select-div-color:hover {
+  background-color: rgb(193, 164, 219);
+}
+
+.delete-icon-color {
+  color:black
+}
+
+.delete-icon-color:hover {
+  color: red
 }
 
 .block {

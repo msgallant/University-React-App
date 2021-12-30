@@ -1,33 +1,6 @@
 {
   "Accounts": [
     {
-      "accountType": "Admin Account",
-      "firstName": "h",
-      "middleName": "h",
-      "lastName": "h",
-      "email": "h",
-      "password": "h",
-      "id": "h"
-    },
-    {
-      "accountType": "Admin Account",
-      "firstName": "hfg",
-      "middleName": "hggf",
-      "lastName": "hfg",
-      "email": "thr",
-      "password": "tr",
-      "id": "thr"
-    },
-    {
-      "accountType": "Admin Account",
-      "firstName": "g",
-      "middleName": "g",
-      "lastName": "g",
-      "email": "g",
-      "password": "g",
-      "id": "g"
-    },
-    {
       "accountType": "Professor Account",
       "firstName": "g",
       "middleName": "g",
@@ -47,21 +20,21 @@
     },
     {
       "accountType": "Admin Account",
-      "firstName": "hrt",
-      "middleName": "htr",
-      "lastName": "htrj",
-      "email": "tjhf",
-      "password": "thr",
-      "id": "tjhf"
+      "firstName": "tdf",
+      "middleName": "ifjkj",
+      "lastName": "if",
+      "email": "isdfc",
+      "password": "tg",
+      "id": "isdfc"
     },
     {
       "accountType": "Admin Account",
-      "firstName": "fgb",
-      "middleName": "bg",
-      "lastName": "bg",
-      "email": "bfgv",
-      "password": "b",
-      "id": "bfgv"
+      "firstName": "thyf",
+      "middleName": "hfgt",
+      "lastName": "htr",
+      "email": "thf",
+      "password": "hrtff",
+      "id": "thf"
     }
   ]
 }

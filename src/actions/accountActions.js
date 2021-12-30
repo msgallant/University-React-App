@@ -1,12 +1,11 @@
-import { FETCH_ACCOUNTS, ADD_ACCOUNT } from "./types";
+import { FETCH_ACCOUNTS, ADD_ACCOUNT, DELETE_ACCOUNT } from "./types";
 
 const serverAccountsURL = 'http://localhost:5000/Accounts'
 
 
 export const fetchAccounts = () => {
   return (dispatch) => {
-  console.log("attempting dispatch")
-    fetch('http://localhost:5000/Accounts')
+    fetch(serverAccountsURL)
       .then(res => res.json())
       .then(accounts =>
         dispatch({
@@ -18,8 +17,6 @@ export const fetchAccounts = () => {
   }
   
   export const CreateAccount = (accountData) => {
-    //const dispatch = useDispatch()
-    console.log("creating new account" + JSON.stringify(accountData))
     return (dispatch) => { 
     fetch(serverAccountsURL, {
       method: 'POST',
@@ -35,5 +32,22 @@ export const fetchAccounts = () => {
           payload: account
         })
       )
+    }
+  }
+
+  export const deleteAccount = (id) => {
+    console.log("attempting delete")
+    return (dispatch) => {
+      const accountUrl = serverAccountsURL + `/$id`
+      fetch(`http://localhost:5000/Accounts/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'content-type': 'application/json'
+        }
+      })
+      dispatch({
+          type: DELETE_ACCOUNT,
+          payload: id
+        })
     }
   }

@@ -1,4 +1,4 @@
-import { FETCH_ACCOUNTS, ADD_ACCOUNT } from "../actions/types"
+import { FETCH_ACCOUNTS, ADD_ACCOUNT, DELETE_ACCOUNT } from "../actions/types"
 const initialState = {
   items: [],
   item: {}
@@ -19,6 +19,17 @@ const accountReducer = (state = initialState, action) => {
               ...state,
               item: action.payload
             }
+        case DELETE_ACCOUNT:
+          console.log("reducer deleting account : " + state.items[2].firstName)
+          console.log("reducer all accounts objs : " + state.items)
+          console.log("action payload: " + action.payload)
+          const newAccounts = state.items.filter(account => (account.id !== action.payload))
+          console.log("new: " + newAccounts.map(a=> a.id))
+          //const accs = items.filter(action.payload => ())
+          return {
+            ...state,
+            items: newAccounts
+          }
         default:
           return state
     }

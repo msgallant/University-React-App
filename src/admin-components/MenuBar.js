@@ -1,6 +1,7 @@
 import '@fortawesome/fontawesome-free/js/all.js';
 import { useState } from 'react';
 import AccountForm from './AccountForm';
+import Accounts from './Accounts';
 
 
 
@@ -25,42 +26,42 @@ const MenuBar = () => {
             <div className="icon-color">
                 <label className="block black">Menu </label>
 
-                <div className="icon-color" onClick={() => onClick(pageNames[0], setShowThisPage)}>
+                <div className="menu-icon-color" onClick={() => onClick(pageNames[0], setShowThisPage)}>
                     <i className="fas fa-user-plus"></i>
                     <label> {pageNames[0]}</label>
                 </div>
 
-                <div className="icon-color" onClick={() => onClick(pageNames[1], setShowThisPage)}>
+                <div className="menu-icon-color" onClick={() => onClick(pageNames[1], setShowThisPage)}>
                     <i className="far fa-list-alt"></i>
                     <label> {pageNames[1]}</label>
                 </div>
 
-                <div className="icon-color" onClick={() => onClick(pageNames[2], setShowThisPage)}>
+                <div className="menu-icon-color" onClick={() => onClick(pageNames[2], setShowThisPage)}>
                     <i className="fas fa-user-plus"></i>
                     <label> {pageNames[2]}</label>
                 </div>
 
-                <div className="icon-color" onClick={() => onClick(pageNames[3], setShowThisPage)}>
+                <div className="menu-icon-color" onClick={() => onClick(pageNames[3], setShowThisPage)}>
                     <i className="far fa-list-alt"></i>
                     <label> {pageNames[3]} </label>
                 </div>
 
-                <div className="icon-color" onClick={() => onClick(pageNames[4], setShowThisPage)}>
+                <div className="menu-icon-color" onClick={() => onClick(pageNames[4], setShowThisPage)}>
                     <i className="fas fa-user-plus"></i>
                     <label> {pageNames[4]}</label>
                 </div>
 
-                <div className="icon-color" onClick={() => onClick(pageNames[5], setShowThisPage)}>
+                <div className="menu-icon-color" onClick={() => onClick(pageNames[5], setShowThisPage)}>
                     <i className="far fa-list-alt"></i>
                     <label>{pageNames[5]}</label>
                 </div>
 
-                <div className="icon-color" onClick={() => onClick(pageNames[6], setShowThisPage)}>
+                <div className="menu-icon-color" onClick={() => onClick(pageNames[6], setShowThisPage)}>
                     <i className="fas fa-plus"></i>
                     <label>{pageNames[6]}</label>
                 </div>
 
-                <div className="icon-color" onClick={() => onClick(pageNames[7], setShowThisPage)}>
+                <div className="menu-icon-color" onClick={() => onClick(pageNames[7], setShowThisPage)}>
                     <i className="far fa-list-alt"></i>
                     <label>{pageNames[7]}</label>
                 </div>
@@ -70,8 +71,11 @@ const MenuBar = () => {
                 {/* if page name has prefix ' create ' */}
                 {console.log("page matching: " + pageNamesPrefixes[0] + showThisPage)}              
                 {pageNamesPrefixes[0] === showThisPage.toString().substring(0, pageNamesPrefixes[0].length) 
-                && <AccountForm accType={showThisPage.toString().substring(pageNamesPrefixes[0].length)}
-                onComplete={closeForm}/>}
+                    && <AccountForm accType={showThisPage.toString().substring(pageNamesPrefixes[0].length)}
+                    onComplete={closeForm} />}
+
+                {pageNamesPrefixes[1] === showThisPage.toString().substring(0, pageNamesPrefixes[1].length) 
+                    && <Accounts accTypes={showThisPage.toString().substring(pageNamesPrefixes[1].length)} />}
                
             </div>
 

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import PropTypes from 'prop-types'
-import { newAccount } from "./newAccount";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../actions";
+import PropTypes from 'prop-types'
+import { newAccount } from "./newAccount";
+
 
 const AccountForm = ({accType, onComplete}) => {
     const [firstName, setFirstName] = useState('')
@@ -16,7 +17,6 @@ const AccountForm = ({accType, onComplete}) => {
     const { CreateAccount } = bindActionCreators(actionCreators, dispatch)
 
     const onSubmit = (e) => {
-        console.log("submitting")
         e.preventDefault()
 
         if (!firstName) {
@@ -47,62 +47,62 @@ const AccountForm = ({accType, onComplete}) => {
     return (
         <form onSubmit={onSubmit}> 
 
-        <div>
-            <label>Account type: {accType} </label>
-        </div>
-        <div>
-            <label>First name: </label>
-            <input
-            type='text'
-            placeholder='First name'
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            />
-        </div>
-        
-        <div>
-            <label>Middle name: </label>
-            <input
-            type='text'
-            placeholder='Middle name'
-            value={middleName}
-            onChange={(e) => setMiddleName(e.target.value)}
-            />
-        </div>
-        
-        <div>
-            <label>Last name: </label>
-            <input
-            type='text'
-            placeholder='Last name'
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            />
-        </div>
-        
-        <div>
-            <label>Email: </label>
-            <input
+            <div>
+                <label>Account type: {accType} </label>
+            </div>
+            <div>
+                <label>First name: </label>
+                <input
                 type='text'
-                placeholder='Email'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-             />
-        </div>
-        
-        <div>
-            <label>Password: </label>
-            <input
-            type='text'
-            placeholder='Password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            />  
-        </div>
+                placeholder='First name'
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                />
+            </div>
+            
+            <div>
+                <label>Middle name: </label>
+                <input
+                type='text'
+                placeholder='Middle name'
+                value={middleName}
+                onChange={(e) => setMiddleName(e.target.value)}
+                />
+            </div>
+            
+            <div>
+                <label>Last name: </label>
+                <input
+                type='text'
+                placeholder='Last name'
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                />
+            </div>
+            
+            <div>
+                <label>Email: </label>
+                <input
+                    type='text'
+                    placeholder='Email'
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+            </div>
+            
+            <div>
+                <label>Password: </label>
+                <input
+                type='text'
+                placeholder='Password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                />  
+            </div>
 
-        <div>
-            <input type='submit' value='Create Account' />
-        </div>
+            <div>
+                <input type='submit' value='Create Account' />
+            </div>
        
         
         </form>

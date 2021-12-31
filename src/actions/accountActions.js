@@ -38,8 +38,8 @@ export const fetchAccounts = () => {
   export const deleteAccount = (id) => {
     console.log("attempting delete")
     return (dispatch) => {
-      const accountUrl = serverAccountsURL + `/$id`
-      fetch(`http://localhost:5000/Accounts/${id}`, {
+      const accountUrl = serverAccountsURL + `/${id}`
+      fetch(accountUrl, {
         method: 'DELETE',
         headers: {
           'content-type': 'application/json'

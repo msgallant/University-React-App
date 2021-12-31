@@ -25,7 +25,6 @@ const accountReducer = (state = initialState, action) => {
           console.log("action payload: " + action.payload)
           const newAccounts = state.items.filter(account => (account.id !== action.payload))
           console.log("new: " + newAccounts.map(a=> a.id))
-          //const accs = items.filter(action.payload => ())
           return {
             ...state,
             items: newAccounts

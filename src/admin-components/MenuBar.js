@@ -1,20 +1,44 @@
 import '@fortawesome/fontawesome-free/js/all.js';
 import { useState } from 'react';
 import AccountForm from './AccountForm';
+import CourseForm from './CourseForm';
 import Accounts from './Accounts';
+import SubjectForm from './SubjectForm';
+import Subjects from './Subjects';
 
 
 
 const onClick = (pageName, setShowThisPage) => {
     setShowThisPage([pageName])
 }
+const checkPrefix = (prefix, fullPageName) => {
+    if (prefix === fullPageName.substring(0, prefix.length))
+    {
+        return true
+    } 
+    return false
+}
+const checkSuffix = (suffix, fullPageName) => {
+    const num = fullPageName.length - suffix.length
+    if (suffix === fullPageName.substring(num) )
+    {
+        return true
+    }
+    if (suffix.concat("s") === fullPageName.substring(num-1))
+    {
+        return true
+    }
+    return false
+}
 const MenuBar = () => {
 
     const [showThisPage, setShowThisPage] = useState('')
     const pageNames = [" Create Admin Account", " View Admin Accounts", " Create Professor Account", " View Professor Accounts",
-                        " Create Student Account", " View Student Accounts", " Create Course", " View Current Courses"]
+                        " Create Student Account", " View Student Accounts", " Create Subject", " View Subjects",
+                         "Create Course", " View Courses"]
 
     const pageNamesPrefixes = [" Create ", " View "]
+    const pageNamesSuffixes = ["Account", "Subject", "Course"]
 
     const closeForm = () => {
         setShowThisPage('')
@@ -68,14 +92,32 @@ const MenuBar = () => {
             </div>
 
             <div>
-                {/* if page name has prefix ' create ' */}
+                {/* if showThisPage has (spaces matter) prefix ' Create ' and suffix 'Account' or 'Accounts' */}
                 {console.log("page matching: " + pageNamesPrefixes[0] + showThisPage)}              
-                {pageNamesPrefixes[0] === showThisPage.toString().substring(0, pageNamesPrefixes[0].length) 
+                {checkPrefix(pageNamesPrefixes[0], showThisPage.toString()) === true
+                    && checkSuffix(pageNamesSuffixes[0], showThisPage.toString()) === true
                     && <AccountForm accType={showThisPage.toString().substring(pageNamesPrefixes[0].length)}
                     onComplete={closeForm} />}
 
-                {pageNamesPrefixes[1] === showThisPage.toString().substring(0, pageNamesPrefixes[1].length) 
+                {/* if showThisPage has prefix ' View ' and suffix 'Account' or 'Accounts' */}
+                {checkPrefix(pageNamesPrefixes[1], showThisPage.toString()) === true
+                    && checkSuffix(pageNamesSuffixes[0], showThisPage.toString()) === true
                     && <Accounts accTypes={showThisPage.toString().substring(pageNamesPrefixes[1].length)} />}
+
+                {/* if showThisPage has prefix ' Create ' and suffix 'Subject' or 'Subjects' */}
+                {checkPrefix(pageNamesPrefixes[0], showThisPage.toString()) === true
+                    && checkSuffix(pageNamesSuffixes[1], showThisPage.toString()) === true
+                    && <SubjectForm onComplete={closeForm} ></SubjectForm>}
+
+                {/* if showThisPage has prefix ' view ' and suffix 'Subject' or 'Subjects' */}
+                {checkPrefix(pageNamesPrefixes[1], showThisPage.toString()) === true
+                    && checkSuffix(pageNamesSuffixes[1], showThisPage.toString()) === true
+                    && <Subjects></Subjects>}
+
+                {/* if showThisPage has prefix ' Create ' and suffix 'Course' or 'Courses' */}
+                {/* checkPrefix(pageNamesPrefixes[0], showThisPage.toString()) === true
+                    && checkSuffix(pageNamesSuffixes[1], showThisPage.toString()) === true
+                && <CourseForm></CourseForm>*/}
                
             </div>
 

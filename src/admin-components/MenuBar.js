@@ -36,10 +36,10 @@ const MenuBar = () => {
     const pageNames = [" Create Admin Account", " View Admin Accounts", " Create Professor Account", " View Professor Accounts",
                         " Create Student Account", " View Student Accounts", " Create Subject", " View Subjects", 
                         " Create Building", " View Buildings",
-                         "Create Course", " View Courses"]
+                        " Create Course", " View Courses", " Create Course for the Semester", " View Courses for the Semester"]
 
     const pageNamesPrefixes = [" Create ", " View "]
-    const pageNamesSuffixes = ["Account", "Subject", "Building", "Course"]
+    const pageNamesSuffixes = ["Account", "Subject", "Building", "Course", "Semester"]
 
     const onClick = (pageName) => {
         setShowThisPage([pageName])
@@ -54,55 +54,74 @@ const MenuBar = () => {
         <div>
             <div className="icon-color">
                 <label className="block black">Menu </label>
-
+                {/* " Create Admin Account" */}
                 <div className="menu-icon-color" onClick={() => onClick(pageNames[0])}>
                     <i className="fas fa-user-plus"></i>
                     <label> {pageNames[0]}</label>
                 </div>
-
+                {/* " View Admin Accounts"*/}
                 <div className="menu-icon-color" onClick={() => onClick(pageNames[1])}>
                     <i className="far fa-list-alt"></i>
                     <label> {pageNames[1]}</label>
                 </div>
-
+                {/* " Create Professor Account" */}
                 <div className="menu-icon-color" onClick={() => onClick(pageNames[2])}>
                     <i className="fas fa-user-plus"></i>
                     <label> {pageNames[2]}</label>
                 </div>
 
+                {/*" View Professor Accounts"*/}
                 <div className="menu-icon-color" onClick={() => onClick(pageNames[3])}>
                     <i className="far fa-list-alt"></i>
                     <label> {pageNames[3]} </label>
                 </div>
 
+                {/* " Create Student Account"*/}
                 <div className="menu-icon-color" onClick={() => onClick(pageNames[4])}>
                     <i className="fas fa-user-plus"></i>
                     <label> {pageNames[4]}</label>
                 </div>
 
+                {/* " View Student Accounts"*/}
                 <div className="menu-icon-color" onClick={() => onClick(pageNames[5])}>
                     <i className="far fa-list-alt"></i>
                     <label>{pageNames[5]}</label>
                 </div>
 
+                {/*  " Create Subject"*/}
                 <div className="menu-icon-color" onClick={() => onClick(pageNames[6])}>
                     <i className="fas fa-plus"></i>
                     <label>{pageNames[6]}</label>
                 </div>
 
+                {/* " View Subjects", */}
                 <div className="menu-icon-color" onClick={() => onClick(pageNames[7])}>
                     <i className="far fa-list-alt"></i>
                     <label>{pageNames[7]}</label>
                 </div>
 
+                {/*" Create Building"*/}
                 <div className="menu-icon-color" onClick={() => onClick(pageNames[8])}>
                     <i className="fas fa-plus"></i>
                     <label>{pageNames[8]}</label>
                 </div>
 
+                {/* " View Buildings"*/}
                 <div className="menu-icon-color" onClick={() => onClick(pageNames[9])}>
                     <i className="far fa-list-alt"></i>
                     <label>{pageNames[9]}</label>
+                </div>
+
+                {/* " Create Course"*/}
+                <div className="menu-icon-color" onClick={() => onClick(pageNames[10])}>
+                    <i className="fas fa-plus"></i>
+                    <label>{pageNames[10]}</label>
+                </div>
+
+                {/* " View Courses"*/}
+                <div className="menu-icon-color" onClick={() => onClick(pageNames[11])}>
+                    <i className="far fa-list-alt"></i>
+                    <label>{pageNames[11]}</label>
                 </div>
             </div>
 
@@ -140,9 +159,14 @@ const MenuBar = () => {
                     && <Buildings></Buildings>}
 
                 {/* if showThisPage has prefix ' Create ' and suffix 'Course' or 'Courses' */}
-                {/* checkPrefix(pageNamesPrefixes[0], showThisPage.toString()) === true
-                    && checkSuffix(pageNamesSuffixes[1], showThisPage.toString()) === true
-                && <CourseForm></CourseForm>*/}
+                { checkPrefix(pageNamesPrefixes[0], showThisPage.toString()) === true
+                    && checkSuffix(pageNamesSuffixes[3], showThisPage.toString()) === true
+                && <CourseForm onComplete={closeForm} ></CourseForm>}
+
+                {/* if showThisPage has prefix ' View ' and suffix 'Course' or 'Courses' */}
+                { checkPrefix(pageNamesPrefixes[1], showThisPage.toString()) === true
+                    && checkSuffix(pageNamesSuffixes[3], showThisPage.toString()) === true
+                && <CourseForm></CourseForm>}
                
             </div>
 

@@ -1,12 +1,14 @@
 import accountReducer from './accountReducer'
 import subjectReducer from './subjectReducer'
 import buildingReducer from './buildingReducer'
+import courseReducer from './courseReducer'
 import {combineReducers} from 'redux'
 
 const allReducers = combineReducers({
     accounts: accountReducer,
     subjects: subjectReducer,
-    buildings: buildingReducer
+    buildings: buildingReducer,
+    courses: courseReducer
 })
 
 export default allReducers

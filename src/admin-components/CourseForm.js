@@ -1,44 +1,88 @@
-import { useState } from "react";
-import { allCourses, allLocations } from "./universityData";
+import { useState, useEffect } from "react"
+import { courseActionCreators, subjectActionCreators } from "../actions"
+import { useDispatch, useSelector } from "react-redux";
+import { bindActionCreators } from "redux";
+import { newCourse } from "./newCourse";
 
-const CourseForm = ({}) => {
+const CourseForm = ({ onComplete }) => {
     const [courseName, setCourseName] = useState('')
     const [courseDesc, setCourseDesc] = useState('')
-    const [startTime, setStartTime] = useState('')
-    const [endTime, setEndTime] = useState('')
-    const [days, setDays] = useState('')
     const [subject, setSubject] = useState('')
-    const [capacity, setCapacity] = useState('')
-    const [filled, setFilled] = useState('')
-    const [professor, setProfessor] = useState('')
-    const [location, setLocation] = useState('')
 
-    const availableCourses = allCourses.map((course, index) => (
-        <div key={index}>
-            <option value={course.name}/>
-        </div>
-    ))
+    const dispatch = useDispatch()
+    const { createCourse } = bindActionCreators(courseActionCreators, dispatch)
+    const { fetchSubjects } = bindActionCreators(subjectActionCreators, dispatch)
 
-    const availableLocations = allLocations.map((location, index) => (
-        <div key={index}>
-            <option value={location.name + " " + location.roomNum + " (Capacity: " + location.capacity + ")"}/>
+    const subjects = useSelector(state => state.subjects.items)
+
+    useEffect(() => {
+        fetchSubjects()
+    }, [])
+
+    const onSubmit = (e) => {
+        e.preventDefault()
+
+        if (!courseName){
+            alert('Course name is missing')
+            return
+        }
+        if (!courseDesc){
+            alert('Course description is missing')
+            return
+        }
+        if (!subject){
+            alert('Subject name is missing')
+            return
+        }
+
+        newCourse.name = courseName
+        newCourse.description = courseDesc
+        newCourse.subject = subject
+
+        createCourse(newCourse)
+        onComplete()
+    }
+
+     const availableSubjects = subjects.map((subj) => (
+        <div key={subj.id}>
+            <option value={subj.name}/>
         </div>
     ))
 
     return (
-        <form>
-            <label htmlFor="myCourse">Courses: </label>
-            <input list="courseNames" id="myCourse" name="myCourse"/>
-            <datalist id="courseNames">
-                {availableCourses}
-            </datalist>
+        <div>
+            <form onSubmit={onSubmit}>
+                <label>Course Name: </label>
+                    <input
+                    type='text'
+                    value={courseName}
+                    onChange={(e) => setCourseName(e.target.value)}
+                    />
 
-            <label htmlFor="myLocation">Room: </label>
-            <input list="rooms" id="myLocation" name="myLocation"/>
-            <datalist id="rooms">
-                {availableLocations}
-            </datalist>
-        </form>
+                <label>Course Description: </label>
+                    <input
+                    type='textarea'
+                    value={courseDesc}
+                    onChange={(e) => setCourseDesc(e.target.value)}
+                    />
+
+                <label htmlFor="courseSubjects">Courses: </label>
+                <input list="subjectNames" id="courseSubjects" name="courseSubjects"
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}/>
+                <datalist id="subjectNames" >
+                    {availableSubjects}
+                </datalist>
+
+                <div>
+                    <input type='submit' value='Create New Course' />
+                </div>
+            </form>
+            <div>
+                
+            </div>
+
+        </div>
     )
 }
 

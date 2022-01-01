@@ -121,6 +121,10 @@
         {
           "roomNum": "4321",
           "capacity": "500"
+        },
+        {
+          "roomNum": "43",
+          "capacity": "54"
         }
       ],
       "id": 2
@@ -134,11 +138,14 @@
         }
       ],
       "id": 3
-    },
+    }
+  ],
+  "Courses": [
     {
-      "name": "b4",
-      "rooms": [],
-      "id": 4
+      "name": "fsed",
+      "description": "fsd",
+      "subject": "math",
+      "id": 1
     }
   ]
 }

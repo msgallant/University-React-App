@@ -142,10 +142,16 @@
   ],
   "Courses": [
     {
-      "name": "fsed",
-      "description": "fsd",
+      "name": "algebra",
+      "description": "a desc",
       "subject": "math",
       "id": 1
+    },
+    {
+      "name": "stats",
+      "description": "stats desc",
+      "subject": "math",
+      "id": 2
     }
   ]
 }

@@ -3,6 +3,7 @@ import { courseActionCreators, subjectActionCreators } from "../actions"
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { newCourse } from "./newCourse";
+import  Courses  from "./Courses"
 
 const CourseForm = ({ onComplete }) => {
     const [courseName, setCourseName] = useState('')
@@ -79,7 +80,7 @@ const CourseForm = ({ onComplete }) => {
                 </div>
             </form>
             <div>
-                
+                <Courses></Courses>
             </div>
 
         </div>

@@ -2,6 +2,7 @@ import '@fortawesome/fontawesome-free/js/all.js';
 import { useState } from 'react';
 import AccountForm from './AccountForm';
 import CourseForm from './CourseForm';
+import Courses from './Courses';
 import Accounts from './Accounts';
 import SubjectForm from './SubjectForm';
 import Subjects from './Subjects';
@@ -166,7 +167,7 @@ const MenuBar = () => {
                 {/* if showThisPage has prefix ' View ' and suffix 'Course' or 'Courses' */}
                 { checkPrefix(pageNamesPrefixes[1], showThisPage.toString()) === true
                     && checkSuffix(pageNamesSuffixes[3], showThisPage.toString()) === true
-                && <CourseForm></CourseForm>}
+                && <Courses></Courses>}
                
             </div>
 

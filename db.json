@@ -95,5 +95,50 @@
       "name": "math",
       "id": 4
     }
+  ],
+  "Buildings": [
+    {
+      "name": "b1",
+      "rooms": [
+        {
+          "roomNum": "443",
+          "capacity": "30"
+        },
+        {
+          "roomNum": "35",
+          "capacity": "34"
+        },
+        {
+          "roomNum": "54",
+          "capacity": "432"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "name": "b2",
+      "rooms": [
+        {
+          "roomNum": "4321",
+          "capacity": "500"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "name": "b3",
+      "rooms": [
+        {
+          "roomNum": "3",
+          "capacity": "30"
+        }
+      ],
+      "id": 3
+    },
+    {
+      "name": "b4",
+      "rooms": [],
+      "id": 4
+    }
   ]
 }

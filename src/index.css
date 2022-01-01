@@ -32,6 +32,14 @@ code {
   background-color: rgb(193, 164, 219);
 }
 
+.select-button-color {
+  background-color: rgb(222, 223, 224);
+}
+
+.select-button-color:hover {
+  background-color: rgb(65, 156, 247);
+}
+
 .delete-icon-color {
   color:black
 }
@@ -42,5 +50,13 @@ code {
 
 .block {
   display: block;
+}
+
+.same-line {
+  display: inline-block;
+}
+
+.building-padding {
+  padding: 10px;
 }
 

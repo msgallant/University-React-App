@@ -153,5 +153,25 @@
       "subject": "math",
       "id": 2
     }
+  ],
+  "TimeSlots": [
+    {
+      "startTime": "10:00pm",
+      "endTime": "11:00pm",
+      "days": "Monday",
+      "id": 2
+    },
+    {
+      "startTime": "12:00am",
+      "endTime": "1:00pm",
+      "days": "Tuesday",
+      "id": 3
+    },
+    {
+      "startTime": "4:00pm",
+      "endTime": "5:00pm",
+      "days": "Monday, Tuesday, Friday",
+      "id": 4
+    }
   ]
 }

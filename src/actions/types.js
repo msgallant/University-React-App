@@ -18,3 +18,8 @@ export const ADD_ROOM = 'ADD_ROOM'
 export const ADD_COURSE = 'ADD_COURSE'
 export const FETCH_COURSES = 'FETCH_COURSES'
 export const DELETE_COURSE = 'DELETE_COURSE'
+
+//timeSlotActions
+export const ADD_TIME_SLOT = 'ADD_TIME_SLOT'
+export const FETCH_TIME_SLOTS = 'FETCH_TIME_SLOTS'
+export const DELETE_TIME_SLOT = 'DELETE_TIME_SLOT'

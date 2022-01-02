@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { courseActionCreators, subjectActionCreators } from "../actions"
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
-import { newCourse } from "./newCourse";
+import { newCourse } from "./course";
 import  Courses  from "./Courses"
 
 const CourseForm = ({ onComplete }) => {

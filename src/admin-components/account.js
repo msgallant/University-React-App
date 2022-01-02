@@ -1,6 +1,6 @@
 
 
-export const newAccount = {
+export const account = {
     accountType: "", 
     firstName: "", 
     middleName: "", 

@@ -3,7 +3,7 @@ import { buildingActionCreators } from "../actions"
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import Buildings from "./Buildings";
-import { newBuilding } from "./newBuilding";
+import { building } from "./building";
 
 
 const BuildingForm = ({ onComplete }) => {
@@ -20,10 +20,10 @@ const BuildingForm = ({ onComplete }) => {
             return
         }
 
-        newBuilding.name = buildingName
+        building.name = buildingName
 
 
-        createBuilding(newBuilding)
+        createBuilding(building)
         onComplete()
     }
 

@@ -1,4 +1,4 @@
-export * as actionCreators from "./accountActions"
+export * as accountActionCreators from "./accountActions"
 
 export * as subjectActionCreators from "./subjectActions"
 

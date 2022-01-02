@@ -1,4 +1,4 @@
-export const newBuilding = {
+export const building = {
     name: "", 
     rooms: []
 }

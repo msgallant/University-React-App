@@ -1,6 +1,6 @@
 
 
-const Rooms = ({building})=> {
+const BuildingRooms = ({building})=> {
 
 
     var myKey = 0
@@ -27,4 +27,4 @@ const Rooms = ({building})=> {
     
 }
 
-export default Rooms
+export default BuildingRooms

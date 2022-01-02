@@ -3,7 +3,7 @@ import { bindActionCreators } from "redux";
 import { buildingActionCreators } from "../actions";
 import { useEffect, useState } from 'react'
 import AddRoomForm from './AddRoomForm'
-import Rooms from "./Rooms";
+import BuildingRooms from "./BuildingRooms";
 
 
 const Buildings = ()=> {
@@ -122,8 +122,8 @@ const Buildings = ()=> {
             
             <div>
                 {checkIfBuildingRoomsShown(building.id) === true 
-                 && <Rooms onClose={toggleRooms} 
-                 building={building}></Rooms>}
+                 && <BuildingRooms onClose={toggleRooms} 
+                 building={building}></BuildingRooms>}
             </div>
 
         </div>

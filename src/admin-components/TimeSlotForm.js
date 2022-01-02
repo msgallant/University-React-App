@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import TimeSlots from "./TimeSlots";
 import { timeSlotWeekDays } from "./timeSlotData";
-import { newTimeSlot } from "./newTimeSlot";
+import { timeSlot } from "./timeSlot";
 
 const TimeSlotForm = ({ onComplete }) => {
     const [startTime, setStartTime] = useState('')
@@ -40,11 +40,11 @@ const TimeSlotForm = ({ onComplete }) => {
             alert('Invalid end time. Please follow the format example')
             return
         }
-        newTimeSlot.startTime = startTime
-        newTimeSlot.endTime = endTime
-        newTimeSlot.days = days
+        timeSlot.startTime = startTime
+        timeSlot.endTime = endTime
+        timeSlot.days = days
 
-        createTimeSlot(newTimeSlot)
+        createTimeSlot(timeSlot)
         onComplete()
     }
 

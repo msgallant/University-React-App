@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { allCourses, allLocations } from "./universityData";
+import { courseActionCreators, timeSlotActionCreators, buildingActionCreators, accountActionCreators } from "../actions"
 
 const SemesterCourseForm = ({}) => {
     const [courseName, setCourseName] = useState('')
@@ -13,33 +13,36 @@ const SemesterCourseForm = ({}) => {
     const [professor, setProfessor] = useState('')
     const [location, setLocation] = useState('')
 
-    /*const availableCourses = allCourses.map((course, index) => (
-        <div key={index}>
-            <option value={course.name}/>
-        </div>
-    ))
+    const dispatch = useDispatch()
 
-    const availableLocations = allLocations.map((location, index) => (
-        <div key={index}>
-            <option value={location.name + " " + location.roomNum + " (Capacity: " + location.capacity + ")"}/>
-        </div>
-    ))
+    const { fetchCourses } = bindActionCreators(courseActionCreators, dispatch)
+    const { fetchTimeSlots } = bindActionCreators(timeSlotActionCreators, dispatch)
+    const { fetchBuildings } = bindActionCreators(buildingActionCreators, dispatch)
+    const { fetchAccounts } = bindActionCreators(accountActionCreators, dispatch)
+
+    useEffect(() => {
+        fetchCourses()
+        fetchTimeSlots()
+        fetchBuildings()
+    }, [])
+
+
 
     return (
         <form>
             <label htmlFor="myCourse">Courses: </label>
             <input list="courseNames" id="myCourse" name="myCourse"/>
             <datalist id="courseNames">
-                {availableCourses}
+                
             </datalist>
 
             <label htmlFor="myLocation">Room: </label>
             <input list="rooms" id="myLocation" name="myLocation"/>
             <datalist id="rooms">
-                {availableLocations}
+                
             </datalist>
         </form>
-    )*/
+    )
 }
 
 export default SemesterCourseForm

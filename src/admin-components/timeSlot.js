@@ -1,4 +1,4 @@
-export const newTimeSlot = {
+export const timeSlot = {
     startTime: "", 
     endTime: "",
     days: ""

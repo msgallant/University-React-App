@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
-import { actionCreators } from "../actions";
+import { accountActionCreators } from "../actions";
 import { useEffect } from 'react'
 import '@fortawesome/fontawesome-free/js/all.js';
 
 const Accounts = ({ accTypes }) => {
     const dispatch = useDispatch()
-    const { fetchAccounts, deleteAccount } = bindActionCreators(actionCreators, dispatch)
+    const { fetchAccounts, deleteAccount } = bindActionCreators(accountActionCreators, dispatch)
 
     useEffect(() => {
         fetchAccounts()

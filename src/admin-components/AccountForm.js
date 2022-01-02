@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
-import { actionCreators } from "../actions";
+import { accountActionCreators } from "../actions";
 import PropTypes from 'prop-types'
-import { newAccount } from "./newAccount";
+import { account } from "./account";
 
 
 const AccountForm = ({accType, onComplete}) => {
@@ -14,7 +14,7 @@ const AccountForm = ({accType, onComplete}) => {
     const [password, setPassword] = useState('')
     
     const dispatch = useDispatch()
-    const { CreateAccount } = bindActionCreators(actionCreators, dispatch)
+    const { CreateAccount } = bindActionCreators(accountActionCreators, dispatch)
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -32,15 +32,15 @@ const AccountForm = ({accType, onComplete}) => {
             return
         }
 
-        newAccount.accountType = accType
-        newAccount.firstName = firstName
-        newAccount.middleName = middleName
-        newAccount.lastName = lastName
-        newAccount.email = email
-        newAccount.password = password
-        newAccount.id = email
+        account.accountType = accType
+        account.firstName = firstName
+        account.middleName = middleName
+        account.lastName = lastName
+        account.email = email
+        account.password = password
+        account.id = email
         
-        CreateAccount(newAccount)
+        CreateAccount(account)
         onComplete()
     }
     

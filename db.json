@@ -152,6 +152,12 @@
       "description": "stats desc",
       "subject": "math",
       "id": 2
+    },
+    {
+      "name": "painting",
+      "description": "jkstmkgjrnrkj",
+      "subject": "art",
+      "id": 3
     }
   ],
   "TimeSlots": [
@@ -172,6 +178,12 @@
       "endTime": "5:00pm",
       "days": "Monday, Tuesday, Friday",
       "id": 4
+    },
+    {
+      "startTime": "1:30pm",
+      "endTime": "2:30pm",
+      "days": "Monday, Tuesday, Thursday",
+      "id": 5
     }
   ]
 }

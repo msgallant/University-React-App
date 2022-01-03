@@ -11,7 +11,9 @@ const Buildings = ()=> {
     const [buildingID, setBuildingID] = useState(0)
     const dispatch = useDispatch()
     const { fetchBuildings, deleteBuilding } = bindActionCreators(buildingActionCreators, dispatch)
-    const [showRooms, setShowRooms] = useState([])
+
+    //contains {buildingId: id, shown: true/false} shown is if the building's rooms are being shown or not  
+    const [showRooms, setShowRooms] = useState([]) 
     useEffect(() => {
         fetchBuildings()
     }, [])

@@ -22,6 +22,7 @@ const SemesterCourseForm = ({}) => {
 
     useEffect(() => {
         fetchCourses()
+        fetchAccounts()
         fetchTimeSlots()
         fetchBuildings()
     }, [])

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { newCourse } from "./course";
 import  Courses  from "./Courses"
+import { dataListValidOptionObjectNameChecker } from "./dataListValidOptionChecker";
 
 const CourseForm = ({ onComplete }) => {
     const [courseName, setCourseName] = useState('')
@@ -38,8 +39,15 @@ const CourseForm = ({ onComplete }) => {
 
         newCourse.name = courseName
         newCourse.description = courseDesc
-        newCourse.subject = subject
 
+        //checks if subject matches with 1 of the valid subjects .name attribute
+        if (!dataListValidOptionObjectNameChecker(subjects, subject))
+        {
+            alert('Invalid subject')
+            return
+        }
+        newCourse.subject = subject
+        
         createCourse(newCourse)
         onComplete()
     }
@@ -67,7 +75,7 @@ const CourseForm = ({ onComplete }) => {
                     onChange={(e) => setCourseDesc(e.target.value)}
                     />
 
-                <label htmlFor="courseSubjects">Courses: </label>
+                <label htmlFor="courseSubjects">Subject: </label>
                 <input list="subjectNames" id="courseSubjects" name="courseSubjects"
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}/>

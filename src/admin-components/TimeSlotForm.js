@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux";
 import TimeSlots from "./TimeSlots";
 import { timeSlotWeekDays } from "./timeSlotData";
 import { timeSlot } from "./timeSlot";
+import { dataListValidOptionChecker } from "./dataListValidOptionChecker";
 
 const TimeSlotForm = ({ onComplete }) => {
     const [startTime, setStartTime] = useState('')
@@ -42,6 +43,13 @@ const TimeSlotForm = ({ onComplete }) => {
         }
         timeSlot.startTime = startTime
         timeSlot.endTime = endTime
+
+        //sees if days matches with one of the valid options which are listed in the array timeSlotWeekDays
+        if (!dataListValidOptionChecker(timeSlotWeekDays, days))
+        {
+            alert('Invalid days')
+            return
+        }
         timeSlot.days = days
 
         createTimeSlot(timeSlot)

@@ -52,6 +52,8 @@ const TimeSlotForm = ({ onComplete }) => {
         }
         timeSlot.days = days
 
+        timeSlot.name = startTime + " - " + endTime + " on " + days + " "
+
         createTimeSlot(timeSlot)
         onComplete()
     }

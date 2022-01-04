@@ -46,15 +46,6 @@
       "id": "nhfbgvdd"
     },
     {
-      "accountType": "Professor Account",
-      "firstName": "trrfd",
-      "middleName": "rht",
-      "lastName": "rtf",
-      "email": "pevfghy",
-      "password": "fbv",
-      "id": "pevfghy"
-    },
-    {
       "accountType": "Student Account",
       "firstName": "rtf",
       "middleName": "fbg",
@@ -74,26 +65,35 @@
     },
     {
       "accountType": "Professor Account",
-      "firstName": "fggttttt",
-      "middleName": "bf",
-      "lastName": "fbgv",
-      "email": "fggtttt",
-      "password": "rtf",
-      "id": "fggtttt"
+      "firstName": "Susan",
+      "middleName": "Lily",
+      "lastName": "Winter",
+      "email": "slwinter@uni.com",
+      "password": "123",
+      "id": "slwinter@uni.com"
+    },
+    {
+      "accountType": "Professor Account",
+      "firstName": "Luke",
+      "middleName": "Derek",
+      "lastName": "Farris",
+      "email": "ldfarris@uni.com",
+      "password": "456",
+      "id": "ldfarris@uni.com"
     }
   ],
   "Subjects": [
     {
-      "name": "history",
-      "id": 2
+      "name": "Math",
+      "id": 5
     },
     {
-      "name": "art",
-      "id": 3
+      "name": "Art",
+      "id": 6
     },
     {
-      "name": "math",
-      "id": 4
+      "name": "History",
+      "id": 7
     }
   ],
   "Buildings": [
@@ -142,48 +142,82 @@
   ],
   "Courses": [
     {
-      "name": "algebra",
-      "description": "a desc",
-      "subject": "math",
-      "id": 1
+      "name": "Stats",
+      "description": "Description of stats",
+      "subject": "Math",
+      "id": 4
     },
     {
-      "name": "stats",
-      "description": "stats desc",
-      "subject": "math",
-      "id": 2
+      "name": "Algebra",
+      "description": "Description of Algebra",
+      "subject": "Math",
+      "id": 5
     },
     {
-      "name": "painting",
-      "description": "jkstmkgjrnrkj",
-      "subject": "art",
-      "id": 3
+      "name": "Painting",
+      "description": "Description of Painting",
+      "subject": "Art",
+      "id": 6
+    },
+    {
+      "name": "Canadian Society",
+      "description": "Description for Canadian Society",
+      "subject": "History",
+      "id": 7
     }
   ],
   "TimeSlots": [
     {
-      "startTime": "10:00pm",
-      "endTime": "11:00pm",
-      "days": "Monday",
+      "startTime": "9:00am",
+      "endTime": "10:00am",
+      "days": "Monday, Tuesday, Friday",
+      "name": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+      "id": 1
+    },
+    {
+      "startTime": "1:00pm",
+      "endTime": "2:00pm",
+      "days": "Tuesday, Wednesday",
+      "name": "1:00pm - 2:00pm on Tuesday, Wednesday ",
       "id": 2
     },
     {
-      "startTime": "12:00am",
-      "endTime": "1:00pm",
-      "days": "Tuesday",
+      "startTime": "1:30pm",
+      "endTime": "3:00pm",
+      "days": "Tuesday, Thursday",
+      "name": "1:30pm - 3:00pm on Tuesday, Thursday ",
       "id": 3
     },
     {
-      "startTime": "4:00pm",
-      "endTime": "5:00pm",
-      "days": "Monday, Tuesday, Friday",
+      "startTime": "10:30am",
+      "endTime": "11:30am",
+      "days": "Monday, Wednesday, Friday",
+      "name": "10:30am - 11:30am on Monday, Wednesday, Friday ",
       "id": 4
+    }
+  ],
+  "SemesterCoures": [
+    {
+      "courseName": "Stats",
+      "courseDesc": "Description of stats",
+      "subject": "Math",
+      "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+      "professor": "Dr. Susan Lily Winter (slwinter@uni.com)",
+      "location": "b1 room 443",
+      "filled": 0,
+      "capacity": "30",
+      "id": 1
     },
     {
-      "startTime": "1:30pm",
-      "endTime": "2:30pm",
-      "days": "Monday, Tuesday, Thursday",
-      "id": 5
+      "courseName": "Canadian Society",
+      "courseDesc": "Description for Canadian Society",
+      "subject": "History",
+      "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+      "professor": "Dr. Luke Derek Farris (ldfarris@uni.com)",
+      "location": "b1 room 54",
+      "filled": 0,
+      "capacity": "432",
+      "id": 2
     }
   ]
 }

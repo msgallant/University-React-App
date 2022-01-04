@@ -17,7 +17,7 @@ const TimeSlots = ()=> {
         <div key={slot.id} className="select-div-color">
             <div>
                 <label>
-                     {slot.startTime} - {slot.endTime } on {slot.days}  
+                     {slot.name}
                 </label>
 
                 <label onClick={() => deleteTimeSlot(slot.id)}>

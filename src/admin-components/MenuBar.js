@@ -10,6 +10,8 @@ import Buildings from './Buildings';
 import BuildingForm from './BuildingForm';
 import TimeSlotForm from './TimeSlotForm';
 import TimeSlots from './TimeSlots';
+import SemesterCourseForm from './SemesterCourseForm';
+import SemesterCourses from './SemesterCourses';
 
 
 
@@ -35,6 +37,8 @@ const checkSuffix = (suffix, fullPageName) => {
 }
 const MenuBar = () => {
 
+    //order of lists cannot be changed but things can be added to list
+    //"Admin Account, Student Account, Professor Account are the types of accounts that can be made"
     const [showThisPage, setShowThisPage] = useState('')
     const pageNames = [" Create Admin Account", " View Admin Accounts", " Create Professor Account", " View Professor Accounts",
                         " Create Student Account", " View Student Accounts", " Create Subject", " View Subjects", 
@@ -138,6 +142,18 @@ const MenuBar = () => {
                     <i className="far fa-list-alt"></i>
                     <label>{pageNames[13]}</label>
                 </div>
+
+                {/* " Create Course for the Semester" */}
+                <div className="menu-icon-color" onClick={() => onClick(pageNames[14])}>
+                    <i className="fas fa-plus"></i>
+                    <label>{pageNames[14]}</label>
+                </div>
+
+                {/* " View Courses for the Semester"*/}
+                <div className="menu-icon-color" onClick={() => onClick(pageNames[15])}>
+                    <i className="far fa-list-alt"></i>
+                    <label>{pageNames[15]}</label>
+                </div>
             </div>
 
             <div>
@@ -192,6 +208,20 @@ const MenuBar = () => {
                 { checkPrefix(pageNamesPrefixes[1], showThisPage.toString()) === true
                     && checkSuffix(pageNamesSuffixes[4], showThisPage.toString()) === true
                 && <Courses></Courses>}
+
+                {/* if showThisPage has prefix ' Create ' and suffix 'Semester' or 'Semesters' */}
+                {/*pageNames[2] is 'Create Professor Account, it's substrings to 'Professor Account'
+                since that is the account type for professors, so, a professor can be assigned to 
+                a course */}
+                { checkPrefix(pageNamesPrefixes[0], showThisPage.toString()) === true
+                    && checkSuffix(pageNamesSuffixes[5], showThisPage.toString()) === true
+                && <SemesterCourseForm onComplete={closeForm} 
+                profAccType={pageNames[2].substring(pageNamesPrefixes[0].length)}></SemesterCourseForm>}
+
+                {/* if showThisPage has prefix ' View ' and suffix 'Semester' or 'Semesters' */}
+                { checkPrefix(pageNamesPrefixes[1], showThisPage.toString()) === true
+                    && checkSuffix(pageNamesSuffixes[5], showThisPage.toString()) === true
+                && <SemesterCourses></SemesterCourses>}
                
             </div>
 

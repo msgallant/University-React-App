@@ -1,5 +1,6 @@
 export const timeSlot = {
     startTime: "", 
     endTime: "",
-    days: ""
+    days: "",
+    name: ""
 }

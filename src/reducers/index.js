@@ -3,6 +3,7 @@ import subjectReducer from './subjectReducer'
 import buildingReducer from './buildingReducer'
 import courseReducer from './courseReducer'
 import timeSlotReducer from './timeSlotReducer'
+import semesterCourseReducer from './semesterCourseReucer'
 import {combineReducers} from 'redux'
 
 const allReducers = combineReducers({
@@ -10,7 +11,8 @@ const allReducers = combineReducers({
     subjects: subjectReducer,
     buildings: buildingReducer,
     courses: courseReducer,
-    timeSlots: timeSlotReducer
+    timeSlots: timeSlotReducer,
+    semesterCourses: semesterCourseReducer
 })
 
 export default allReducers

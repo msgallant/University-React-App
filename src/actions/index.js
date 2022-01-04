@@ -7,3 +7,5 @@ export * as buildingActionCreators from "./buildingActions"
 export * as courseActionCreators from "./courseActions"
 
 export * as timeSlotActionCreators from "./timeSlotActions"
+
+export * as semesterCourseActionCreators from "./semesterCourseActions"

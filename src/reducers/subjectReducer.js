@@ -19,7 +19,6 @@ const subjectReducer = (state =initialState, action) => {
               }
         case DELETE_SUBJECT:
           const newSubjects = state.items.filter(subject => (subject.id !== action.payload))
-          console.log("new: " + newSubjects.map(a=> a.id))
           return {
             ...state,
             items: newSubjects

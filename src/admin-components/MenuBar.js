@@ -1,5 +1,6 @@
 import '@fortawesome/fontawesome-free/js/all.js';
 import { useState } from 'react';
+import { checkPrefix, checkSuffix } from '../pageNameChecker';
 import AccountForm from './AccountForm';
 import CourseForm from './CourseForm';
 import Courses from './Courses';
@@ -16,29 +17,12 @@ import SemesterCourses from './SemesterCourses';
 
 
 
-const checkPrefix = (prefix, fullPageName) => {
-    if (prefix === fullPageName.substring(0, prefix.length))
-    {
-        return true
-    } 
-    return false
-}
-const checkSuffix = (suffix, fullPageName) => {
-    const num = fullPageName.length - suffix.length
-    if (suffix === fullPageName.substring(num) )
-    {
-        return true
-    }
-    if (suffix.concat("s") === fullPageName.substring(num-1))
-    {
-        return true
-    }
-    return false
-}
+
 const MenuBar = () => {
 
     //order of lists cannot be changed but things can be added to list
     //"Admin Account, Student Account, Professor Account are the types of accounts that can be made"
+    //Can't have page name with same prefix and suffix
     const [showThisPage, setShowThisPage] = useState('')
     const pageNames = [" Create Admin Account", " View Admin Accounts", " Create Professor Account", " View Professor Accounts",
                         " Create Student Account", " View Student Accounts", " Create Subject", " View Subjects", 
@@ -157,8 +141,7 @@ const MenuBar = () => {
             </div>
 
             <div>
-                {/* if showThisPage has (spaces matter) prefix ' Create ' and suffix 'Account' or 'Accounts' */}
-                {console.log("page matching: " + pageNamesPrefixes[0] + showThisPage)}              
+                {/* if showThisPage has (spaces matter) prefix ' Create ' and suffix 'Account' or 'Accounts' */}             
                 {checkPrefix(pageNamesPrefixes[0], showThisPage.toString()) === true
                     && checkSuffix(pageNamesSuffixes[0], showThisPage.toString()) === true
                     && <AccountForm accType={showThisPage.toString().substring(pageNamesPrefixes[0].length)}
@@ -221,7 +204,7 @@ const MenuBar = () => {
                 {/* if showThisPage has prefix ' View ' and suffix 'Semester' or 'Semesters' */}
                 { checkPrefix(pageNamesPrefixes[1], showThisPage.toString()) === true
                     && checkSuffix(pageNamesSuffixes[5], showThisPage.toString()) === true
-                && <SemesterCourses></SemesterCourses>}
+                && <SemesterCourses canRegister={false} ></SemesterCourses>}
                
             </div>
 

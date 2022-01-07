@@ -46,15 +46,6 @@
       "id": "nhfbgvdd"
     },
     {
-      "accountType": "Student Account",
-      "firstName": "rtf",
-      "middleName": "fbg",
-      "lastName": "bf",
-      "email": "fgbx",
-      "password": "fbxb",
-      "id": "fgbx"
-    },
-    {
       "accountType": "Admin Account",
       "firstName": "fdvfs",
       "middleName": "fgb",
@@ -80,6 +71,17 @@
       "email": "ldfarris@uni.com",
       "password": "456",
       "id": "ldfarris@uni.com"
+    },
+    {
+      "accountType": "Student Account",
+      "firstName": "Yuu",
+      "middleName": "Sandra",
+      "lastName": "Mendes",
+      "email": "ysm@uni.com",
+      "password": "123",
+      "coursesRegisteredIn": [],
+      "transcript": [],
+      "id": "ysm@uni.com"
     }
   ],
   "Subjects": [

@@ -7,5 +7,7 @@ export const account = {
     lastName: "", 
     email: "", 
     password: "",
+    coursesRegisteredIn: [],
+    transcript: [],
     id: "1"
 }

@@ -1,4 +1,4 @@
-import { FETCH_ACCOUNTS, ADD_ACCOUNT, DELETE_ACCOUNT } from "./types";
+import { FETCH_ACCOUNTS, ADD_ACCOUNT, DELETE_ACCOUNT, ADD_REGISTERED_SEMESTER_COURSE} from "./types";
 
 const serverAccountsURL = 'http://localhost:5000/Accounts'
 
@@ -36,7 +36,6 @@ export const fetchAccounts = () => {
   }
 
   export const deleteAccount = (id) => {
-    console.log("attempting delete")
     return (dispatch) => {
       const accountUrl = serverAccountsURL + `/${id}`
       fetch(accountUrl, {
@@ -49,5 +48,25 @@ export const fetchAccounts = () => {
           type: DELETE_ACCOUNT,
           payload: id
         })
+    }
+  }
+
+  export const addRegisteredSemesterCourse = (acc) => {
+    return (dispatch) => {
+      const url = serverAccountsURL + `/${acc.id}`
+      fetch(url, {
+        method: 'PUT',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(acc)
+      })
+        .then(res => res.json())
+        .then(acc =>
+          dispatch({
+            type: ADD_REGISTERED_SEMESTER_COURSE,
+            payload: acc
+          })
+        )
     }
   }

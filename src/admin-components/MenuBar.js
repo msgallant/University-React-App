@@ -13,6 +13,7 @@ import TimeSlotForm from './TimeSlotForm';
 import TimeSlots from './TimeSlots';
 import SemesterCourseForm from './SemesterCourseForm';
 import SemesterCourses from './SemesterCourses';
+import {pageNames, pageNamesPrefixes, pageNamesSuffixes} from '../pageNames'
 
 
 
@@ -24,13 +25,6 @@ const MenuBar = () => {
     //"Admin Account, Student Account, Professor Account are the types of accounts that can be made"
     //Can't have page name with same prefix and suffix
     const [showThisPage, setShowThisPage] = useState('')
-    const pageNames = [" Create Admin Account", " View Admin Accounts", " Create Professor Account", " View Professor Accounts",
-                        " Create Student Account", " View Student Accounts", " Create Subject", " View Subjects", 
-                        " Create Building", " View Buildings", " Create Time Slot", " View Time Slots",
-                        " Create Course", " View Courses", " Create Course for the Semester", " View Courses for the Semester"]
-
-    const pageNamesPrefixes = [" Create ", " View "]
-    const pageNamesSuffixes = ["Account", "Subject", "Building", "Time Slot", "Course", "Semester"]
 
     const onClick = (pageName) => {
         setShowThisPage([pageName])

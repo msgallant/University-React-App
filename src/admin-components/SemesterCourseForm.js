@@ -91,7 +91,7 @@ const SemesterCourseForm = ({profAccType, onComplete}) => {
             return
         }
 
-        semesterCourse.courseName = courseName
+        semesterCourse.name = courseName
         semesterCourse.courseDesc = courseDesc
         semesterCourse.subject = subject
         semesterCourse.schedule = schedule
@@ -154,12 +154,13 @@ const SemesterCourseForm = ({profAccType, onComplete}) => {
 
         <div>
              <form onSubmit={onSubmit}>
-                <label htmlFor="myCourse">Course: </label>
-                <input list="courseNames" id="myCourse" name="myCourse"
+
+                <label htmlFor="registeredCourseName">Course: </label>
+                <input list="registeredCourseNames" id="registeredCourseName" name="registeredCourseName"
                 value={courseName}
                 onChange={(e) => setCourseDetails(e.target.value)}
                     />
-                <datalist id="courseNames">
+                <datalist id="registeredCourseNames">
                     {makeOptions(courses) }
                 </datalist>
 

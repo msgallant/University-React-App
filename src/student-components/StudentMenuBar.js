@@ -1,21 +1,21 @@
 import { useState } from 'react';
 import SemesterCourses from '../admin-components/SemesterCourses';
 import { checkPrefix, checkSuffix } from '../pageNameChecker';
+import SearchBar from './SearchBar';
+import {pageNames, pageNamesPrefixes, pageNamesSuffixes} from '../pageNames'
 
 //order of lists cannot be changed but things can be added to list
 //Can't have page name with same prefix and suffix
 const StudentMenuBar = () => {
     const [showThisPage, setShowThisPage] = useState('')
-    const pageNames = [" Search for Courses", " View Class Schedule", " View Transcript"]
 
-    const pageNamesPrefixes = [" Search ", " View "]
-    const pageNamesSuffixes = ["Course", "Schedule", "Transcript"]
 
     const onClick = (pageName) => {
         setShowThisPage([pageName])
     }
 
     const closeForm = () => {
+        console.log("closing student menu")
         setShowThisPage('')
     }
 
@@ -25,17 +25,32 @@ const StudentMenuBar = () => {
                 <label className="block black">Menu </label>
 
                 {/* " Search for Courses"*/}
-                <div className="menu-icon-color" onClick={() => onClick(pageNames[0])}>
+                <div className="menu-icon-color" onClick={() => onClick(pageNames[16])}>
                         <i className="far fa-list-alt"></i>
-                        <label>{pageNames[0]}</label>
+                        <label>{pageNames[16]}</label>
+                    </div>
+
+                    {/* " View Class Schedule"*/}
+                <div className="menu-icon-color" onClick={() => onClick(pageNames[17])}>
+                        <i className="far fa-list-alt"></i>
+                        <label>{pageNames[17]}</label>
                     </div>
             </div>
 
+
             <div>
                 {/* if showThisPage has (spaces matter) prefix ' Search ' and suffix 'Course' or 'Courses' */}             
-                {checkPrefix(pageNamesPrefixes[0], showThisPage.toString()) === true
-                    && checkSuffix(pageNamesSuffixes[0], showThisPage.toString()) === true
-                    && <SemesterCourses canRegister={true} onComplete={closeForm} />}
+                {checkPrefix(pageNamesPrefixes[2], showThisPage.toString()) === true
+                    && checkSuffix(pageNamesSuffixes[4], showThisPage.toString()) === true
+                    && <SearchBar profAccType={pageNames[2].substring(pageNamesPrefixes[0].length)}
+                    onComplete={closeForm}></SearchBar>}
+            </div>
+
+            <div>
+                {/* if showThisPage has (spaces matter) prefix ' View ' and suffix 'Class Schedule' or 'Class Schedules' */}             
+                {checkPrefix(pageNamesPrefixes[1], showThisPage.toString()) === true
+                    && checkSuffix(pageNamesSuffixes[6], showThisPage.toString()) === true
+                    && <SemesterCourses canRegister={true} onComplete={closeForm}  />}
             </div>
             
         </div>

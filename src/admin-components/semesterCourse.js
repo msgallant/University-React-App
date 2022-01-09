@@ -1,6 +1,6 @@
 
 export const semesterCourse = {
-    courseName: '',
+    name: '',
     courseDesc: '',
     subject: '',
     schedule: '', //time slot

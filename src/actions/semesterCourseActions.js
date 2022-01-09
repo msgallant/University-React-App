@@ -1,5 +1,5 @@
 import { FETCH_SEMESTER_COURSES, DELETE_SEMESTER_COURSE, ADD_SEMESTER_COURSE } from "./types"
-const serverURL = 'http://localhost:5000/SemesterCoures'
+const serverURL = 'http://localhost:5000/SemesterCourses'
 
 export const fetchSemesterCourses = () => {
   return (dispatch) => {

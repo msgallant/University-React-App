@@ -10,7 +10,8 @@ const SemesterCourses = ({canRegister, onComplete, selectedCourses})=> {
     const { fetchAccounts, addRegisteredSemesterCourse } = bindActionCreators(accountActionCreators, dispatch)
     const accs = useSelector(state => state.accounts.items)
     let allCourses = useSelector(state => state.semesterCourses.items)
-    const [courses, setCourses] = useState([{null: null, id: "courses not set yet"}])
+    //need this not to be null and empty since a const variable references these with the forEach method
+    const [courses, setCourses] = useState([{null: null, id: "Courses not set up yet"}])
 
     //isCheckedCourseStatus contains: 
     //check: false/true,
@@ -19,6 +20,7 @@ const SemesterCourses = ({canRegister, onComplete, selectedCourses})=> {
     const [loaded, setLoaded] = useState(false) //isCheckedCourseStatus loaded to initial value
     const [loadedCourses, setLoadedCourses] = useState(false) //is selectedCourses not undefined meaning
     //only certain courses should be displayed, so, change the value of courses to the selected courses
+    //otherwise just set them to allCourses
 
 
     useEffect(() => {
@@ -54,23 +56,29 @@ const SemesterCourses = ({canRegister, onComplete, selectedCourses})=> {
     }
 
     const setSelectedCourses = () => {
-        console.log("setting selected courses")
-        console.log(selectedCourses)
-        if (selectedCourses != null)
+        if (selectedCourses !== undefined ) //student searching for courses
         {
-            setCourses(selectedCourses)
-            console.log(courses)
+            if (selectedCourses.length !== 0)
+            {
+                setCourses(selectedCourses)
+            }
+            else{
+                setCourses([{id: "No Courses Found.."}])
+            }
             
         }
-        else{
-            setCourses(allCourses)
+        else{ //admin looking at all semester courses
+                setCourses(allCourses)
         }
         checkIfSelectedCoursesSet()
     }
 
     const checkIfSelectedCoursesSet = () => {
-        console.log("null: " + !courses.null)
-        if (!courses.null)
+        if (courses.length !== 0 && !courses[0].null)
+        {
+            setLoadedCourses(true)
+        }
+        else //no courses that matched criteria bc length = 0
         {
             setLoadedCourses(true)
         }
@@ -127,6 +135,7 @@ const SemesterCourses = ({canRegister, onComplete, selectedCourses})=> {
                 <div>
                     <label>Description: {course.courseDesc} </label>
                 </div>
+                
             </div>
         )
     }
@@ -134,10 +143,10 @@ const SemesterCourses = ({canRegister, onComplete, selectedCourses})=> {
     const courseItems = courses.map(course => (
         <div key={course.id} className="select-div-color">
             {/*/set courses */}
-            {loadedCourses === false && setSelectedCourses()}
+            {loadedCourses === false && allCourses != null && allCourses.length !== 0 && setSelectedCourses()}
             {/*/create an object for each course that holds whether or not the user has checked/selected that course */}
             { isCheckedCourseStatus == null && loadedCourses === true && setIsCheckedCourseStatusInitialState()}
-            {canRegister === true && loaded === true && loadedCourses === true &&
+            {canRegister === true && loaded === true && loadedCourses === true && courses[0].id !== "No Courses Found.." &&
                 <div>   
                     <input type="checkbox" id="semesterCourse" name="semesterCourse"
                      onChange={() => checkCourse(course.id)}   /> 
@@ -160,6 +169,8 @@ const SemesterCourses = ({canRegister, onComplete, selectedCourses})=> {
                     </div>
                     <div>
                         <label>{courseItems}</label>
+                        {courses[0].id === "No Courses Found.." &&
+                        <label>{courses[0].id} </label>}
         
                     </div>
                     {canRegister === true && 

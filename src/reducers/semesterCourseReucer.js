@@ -1,4 +1,5 @@
-import { ADD_SEMESTER_COURSE, DELETE_SEMESTER_COURSE, FETCH_SEMESTER_COURSES}  from "../actions/types"
+import { ADD_SEMESTER_COURSE, DELETE_SEMESTER_COURSE, FETCH_SEMESTER_COURSES,
+  UPDATE_SEMESTER_COURSE}  from "../actions/types"
 
 const initialState = {
     items: [],
@@ -23,6 +24,8 @@ const semesterCourseReducer = (state =initialState, action) => {
             ...state,
             items: newObjs
           }
+        case UPDATE_SEMESTER_COURSE:
+          return state
         default:
             return state
     }

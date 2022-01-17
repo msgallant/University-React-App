@@ -74,11 +74,11 @@
     },
     {
       "accountType": "Student Account",
-      "firstName": "Yuu",
-      "middleName": "Sandra",
-      "lastName": "Mendes",
-      "email": "ysm@uni.com",
-      "password": "123",
+      "firstName": "thf",
+      "middleName": "fbg",
+      "lastName": "tgdv",
+      "email": "rtdbg",
+      "password": "bd",
       "coursesRegisteredIn": [
         {
           "name": "Stats",
@@ -86,91 +86,28 @@
           "subject": "Math",
           "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
           "professor": "Dr. Susan Lily Winter (slwinter@uni.com)",
-          "location": "b1 room 443",
-          "filled": 0,
-          "capacity": "30",
-          "id": 1
+          "location": "b1 room 443"
         },
         {
-          "name": "Painting",
-          "courseDesc": "Description of Painting",
-          "subject": "Art",
-          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
-          "professor": "Dr. Susan Lily Winter (slwinter@uni.com)",
-          "location": "b2 room 4321",
-          "filled": 0,
-          "capacity": "500",
-          "id": 3
-        },
-        {
-          "name": "Painting",
-          "courseDesc": "Description of Painting",
-          "subject": "Art",
-          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
-          "professor": "Dr. Susan Lily Winter (slwinter@uni.com)",
-          "location": "b2 room 4321",
-          "filled": 0,
-          "capacity": "500",
-          "id": 3
-        },
-        {
-          "name": "Canadian Society",
-          "courseDesc": "Description for Canadian Society",
-          "subject": "History",
-          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "name": "Algebra",
+          "courseDesc": "Description of Algebra",
+          "subject": "Math",
+          "schedule": "1:00pm - 2:00pm on Tuesday, Wednesday ",
           "professor": "Dr. Luke Derek Farris (ldfarris@uni.com)",
-          "location": "b1 room 443",
-          "filled": 0,
-          "capacity": "30",
-          "id": 4
-        },
-        {
-          "name": "Stats",
-          "courseDesc": "Description of stats",
-          "subject": "Math",
-          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
-          "professor": "Dr. Susan Lily Winter (slwinter@uni.com)",
-          "location": "b1 room 443",
-          "filled": 0,
-          "capacity": "30",
-          "id": 1
-        },
-        {
-          "name": "Stats",
-          "courseDesc": "Description of stats",
-          "subject": "Math",
-          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
-          "professor": "Dr. Susan Lily Winter (slwinter@uni.com)",
-          "location": "b1 room 443",
-          "filled": 0,
-          "capacity": "30",
-          "id": 1
-        },
-        {
-          "name": "Stats",
-          "courseDesc": "Description of stats",
-          "subject": "Math",
-          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
-          "professor": "Dr. Susan Lily Winter (slwinter@uni.com)",
-          "location": "b1 room 443",
-          "filled": 0,
-          "capacity": "30",
-          "id": 1
-        },
-        {
-          "name": "Painting",
-          "courseDesc": "Description of Painting",
-          "subject": "Art",
-          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
-          "professor": "Dr. Susan Lily Winter (slwinter@uni.com)",
-          "location": "b2 room 4321",
-          "filled": 0,
-          "capacity": "500",
-          "id": 3
+          "location": "b1 room 35"
         }
       ],
-      "transcript": [],
-      "id": "ysm@uni.com"
+      "transcript": [
+        {
+          "name": "Stats",
+          "grade": null
+        },
+        {
+          "name": "Algebra",
+          "grade": null
+        }
+      ],
+      "id": "rtdbg"
     }
   ],
   "Subjects": [
@@ -219,16 +156,6 @@
         }
       ],
       "id": 2
-    },
-    {
-      "name": "b3",
-      "rooms": [
-        {
-          "roomNum": "3",
-          "capacity": "30"
-        }
-      ],
-      "id": 3
     }
   ],
   "Courses": [
@@ -245,16 +172,16 @@
       "id": 5
     },
     {
-      "name": "Painting",
-      "description": "Description of Painting",
-      "subject": "Art",
-      "id": 6
-    },
-    {
       "name": "Canadian Society",
       "description": "Description for Canadian Society",
       "subject": "History",
       "id": 7
+    },
+    {
+      "name": "Painting",
+      "description": "Paint",
+      "subject": "Art",
+      "id": 8
     }
   ],
   "TimeSlots": [
@@ -297,6 +224,41 @@
       "location": "b1 room 443",
       "filled": 0,
       "capacity": "30",
+      "students": [
+        {
+          "accountType": "Student Account",
+          "firstName": "Julian",
+          "middleName": "Alberto",
+          "lastName": "Garnier",
+          "email": "jag@uni.com",
+          "password": "1",
+          "coursesRegisteredIn": [],
+          "transcript": [],
+          "id": "jag@uni.com"
+        },
+        {
+          "accountType": "Student Account",
+          "firstName": "Julian",
+          "middleName": "Alberto",
+          "lastName": "Garnier",
+          "email": "jag@uni.com",
+          "password": "1",
+          "coursesRegisteredIn": [],
+          "transcript": [],
+          "id": "jag@uni.com"
+        },
+        {
+          "accountType": "Student Account",
+          "firstName": "thf",
+          "middleName": "fbg",
+          "lastName": "tgdv",
+          "email": "rtdbg",
+          "password": "bd",
+          "coursesRegisteredIn": [],
+          "transcript": [],
+          "id": "rtdbg"
+        }
+      ],
       "id": 1
     },
     {
@@ -308,29 +270,42 @@
       "location": "b1 room 35",
       "filled": 0,
       "capacity": "34",
+      "students": [
+        {
+          "accountType": "Student Account",
+          "firstName": "Julian",
+          "middleName": "Alberto",
+          "lastName": "Garnier",
+          "email": "jag@uni.com",
+          "password": "1",
+          "coursesRegisteredIn": [],
+          "transcript": [],
+          "id": "jag@uni.com"
+        },
+        {
+          "accountType": "Student Account",
+          "firstName": "Julian",
+          "middleName": "Alberto",
+          "lastName": "Garnier",
+          "email": "jag@uni.com",
+          "password": "1",
+          "coursesRegisteredIn": [],
+          "transcript": [],
+          "id": "jag@uni.com"
+        },
+        {
+          "accountType": "Student Account",
+          "firstName": "thf",
+          "middleName": "fbg",
+          "lastName": "tgdv",
+          "email": "rtdbg",
+          "password": "bd",
+          "coursesRegisteredIn": [],
+          "transcript": [],
+          "id": "rtdbg"
+        }
+      ],
       "id": 2
-    },
-    {
-      "name": "Painting",
-      "courseDesc": "Description of Painting",
-      "subject": "Art",
-      "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
-      "professor": "Dr. Susan Lily Winter (slwinter@uni.com)",
-      "location": "b2 room 4321",
-      "filled": 0,
-      "capacity": "500",
-      "id": 3
-    },
-    {
-      "name": "Canadian Society",
-      "courseDesc": "Description for Canadian Society",
-      "subject": "History",
-      "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
-      "professor": "Dr. Luke Derek Farris (ldfarris@uni.com)",
-      "location": "b1 room 443",
-      "filled": 0,
-      "capacity": "30",
-      "id": 4
     }
   ]
 }

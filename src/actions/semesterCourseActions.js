@@ -1,4 +1,5 @@
-import { FETCH_SEMESTER_COURSES, DELETE_SEMESTER_COURSE, ADD_SEMESTER_COURSE } from "./types"
+import { FETCH_SEMESTER_COURSES, DELETE_SEMESTER_COURSE, ADD_SEMESTER_COURSE,
+  UPDATE_SEMESTER_COURSE } from "./types"
 const serverURL = 'http://localhost:5000/SemesterCourses'
 
 export const fetchSemesterCourses = () => {
@@ -46,4 +47,26 @@ export const deleteSemesterCourse = (id) => {
         payload: id
       })
   }
+}
+
+//register a student to this course
+export const updateSemesterCourse = (semesterCourse) => {
+  return (dispatch) => {
+    const url = serverURL + `/${semesterCourse.id}`
+    fetch(url, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(semesterCourse)
+    })
+      .then(res => res.json())
+      .then(semesterCourse =>
+        dispatch({
+          type: UPDATE_SEMESTER_COURSE,
+          payload: semesterCourse
+        })
+      )
+  }
+  
 }

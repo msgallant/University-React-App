@@ -3,10 +3,18 @@ import { bindActionCreators } from "redux";
 import { semesterCourseActionCreators } from "../actions";
 import { accountActionCreators } from "../actions";
 import { useEffect, useState } from 'react'
-
+import {getUserLoggedIn} from "../userStorage"
+import { updateTranscriptOnCourseChanges } from "../student-components/StudentTranscriptLogic";
+import { getCopyOfSemesterCourseForStudent } from "./semesterCourse";
+//if canRegister is false and selectedCourses is undefined, that means display all courses since the admin
+//is trying to view them all, if canRegister is true and selectedCourses is not undefined, that means 
+//a student is trying to register for a course and the selectedCourses are the ones which
+//match the criteria they inputted
+//if canRegister is false but selectedCourses is NOT undefined, then the student is just
+//trying to view the courses they are registered for
 const SemesterCourses = ({canRegister, onComplete, selectedCourses})=> {
     const dispatch = useDispatch()
-    const { fetchSemesterCourses, deleteSemesterCourse } = bindActionCreators(semesterCourseActionCreators, dispatch)
+    const { fetchSemesterCourses, deleteSemesterCourse, updateSemesterCourse } = bindActionCreators(semesterCourseActionCreators, dispatch)
     const { fetchAccounts, addRegisteredSemesterCourse } = bindActionCreators(accountActionCreators, dispatch)
     const accs = useSelector(state => state.accounts.items)
     let allCourses = useSelector(state => state.semesterCourses.items)
@@ -21,7 +29,7 @@ const SemesterCourses = ({canRegister, onComplete, selectedCourses})=> {
     const [loadedCourses, setLoadedCourses] = useState(false) //is selectedCourses not undefined meaning
     //only certain courses should be displayed, so, change the value of courses to the selected courses
     //otherwise just set them to allCourses
-
+    const [updateTranscript, setUpdateTranscript] = useState(null)
 
     useEffect(() => {
         fetchSemesterCourses()
@@ -30,30 +38,33 @@ const SemesterCourses = ({canRegister, onComplete, selectedCourses})=> {
     const onSubmit = (e) => {
         e.preventDefault()
         let userCourses = []
+        let studentAcc = getUserLoggedIn(accs)
+
         courses.forEach((course => {
+            //courses user wants to register for
             const wantedCourses = isCheckedCourseStatus.forEach((status) => {
                 if (status.courseID === course.id && status.check === true)
                 {
-                    userCourses.push(course)
+                    userCourses.push(course) //list of courses student registered in
+                    course.students.push(studentAcc) //list of students in course including user now
+                    updateSemesterCourse(course)
                 }
             })
         }))
+console.log("this is where we need to find the loged in user")
 
-        let studentAcc = null
-        accs.forEach(acc => {
-            if (acc.accountType === "Student Account")
-            {
-                userCourses.forEach(userCourse => {
-                    acc.coursesRegisteredIn.push(userCourse)
-                })
-                
-                studentAcc = acc
-            }
-        })
+        userCourses.forEach(userCourse => {
+            studentAcc.coursesRegisteredIn.push(getCopyOfSemesterCourseForStudent(userCourse))
+            })
 
-        addRegisteredSemesterCourse(studentAcc)
+        const updatedStudAcc = updateTranscriptOnCourseChanges(studentAcc) //add new registered courses to transcript with no grade
+        addRegisteredSemesterCourse(updatedStudAcc) //also adds a transcript entry with a grade value of null
+        setUpdateTranscript(studentAcc)
+        
         onComplete()
     }
+
+
 
     const setSelectedCourses = () => {
         if (selectedCourses !== undefined ) //student searching for courses
@@ -114,10 +125,13 @@ const SemesterCourses = ({canRegister, onComplete, selectedCourses})=> {
                 
                     
                     <label>{course.name} ({course.subject}) </label>
-                
+                    {/** trash can only pops up if admin viewing courses since only admin can delete courses
+                     * if you put selectedCourses == null
+                     */}
+                    { selectedCourses == null &&
                     <label onClick={() => deleteSemesterCourse(course.id)}>
                             <i className="fas fa-trash-alt delete-icon-color"></i>
-                        </label> 
+                        </label> }
                 
                 <div>
                     <label> {course.professor}</label>
@@ -158,7 +172,6 @@ const SemesterCourses = ({canRegister, onComplete, selectedCourses})=> {
         </div>
         ))
     
-
         return (
         
             <div>

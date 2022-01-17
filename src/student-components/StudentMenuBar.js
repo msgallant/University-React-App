@@ -3,6 +3,8 @@ import SemesterCourses from '../admin-components/SemesterCourses';
 import { checkPrefix, checkSuffix } from '../pageNameChecker';
 import SearchBar from './SearchBar';
 import {pageNames, pageNamesPrefixes, pageNamesSuffixes} from '../pageNames'
+import UserCourses from './UserCourses';
+import StudentTranscript from './StudentTranscript';
 
 //order of lists cannot be changed but things can be added to list
 //Can't have page name with same prefix and suffix
@@ -35,6 +37,12 @@ const StudentMenuBar = () => {
                         <i className="far fa-list-alt"></i>
                         <label>{pageNames[17]}</label>
                     </div>
+
+                    {/* " View Transcript"*/}
+                <div className="menu-icon-color" onClick={() => onClick(pageNames[18])}>
+                        <i className="far fa-list-alt"></i>
+                        <label>{pageNames[18]}</label>
+                    </div>
             </div>
 
 
@@ -50,7 +58,14 @@ const StudentMenuBar = () => {
                 {/* if showThisPage has (spaces matter) prefix ' View ' and suffix 'Class Schedule' or 'Class Schedules' */}             
                 {checkPrefix(pageNamesPrefixes[1], showThisPage.toString()) === true
                     && checkSuffix(pageNamesSuffixes[6], showThisPage.toString()) === true
-                    && <SemesterCourses canRegister={true} onComplete={closeForm}  />}
+                    && <UserCourses onComplete={closeForm}  />}
+            </div>
+
+            <div>
+                {/* if showThisPage has (spaces matter) prefix ' View ' and suffix 'Transcript' or 'Transcripts' */}             
+                {checkPrefix(pageNamesPrefixes[1], showThisPage.toString()) === true
+                    && checkSuffix(pageNamesSuffixes[7], showThisPage.toString()) === true
+                    && <StudentTranscript />}
             </div>
             
         </div>

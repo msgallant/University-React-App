@@ -1,4 +1,4 @@
-import { FETCH_ACCOUNTS, ADD_ACCOUNT, DELETE_ACCOUNT, ADD_REGISTERED_SEMESTER_COURSE } from "../actions/types"
+import { FETCH_ACCOUNTS, ADD_ACCOUNT, DELETE_ACCOUNT, UPDATE_ACCOUNT } from "../actions/types"
 const initialState = {
   items: [],
   item: {}
@@ -24,7 +24,7 @@ const accountReducer = (state = initialState, action) => {
             ...state,
             items: newAccounts
           }
-        case ADD_REGISTERED_SEMESTER_COURSE:
+        case UPDATE_ACCOUNT:
           return state
 
         default:

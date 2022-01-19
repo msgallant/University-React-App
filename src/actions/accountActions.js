@@ -1,4 +1,4 @@
-import { FETCH_ACCOUNTS, ADD_ACCOUNT, DELETE_ACCOUNT, ADD_REGISTERED_SEMESTER_COURSE} from "./types";
+import { FETCH_ACCOUNTS, ADD_ACCOUNT, DELETE_ACCOUNT, UPDATE_ACCOUNT} from "./types";
 
 const serverAccountsURL = 'http://localhost:5000/Accounts'
 
@@ -51,7 +51,8 @@ export const fetchAccounts = () => {
     }
   }
 
-  export const addRegisteredSemesterCourse = (acc) => {
+  export const updateAccount = (acc) => {
+    console.log("change dispatch type for this")
     return (dispatch) => {
       const url = serverAccountsURL + `/${acc.id}`
       fetch(url, {
@@ -64,7 +65,7 @@ export const fetchAccounts = () => {
         .then(res => res.json())
         .then(acc =>
           dispatch({
-            type: ADD_REGISTERED_SEMESTER_COURSE,
+            type: UPDATE_ACCOUNT,
             payload: acc
           })
         )

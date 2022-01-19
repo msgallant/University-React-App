@@ -12,10 +12,10 @@ import { getCopyOfSemesterCourseForStudent } from "./semesterCourse";
 //match the criteria they inputted
 //if canRegister is false but selectedCourses is NOT undefined, then the student is just
 //trying to view the courses they are registered for
-const SemesterCourses = ({canRegister, onComplete, selectedCourses})=> {
+const SemesterCourses = ({canRegister, canAssignGrades, onComplete, onSelect, selectedCourses})=> {
     const dispatch = useDispatch()
     const { fetchSemesterCourses, deleteSemesterCourse, updateSemesterCourse } = bindActionCreators(semesterCourseActionCreators, dispatch)
-    const { fetchAccounts, addRegisteredSemesterCourse } = bindActionCreators(accountActionCreators, dispatch)
+    const { fetchAccounts, updateAccount } = bindActionCreators(accountActionCreators, dispatch)
     const accs = useSelector(state => state.accounts.items)
     let allCourses = useSelector(state => state.semesterCourses.items)
     //need this not to be null and empty since a const variable references these with the forEach method
@@ -47,24 +47,35 @@ const SemesterCourses = ({canRegister, onComplete, selectedCourses})=> {
                 {
                     userCourses.push(course) //list of courses student registered in
                     course.students.push(studentAcc) //list of students in course including user now
-                    updateSemesterCourse(course)
+                    
                 }
             })
         }))
 console.log("this is where we need to find the loged in user")
-
+        //need to store course information in student account
         userCourses.forEach(userCourse => {
             studentAcc.coursesRegisteredIn.push(getCopyOfSemesterCourseForStudent(userCourse))
             })
 
         const updatedStudAcc = updateTranscriptOnCourseChanges(studentAcc) //add new registered courses to transcript with no grade
-        addRegisteredSemesterCourse(updatedStudAcc) //also adds a transcript entry with a grade value of null
+        updateAccount(updatedStudAcc) //also adds a transcript entry with a grade value of null
         setUpdateTranscript(studentAcc)
+
+        userCourses.forEach(userCourse => {
+            updateSemesterCourse(userCourse) //need to store student account that is registered & has a transcript entry for course in it
+        })
         
         onComplete()
     }
-
-
+//selecting a course is only done by professor who are selecting a course to input final grades
+//for their students
+    const selectCourse = (selectedCourseID) => {
+        if (canAssignGrades === true)
+        {console.log("on Select:" + selectedCourseID)
+            onSelect(selectedCourseID)
+        }
+        
+    }
 
     const setSelectedCourses = () => {
         if (selectedCourses !== undefined ) //student searching for courses
@@ -84,6 +95,7 @@ console.log("this is where we need to find the loged in user")
         checkIfSelectedCoursesSet()
     }
 
+    console.log("is this even needed???")
     const checkIfSelectedCoursesSet = () => {
         if (courses.length !== 0 && !courses[0].null)
         {
@@ -121,10 +133,11 @@ console.log("this is where we need to find the loged in user")
 
     const courseItemDetails = (course) => {
         return (
-            <div className="same-line">
+            <div className="same-line" 
+                onClick={() => { selectCourse(course.id)}  }>
                 
                     
-                    <label>{course.name} ({course.subject}) </label>
+                    <label >{course.name} ({course.subject}) </label>
                     {/** trash can only pops up if admin viewing courses since only admin can delete courses
                      * if you put selectedCourses == null
                      */}
@@ -160,14 +173,17 @@ console.log("this is where we need to find the loged in user")
             {loadedCourses === false && allCourses != null && allCourses.length !== 0 && setSelectedCourses()}
             {/*/create an object for each course that holds whether or not the user has checked/selected that course */}
             { isCheckedCourseStatus == null && loadedCourses === true && setIsCheckedCourseStatusInitialState()}
+            {/* students can register for courses*/ }
             {canRegister === true && loaded === true && loadedCourses === true && courses[0].id !== "No Courses Found.." &&
                 <div>   
                     <input type="checkbox" id="semesterCourse" name="semesterCourse"
                      onChange={() => checkCourse(course.id)}   /> 
                     <label  htmlFor="semesterCourse"> {courseItemDetails(course)} </label>  
                 </div>  
-            }     
-            {canRegister === false && courseItemDetails(course)}
+            }  
+            {/* admin looking at all courses or student/professor looking at their courses*/ } 
+            {/* professor able to click on course, so they can assign grades for the students in that course*/ }  
+            {canRegister === false &&  courseItemDetails(course)}
             
         </div>
         ))

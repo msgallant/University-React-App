@@ -23,7 +23,8 @@ export const getCopyOfSemesterCourseForStudent = (userCourse) => {
         subject: userCourse.subject,
         schedule: userCourse.schedule, //time slot
         professor: userCourse.professor,
-        location: userCourse.location
+        location: userCourse.location,
+        id: userCourse.id
     }
     return studentCourseCopy
 }

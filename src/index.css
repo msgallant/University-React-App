@@ -48,6 +48,10 @@ code {
   color: red
 }
 
+.test-color:hover {
+  color:brown
+}
+
 .block {
   display: block;
 }

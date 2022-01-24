@@ -19,7 +19,7 @@ import {pageNames, pageNamesPrefixes, pageNamesSuffixes} from '../pageNames'
 
 
 
-const MenuBar = () => {
+const AdminMenuBar = ({loggedInAccount}) => {
 
     //order of lists cannot be changed but things can be added to list
     //"Admin Account, Student Account, Professor Account are the types of accounts that can be made"
@@ -209,4 +209,4 @@ const MenuBar = () => {
 }
 
 
-export default MenuBar
+export default AdminMenuBar

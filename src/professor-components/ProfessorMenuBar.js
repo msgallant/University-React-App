@@ -4,7 +4,7 @@ import UserCourses from '../student-components/UserCourses';
 import AssignGrades from './AssignGrades';
 import { useState } from 'react';
 
-const ProfessorMenuBar = () => {
+const ProfessorMenuBar = ({loggedInAccount}) => {
     const [showThisPage, setShowThisPage] = useState('')
 
     const onClick = (pageName) => {

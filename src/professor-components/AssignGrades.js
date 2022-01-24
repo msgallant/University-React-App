@@ -19,7 +19,6 @@ const AssignGrades = ({onComplete}) => {
     }, [])
 
     const onSubmit = () => {
-        console.log("form closed! submiting!")
         //going through all students registered in course
         selectedCourse.students.forEach(student => { 
             //looking for a student transcript entry that matches this course
@@ -31,8 +30,6 @@ const AssignGrades = ({onComplete}) => {
                         if (student.id === finalGrade.studentID)
                         {
                             entry.grade = finalGrade.grade
-                            console.log("the updated studdent acc looks like: ")
-                            console.log(student)
                             updateAccount(student)
                         }
                     })
@@ -47,8 +44,6 @@ const AssignGrades = ({onComplete}) => {
         allCourses.forEach(course => {
             if (course.id === id)
             {
-                console.log("its a match@@")
-                console.log(course)
                 setSelectedCourse(course)
             }
         })
@@ -91,8 +86,7 @@ const AssignGrades = ({onComplete}) => {
 
             {selectedCourse != null && selectedCourse.students.length !== 0 &&
             <div>
-                {console.log("the students are:")}
-                {console.log(selectedCourse.students)}
+
                 <label >{selectedCourse.name}</label>
                 {makeEntryForms(selectedCourse.students)}
 

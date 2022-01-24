@@ -1,14 +1,24 @@
 import './App.css';
-import MenuBar from './admin-components/MenuBar'
-import StudentMenuBar from './student-components/StudentMenuBar';
-import ProfessorMenuBar from './professor-components/ProfessorMenuBar';
+import { useState } from 'react';
+import SignIn from './login-components/SignIn';
+import MenuBarController from './login-components/MenuBarController';
 
 function App() {
+  const [userAccount, setUserAccount] = useState(null)
+
+  const onAccountRecieved = (loggedInAccount) => {
+    setUserAccount(loggedInAccount)
+  }
+  
   return (
     <div className="App">
-      <ProfessorMenuBar></ProfessorMenuBar>
-      <StudentMenuBar></StudentMenuBar>
-      <MenuBar></MenuBar>
+      {userAccount == null &&
+        <SignIn onAccountRecieved={onAccountRecieved}></SignIn>
+      }
+      {userAccount != null &&
+        <MenuBarController loggedInAccount={userAccount}></MenuBarController>
+      }
+      
     </div>
   );
 }

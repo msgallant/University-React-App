@@ -8,7 +8,7 @@ import StudentTranscript from './StudentTranscript';
 
 //order of lists cannot be changed but things can be added to list
 //Can't have page name with same prefix and suffix
-const StudentMenuBar = () => {
+const StudentMenuBar = ({loggedInAccount}) => {
     const [showThisPage, setShowThisPage] = useState('')
 
 

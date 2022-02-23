@@ -11,7 +11,7 @@ export const semesterCourse = {
     students: [] //students registered in course
 }
 
-//missing capacity and filled because don't need, also missing students which is necessary,
+// missing students which is necessary,
 //otherwise will get an error because semesterCourse objects are stored in account objs
 //but students are account objs, you can't have circular references, so, instead of
 //actual semester courses getting stored in accounts, the following gets stored

@@ -1,11 +1,10 @@
-import { getUserLoggedIn } from "../userStorage"
 import SemesterCourses from "../admin-components/SemesterCourses"
 import { accountActionCreators } from "../actions"
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { useEffect} from 'react'
 
-const UserCourses = ({onComplete, onSelect, canAssignGrades}) => {
+const UserCourses = ({onComplete, onSelect, canAssignGrades, canUnregister, loggedInAccount}) => {
     const dispatch = useDispatch()
     const { fetchAccounts } = bindActionCreators(accountActionCreators, dispatch)
     const accs = useSelector(state => state.accounts.items)
@@ -21,13 +20,12 @@ const UserCourses = ({onComplete, onSelect, canAssignGrades}) => {
     return (
         <div>
 
-            {console.log("testing user courses")}
-            {console.log(getUserLoggedIn(accs))}
-
-
             {accs != null && accs.length !== 0 &&
-            <SemesterCourses canRegister={false} onComplete={onComplete}
-            selectedCourses={getUserLoggedIn(accs).coursesRegisteredIn}
+            <SemesterCourses canRegister={false} 
+            loggedInAccount={loggedInAccount}
+            canUnregister={canUnregister} 
+            onComplete={onComplete}
+            selectedCourses={loggedInAccount.coursesRegisteredIn}
             onSelect={onSelect}
             canAssignGrades={canAssignGrades}
              ></SemesterCourses>}

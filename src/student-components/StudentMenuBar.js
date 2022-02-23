@@ -51,21 +51,22 @@ const StudentMenuBar = ({loggedInAccount}) => {
                 {checkPrefix(pageNamesPrefixes[2], showThisPage.toString()) === true
                     && checkSuffix(pageNamesSuffixes[4], showThisPage.toString()) === true
                     && <SearchBar profAccType={pageNames[2].substring(pageNamesPrefixes[0].length)}
-                    onComplete={closeForm}></SearchBar>}
+                    onComplete={closeForm} loggedInAccount={loggedInAccount} ></SearchBar>}
             </div>
 
             <div>
                 {/* if showThisPage has (spaces matter) prefix ' View ' and suffix 'Class Schedule' or 'Class Schedules' */}             
                 {checkPrefix(pageNamesPrefixes[1], showThisPage.toString()) === true
                     && checkSuffix(pageNamesSuffixes[6], showThisPage.toString()) === true
-                    && <UserCourses onComplete={closeForm}  />}
+                    && <UserCourses onComplete={closeForm}  
+                    canUnregister={true} loggedInAccount={loggedInAccount}/>}
             </div>
 
             <div>
                 {/* if showThisPage has (spaces matter) prefix ' View ' and suffix 'Transcript' or 'Transcripts' */}             
                 {checkPrefix(pageNamesPrefixes[1], showThisPage.toString()) === true
                     && checkSuffix(pageNamesSuffixes[7], showThisPage.toString()) === true
-                    && <StudentTranscript />}
+                    && <StudentTranscript loggedInAccount={loggedInAccount}/>}
             </div>
             
         </div>

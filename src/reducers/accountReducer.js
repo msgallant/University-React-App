@@ -25,7 +25,13 @@ const accountReducer = (state = initialState, action) => {
             items: newAccounts
           }
         case UPDATE_ACCOUNT:
-          return state
+          const updatedAcc = action.payload
+          const updAccounts = state.items.filter(account => (account.id !== updatedAcc.id))
+          updAccounts.push(updatedAcc)
+          return {
+            ...state,
+            items: updAccounts
+          }
 
         default:
           return state

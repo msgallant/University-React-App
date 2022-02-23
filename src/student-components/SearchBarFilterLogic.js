@@ -7,7 +7,7 @@ const findStartTime = (scheduleString) => {
 
 
 //criteria must be a string, either course name, professor name, subject names of a string containing the start time only
-export const determineSelectedCourses = (criteria, selectedCourses, setMatches) => {
+export const determineSelectedCourses = (criteria, selectedCourses, setMatches, studentCourses) => {
     
     let myMatches = []
     selectedCourses.forEach((element, index) => {
@@ -27,5 +27,36 @@ export const determineSelectedCourses = (criteria, selectedCourses, setMatches) 
         }
 
     })
+
+    if (myMatches.length !== 0 && studentCourses.length !== 0)
+    {
+        removeCoursesUserAlreadyRegisteredIn(myMatches, setMatches, studentCourses)
+    }
     
+}
+
+//matches are courses that meets user searching criteria, studentCourses
+//are the user courses they are already registered for
+//user cannot register again for same course, so, if an already registered
+//course meets user criteria must remove it
+const removeCoursesUserAlreadyRegisteredIn = (matches, setMatches, studentCourses) => {
+    let validMatches = []
+    console.log("testing rmve corses")
+    console.log(matches)
+    console.log(studentCourses)
+    matches.forEach((match) => {
+        let alreadyRegistered = false
+        studentCourses.forEach(studentCourse => {
+            if (match.id === studentCourse.id)
+            {
+                alreadyRegistered = true
+            }
+        })
+        if (alreadyRegistered !== true)
+        {
+            validMatches.push(match)
+        }
+    })
+
+    setMatches(validMatches)
 }

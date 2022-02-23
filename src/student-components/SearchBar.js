@@ -7,7 +7,7 @@ import SemesterCourses from "../admin-components/SemesterCourses";
 import { determineSelectedCourses } from "./SearchBarFilterLogic";
 
 
-const SearchBar = ({profAccType, onComplete}) => {
+const SearchBar = ({profAccType, onComplete, loggedInAccount}) => {
     const [courseName, setCourseName] = useState('')
     const [professor, setProfessor] = useState('')
     const [subjectName, setSubjectName] = useState('')
@@ -50,13 +50,15 @@ const SearchBar = ({profAccType, onComplete}) => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        determineSelectedCourses(getFilterCriteria(), selectedCourses, setMatches)
+        determineSelectedCourses(getFilterCriteria(), selectedCourses, setMatches, loggedInAccount.coursesRegisteredIn)        
         
     }
 
-    //loading all the courses into selectedCourses at the beggining of the program
-    const loadCourses = () => {
 
+    //loading all the courses into selectedCourses at the beggining of the program
+    //if user wants to go back and make a different search, reseting matches to null
+    const loadCourses = () => {
+        setMatches(null)
         setSelectedCourses(courses)
     }
 
@@ -116,7 +118,8 @@ const SearchBar = ({profAccType, onComplete}) => {
 
                 {matches != null &&
                 <SemesterCourses canRegister={true} onComplete={onComplete}  
-                selectedCourses={matches}></SemesterCourses>}
+                selectedCourses={matches} loggedInAccount={loggedInAccount}
+                reloadSearchBar={() => loadCourses()}></SemesterCourses>}
             </div>
         </div>
         

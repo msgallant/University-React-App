@@ -1,8 +1,10 @@
-import { getCopyOfSemesterCourseForStudent } from "../admin-components/semesterCourse";
+import { getCopyOfSemesterCourseForAUserAccount } from "../admin-components/semesterCourse";
 import { addNewRegisteredCourseEntriesIfAny, removeUnregisteredCoursesIfAny } from "./StudentTranscriptLogic";
 import { getCopyOfStudentAccountForCourse } from "../admin-components/account";
   
   //this method is only called when student is registering for classes
+//adds course to students list of courses, and adds corresponding transcript entry to student account
+//and adds student to list of registered students in the course itself
   export const onRegisterCourse = (e, loggedInAccount, courses, isCheckedCourseStatus,
                         updateAccount, setUpdateTranscript, updateSemesterCourse, onComplete) => {
     e.preventDefault()
@@ -33,7 +35,7 @@ import { getCopyOfStudentAccountForCourse } from "../admin-components/account";
 
     //need to store course information in student account
     userCourses.forEach(userCourse => {
-        studentAcc.coursesRegisteredIn.push(getCopyOfSemesterCourseForStudent(userCourse))
+        studentAcc.coursesRegisteredIn.push(getCopyOfSemesterCourseForAUserAccount(userCourse))
         })
 
     const updatedStudAcc = addNewRegisteredCourseEntriesIfAny(studentAcc) //add new registered courses to transcript with no grade
@@ -48,6 +50,8 @@ import { getCopyOfStudentAccountForCourse } from "../admin-components/account";
 }
 
 //this method is only called when student is unregistering classes they are currently registered for
+//unregisters course from students list of courses, and gets rid of corresponding transcript entry
+//and removes student from list of registered students in the course itself
 export const onUnRegisterCourse = (e, loggedInAccount, courses, isCheckedCourseStatus,
     updateAccount, setUpdateTranscript, updateSemesterCourse, onComplete) => {
     e.preventDefault()
@@ -80,7 +84,7 @@ export const onUnRegisterCourse = (e, loggedInAccount, courses, isCheckedCourseS
     //need to remove unregistered courses information in student account
     studentAcc.coursesRegisteredIn = []
     userCourses.forEach(userCourse => {
-    studentAcc.coursesRegisteredIn.push(getCopyOfSemesterCourseForStudent(userCourse))
+    studentAcc.coursesRegisteredIn.push(getCopyOfSemesterCourseForAUserAccount(userCourse))
     })
 
     const updatedStudAcc = removeUnregisteredCoursesIfAny(studentAcc) 

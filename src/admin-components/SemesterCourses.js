@@ -5,7 +5,7 @@ import { accountActionCreators } from "../actions";
 import { useEffect, useState } from 'react'
 import {getUserLoggedIn} from "../userStorage"
 import { updateTranscriptOnCourseChanges } from "../student-components/StudentTranscriptLogic";
-import { getCopyOfSemesterCourseForStudent } from "./semesterCourse";
+import { getCopyOfSemesterCourseForAUserAccount } from "./semesterCourse";
 import { onRegisterCourse, onUnRegisterCourse, findIsCheckedCourseStatusInitialState,
     updateCheckedCourse} from "../student-components/registeringSemesterCourseLogic"
 
@@ -16,8 +16,13 @@ import { onRegisterCourse, onUnRegisterCourse, findIsCheckedCourseStatusInitialS
 //match the criteria they inputted
 //if canRegister is false and canUnregister is true and selectedCourses is not undefined than that means a student is looking at 
 //all their courses they are registered in and can unregister for one
-//if canRegister is false but selectedCourses is NOT undefined, then the student is just
-//trying to view the courses they are registered for
+//canUnregister={"not true"}
+//if (canUnregister !== true && canUnregister !== "not true") than amount of students and capacity of courses shown
+//if not then it doesn't show, since the numbers will be wrong when someone joins or leaves a class
+//if we store them in prof or student accound, so,  when looking at course copies in student or prof acc
+//must make sure conditions for amount of students and capacity are NOT MET.
+//if canRegister === false && canUnregister={"not true"} and selectedCourses != null than
+//professor can view their courses
 //if canRegister === false && canUnregister !== true and selectedCourses != null than
 //professor can click on a course to assign final grades to the students in that course
 const SemesterCourses = ({canRegister, canAssignGrades, onComplete, onSelect, selectedCourses, loggedInAccount, reloadSearchBar,
@@ -120,7 +125,7 @@ const SemesterCourses = ({canRegister, canAssignGrades, onComplete, onSelect, se
                     <label> {course.location}</label>
                 </div>
                 <div>
-                    {canUnregister !== true &&
+                    {(canUnregister !== true && canUnregister !== "not true") && 
                     <label>Students Registered: {course.filled}/{course.capacity}</label>}
                 </div>
                 <div>

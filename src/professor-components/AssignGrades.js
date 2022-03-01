@@ -5,22 +5,26 @@ import { bindActionCreators } from "redux";
 import { semesterCourseActionCreators } from "../actions";
 import { accountActionCreators } from "../actions";
 import { useEffect, useState } from 'react'
-const AssignGrades = ({onComplete}) => {
+const AssignGrades = ({onComplete, loggedInAccount}) => {
     const dispatch = useDispatch()
     const { fetchSemesterCourses } = bindActionCreators(semesterCourseActionCreators, dispatch)
+    const { fetchAccounts, updateAccount  } = bindActionCreators(accountActionCreators, dispatch)
+
     const allCourses = useSelector(state => state.semesterCourses.items)
+    const accounts = useSelector(state => state.accounts.items)
     const [selectedCourse, setSelectedCourse] = useState(null)
+    const [selectedStudentAccounts, setSelectedStudentAccounts] = useState(null)
     const [storeGradeEntries, setStoreGradeEntries] = useState([]) //contain grade: grade and studentID
 
-    const { updateAccount } = bindActionCreators(accountActionCreators, dispatch)
 
     useEffect(() => {
         fetchSemesterCourses()
+        fetchAccounts()
     }, [])
 
     const onSubmit = () => {
         //going through all students registered in course
-        selectedCourse.students.forEach(student => { 
+        selectedStudentAccounts.forEach(student => { 
             //looking for a student transcript entry that matches this course
             student.transcript.forEach(entry => {
                 if (selectedCourse.id === entry.id)
@@ -45,8 +49,28 @@ const AssignGrades = ({onComplete}) => {
             if (course.id === id)
             {
                 setSelectedCourse(course)
+                findCourseStudentAccounts(course)
+                console.log("Hit")
             }
         })
+    }
+//finds the accounts of the course that was selected. courses only hold
+//fake noncomplete copies of student accounts and student accounts only
+//hold fake / noncomplete copies of courses
+    const findCourseStudentAccounts = (selectCourse) => {
+        const copyAccs = selectCourse.students
+        let realAccs = []
+
+        accounts.forEach(acc => {
+            copyAccs.forEach(copyAcc => {
+                if (acc.id === copyAcc.id)
+                {
+                    realAccs.push(acc)
+                }
+            })
+            
+        })
+        setSelectedStudentAccounts(realAccs)
     }
 //storing all the grades the professor inputted
     const storeGradeEntryReceived = (grade, studentAccountID) => {
@@ -80,20 +104,22 @@ const AssignGrades = ({onComplete}) => {
                 <label >Select the course you want to assign final grades for: </label>
                 <UserCourses 
                 canAssignGrades={true}
-                onSelect={findSelectedCourse}></UserCourses>
+                onSelect={findSelectedCourse}
+                loggedInAccount={loggedInAccount} ></UserCourses>
             </div>
             }
 
-            {selectedCourse != null && selectedCourse.students.length !== 0 &&
-            <div>
+            {selectedCourse != null && selectedCourse.students.length !== 0 && selectedStudentAccounts !== null 
+                &&selectedStudentAccounts.length !== 0 &&
+                <div>
 
-                <label >{selectedCourse.name}</label>
-                {makeEntryForms(selectedCourse.students)}
+                    <label >{selectedCourse.name}</label>
+                    {makeEntryForms(selectedStudentAccounts)}
 
-                <form onSubmit={onSubmit}>
-                    <input type='submit' value='Assign Final Grades' />
-                </form>
-            </div>
+                    <form onSubmit={onSubmit}>
+                        <input type='submit' value='Assign Final Grades' />
+                    </form>
+                </div>
             
             }
             

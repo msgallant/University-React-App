@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { courseActionCreators, timeSlotActionCreators, buildingActionCreators, 
-    accountActionCreators, semesterCourseActionCreators } from "../actions"
+    accountActionCreators, semesterCourseActionCreators, uniqueSemesterCourseIDActionCreators } from "../actions"
 import { dataListValidOptionObjectNameChecker } from "./dataListValidOptionChecker";
 import { semesterCourse } from "./semesterCourse";
+import { getCopyOfSemesterCourseForAUserAccount } from "./semesterCourse";
+import { assignCourseToProfessor } from "../professor-components/assignCourseToProfessor";
 
 const SemesterCourseForm = ({profAccType, onComplete}) => {
     const [courseName, setCourseName] = useState('')
@@ -23,11 +25,13 @@ const SemesterCourseForm = ({profAccType, onComplete}) => {
     const { fetchCourses } = bindActionCreators(courseActionCreators, dispatch)
     const { fetchTimeSlots } = bindActionCreators(timeSlotActionCreators, dispatch)
     const { fetchBuildings } = bindActionCreators(buildingActionCreators, dispatch)
-    const { fetchAccounts } = bindActionCreators(accountActionCreators, dispatch)
+    const { fetchAccounts, updateAccount  } = bindActionCreators(accountActionCreators, dispatch)
+    const { fetchUniqueSemesterCourseID, updateUniqueSemesterCourseID } = bindActionCreators(uniqueSemesterCourseIDActionCreators, dispatch)
 
     const courses = useSelector(state => state.courses.items)
     const timeSlots = useSelector(state => state.timeSlots.items)
     const accounts = useSelector(state => state.accounts.items)
+    const nextUniqueSemesterID = useSelector(state => state.uniqueSemesterCourseID.items)
     const profAccounts = accounts.filter(account => 
         (account.accountType === profAccType))
 
@@ -66,6 +70,7 @@ const SemesterCourseForm = ({profAccType, onComplete}) => {
         fetchAccounts()
         fetchTimeSlots()
         fetchBuildings()
+        fetchUniqueSemesterCourseID()
     }, [])
     
     const onSubmit = (e) => {
@@ -90,6 +95,7 @@ const SemesterCourseForm = ({profAccType, onComplete}) => {
             alert('Location does not exist')
             return
         }
+        const scID = nextUniqueSemesterID[0].nextUniqueSemesterCourseID
 
         semesterCourse.name = courseName
         semesterCourse.courseDesc = courseDesc
@@ -99,9 +105,22 @@ const SemesterCourseForm = ({profAccType, onComplete}) => {
         semesterCourse.location = location
         semesterCourse.filled = filled
         semesterCourse.capacity = capacity
+        semesterCourse.id = scID
+
+        updateNextSemesterCourseID(scID + 1) 
 
         createSemesterCourse(semesterCourse)
+        assignCourseToProfessor(getCopyOfSemesterCourseForAUserAccount(semesterCourse), professor, profAccounts, updateAccount )
+
         onComplete()
+    }
+
+//all semester course id's must be unique, so, when current one used, add 1 and update it to hold next unqiue id
+//this must be done because need to store a copy of the semester to the professor and the id must be determined
+//before can store in professor's account
+    const updateNextSemesterCourseID = (nextID) => {
+        nextUniqueSemesterID[0].nextUniqueSemesterCourseID = nextID
+        updateUniqueSemesterCourseID(nextUniqueSemesterID[0])
     }
 
 

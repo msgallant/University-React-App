@@ -40,14 +40,15 @@ const ProfessorMenuBar = ({loggedInAccount}) => {
                 {/* if showThisPage has (spaces matter) prefix ' View ' and suffix 'Class Schedule' or 'Class Schedules' */}             
                 {checkPrefix(pageNamesPrefixes[1], showThisPage.toString()) === true
                     && checkSuffix(pageNamesSuffixes[6], showThisPage.toString()) === true
-                    && <UserCourses onComplete={closeForm}  />}
+                    && <UserCourses onComplete={closeForm} loggedInAccount={loggedInAccount} 
+                    canUnregister={"not true"} />}
             </div>
 
             <div>
                 {/* if showThisPage has (spaces matter) prefix ' Assign ' and suffix 'Grades' or 'Gradess' */}             
                 {checkPrefix(pageNamesPrefixes[3], showThisPage.toString()) === true
                     && checkSuffix(pageNamesSuffixes[8], showThisPage.toString()) === true
-                    && <AssignGrades onComplete={closeForm} /> }
+                    && <AssignGrades onComplete={closeForm} loggedInAccount={loggedInAccount}  /> }
             </div>
         </div>
     )

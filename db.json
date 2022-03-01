@@ -2,42 +2,6 @@
   "Accounts": [
     {
       "accountType": "Admin Account",
-      "firstName": "gggf",
-      "middleName": "g",
-      "lastName": "ge",
-      "email": "gr",
-      "password": "grf",
-      "id": "gr"
-    },
-    {
-      "accountType": "Admin Account",
-      "firstName": "tfg",
-      "middleName": "gbtf",
-      "lastName": "fdtv",
-      "email": "tfv",
-      "password": "htf",
-      "id": "tfv"
-    },
-    {
-      "accountType": "Admin Account",
-      "firstName": "trg",
-      "middleName": "tgf",
-      "lastName": "t",
-      "email": "trhbgrdfe",
-      "password": "tg",
-      "id": "trhbgrdfe"
-    },
-    {
-      "accountType": "Admin Account",
-      "firstName": "hfy",
-      "middleName": "tg",
-      "lastName": "ht",
-      "email": "thdg",
-      "password": "thrd",
-      "id": "thdg"
-    },
-    {
-      "accountType": "Admin Account",
       "firstName": "fg",
       "middleName": "bg",
       "lastName": "gfb",
@@ -53,24 +17,6 @@
       "email": "gbsfv",
       "password": "vfd",
       "id": "gbsfv"
-    },
-    {
-      "accountType": "Professor Account",
-      "firstName": "Susan",
-      "middleName": "Lily",
-      "lastName": "Winter",
-      "email": "slwinter@uni.com",
-      "password": "123",
-      "id": "slwinter@uni.com"
-    },
-    {
-      "accountType": "Professor Account",
-      "firstName": "Luke",
-      "middleName": "Derek",
-      "lastName": "Farris",
-      "email": "ldfarris@uni.com",
-      "password": "456",
-      "id": "ldfarris@uni.com"
     },
     {
       "accountType": "Admin Account",
@@ -92,23 +38,88 @@
       "password": "1",
       "coursesRegisteredIn": [
         {
-          "name": "Algebra",
-          "courseDesc": "Description of Algebra",
-          "subject": "Math",
-          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
-          "professor": "Dr. Susan Lily Winter (slwinter@uni.com)",
-          "location": "b1 room 35",
-          "id": 1
+          "name": "Painting",
+          "courseDesc": "Paint",
+          "subject": "Art",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b1 room 54",
+          "id": 12
+        },
+        {
+          "name": "Canadian Society",
+          "courseDesc": "Description for Canadian Society",
+          "subject": "History",
+          "schedule": "1:00pm - 2:00pm on Tuesday, Wednesday ",
+          "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
+          "location": "b1 room 443",
+          "id": 11
         }
       ],
       "transcript": [
         {
-          "name": "Algebra",
+          "name": "Painting",
           "grade": null,
-          "id": 1
+          "id": 12
+        },
+        {
+          "name": "Canadian Society",
+          "grade": "a",
+          "id": 11
         }
       ],
       "id": "jag@uni.com"
+    },
+    {
+      "accountType": "Professor Account",
+      "firstName": "Loki",
+      "middleName": "Nils",
+      "lastName": "Wolffe",
+      "email": "lnw@uni.com",
+      "password": "1",
+      "coursesRegisteredIn": [
+        {
+          "name": "Algebra",
+          "courseDesc": "Description of Algebra",
+          "subject": "Math",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
+          "location": "b1 room 443",
+          "id": 10
+        },
+        {
+          "name": "Canadian Society",
+          "courseDesc": "Description for Canadian Society",
+          "subject": "History",
+          "schedule": "1:00pm - 2:00pm on Tuesday, Wednesday ",
+          "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
+          "location": "b1 room 443",
+          "id": 11
+        }
+      ],
+      "transcript": [],
+      "id": "lnw@uni.com"
+    },
+    {
+      "accountType": "Professor Account",
+      "firstName": "Jade",
+      "middleName": "Elenora",
+      "lastName": "Abel",
+      "email": "jea@uni.com",
+      "password": "1",
+      "coursesRegisteredIn": [
+        {
+          "name": "Painting",
+          "courseDesc": "Paint",
+          "subject": "Art",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b1 room 54",
+          "id": 12
+        }
+      ],
+      "transcript": [],
+      "id": "jea@uni.com"
     }
   ],
   "Subjects": [
@@ -220,11 +231,23 @@
       "name": "Algebra",
       "courseDesc": "Description of Algebra",
       "subject": "Math",
-      "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
-      "professor": "Dr. Susan Lily Winter (slwinter@uni.com)",
-      "location": "b1 room 35",
+      "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+      "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
+      "location": "b1 room 443",
+      "filled": 0,
+      "capacity": "30",
+      "students": [],
+      "id": 10
+    },
+    {
+      "name": "Canadian Society",
+      "courseDesc": "Description for Canadian Society",
+      "subject": "History",
+      "schedule": "1:00pm - 2:00pm on Tuesday, Wednesday ",
+      "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
+      "location": "b1 room 443",
       "filled": 1,
-      "capacity": "34",
+      "capacity": "30",
       "students": [
         {
           "firstName": "Julian",
@@ -234,19 +257,33 @@
           "id": "jag@uni.com"
         }
       ],
-      "id": 1
+      "id": 11
     },
     {
       "name": "Painting",
       "courseDesc": "Paint",
       "subject": "Art",
-      "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
-      "professor": "Dr. Luke Derek Farris (ldfarris@uni.com)",
-      "location": "b2 room 4321",
-      "filled": 0,
-      "capacity": "500",
-      "students": [],
-      "id": 2
+      "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+      "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+      "location": "b1 room 54",
+      "filled": 1,
+      "capacity": "432",
+      "students": [
+        {
+          "firstName": "Julian",
+          "middleName": "Alberto",
+          "lastName": "Garnier",
+          "email": "jag@uni.com",
+          "id": "jag@uni.com"
+        }
+      ],
+      "id": 12
+    }
+  ],
+  "UniqueSemesterCourseID": [
+    {
+      "nextUniqueSemesterCourseID": 13,
+      "id": 1
     }
   ]
 }

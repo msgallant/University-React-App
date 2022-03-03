@@ -3,7 +3,7 @@ import { buildingActionCreators } from "../actions"
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 
-const AddRoomForm = ({ onClose, building }) => {
+const BuildingAddRoomForm = ({ onClose, building }) => {
     const [roomNum, setRoomNum] = useState('')
     const [capacity, setCapacity] = useState('')
 
@@ -64,4 +64,4 @@ const AddRoomForm = ({ onClose, building }) => {
     )
 }
 
-export default AddRoomForm
+export default BuildingAddRoomForm

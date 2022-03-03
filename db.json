@@ -2,24 +2,6 @@
   "Accounts": [
     {
       "accountType": "Admin Account",
-      "firstName": "fg",
-      "middleName": "bg",
-      "lastName": "gfb",
-      "email": "nhfbgvdd",
-      "password": "bfg",
-      "id": "nhfbgvdd"
-    },
-    {
-      "accountType": "Admin Account",
-      "firstName": "fdvfs",
-      "middleName": "fgb",
-      "lastName": "f",
-      "email": "gbsfv",
-      "password": "vfd",
-      "id": "gbsfv"
-    },
-    {
-      "accountType": "Admin Account",
       "firstName": "Adminn",
       "middleName": "B",
       "lastName": "C",
@@ -120,6 +102,17 @@
       ],
       "transcript": [],
       "id": "jea@uni.com"
+    },
+    {
+      "accountType": "Admin Account",
+      "firstName": "d",
+      "middleName": "d",
+      "lastName": "d",
+      "email": "ddd@uni.com",
+      "password": "1",
+      "coursesRegisteredIn": [],
+      "transcript": [],
+      "id": "ddd@uni.com"
     }
   ],
   "Subjects": [
@@ -165,9 +158,41 @@
         {
           "roomNum": "43",
           "capacity": "54"
+        },
+        {
+          "roomNum": "12",
+          "capacity": "100"
+        },
+        {
+          "roomNum": "345",
+          "capacity": "54"
         }
       ],
       "id": 2
+    },
+    {
+      "name": "b3",
+      "rooms": [
+        {
+          "roomNum": "12",
+          "capacity": "30"
+        },
+        {
+          "roomNum": "23",
+          "capacity": "26"
+        }
+      ],
+      "id": 3
+    },
+    {
+      "name": "b4",
+      "rooms": [
+        {
+          "roomNum": "356",
+          "capacity": "57"
+        }
+      ],
+      "id": 4
     }
   ],
   "Courses": [
@@ -205,13 +230,6 @@
       "id": 1
     },
     {
-      "startTime": "1:00pm",
-      "endTime": "2:00pm",
-      "days": "Tuesday, Wednesday",
-      "name": "1:00pm - 2:00pm on Tuesday, Wednesday ",
-      "id": 2
-    },
-    {
       "startTime": "1:30pm",
       "endTime": "3:00pm",
       "days": "Tuesday, Thursday",
@@ -224,6 +242,13 @@
       "days": "Monday, Wednesday, Friday",
       "name": "10:30am - 11:30am on Monday, Wednesday, Friday ",
       "id": 4
+    },
+    {
+      "startTime": "1:00pm",
+      "endTime": "2:30pm",
+      "days": "Monday, Thursday, Friday",
+      "name": "1:00pm - 2:30pm on Monday, Thursday, Friday ",
+      "id": 5
     }
   ],
   "SemesterCourses": [

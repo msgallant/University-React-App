@@ -2,11 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { buildingActionCreators } from "../actions";
 import { useEffect, useState } from 'react'
-import AddRoomForm from './AddRoomForm'
+import BuildingAddRoomForm from './BuildingAddRoomForm'
 import BuildingRooms from "./BuildingRooms";
 
 
-const Buildings = ()=> {
+const Buildings = ({showBuildingAddRoomForm})=> {
     const [showRoomForm, setShowRoomForm] = useState(false)
     const [buildingID, setBuildingID] = useState(0)
     const dispatch = useDispatch()
@@ -33,7 +33,14 @@ const Buildings = ()=> {
         
     }
     const closeAddRoomForm = () => {
-        setShowRoomForm(false)
+        setShowRoomForm(false) //close room form
+        //this is if buildingForm was open but the user wanted to add a room instead, buildingForm was closed
+        //but building add room was closed now, so, reopen building form
+        if (showBuildingAddRoomForm != null)
+        {
+            showBuildingAddRoomForm(false) 
+        }
+        
     }
 
     const toggleRooms = (id) => {
@@ -50,6 +57,11 @@ const Buildings = ()=> {
         setShowRooms(newBuildingRoomsShown)
         
     }
+    const closeAllRooms = () => {
+        showRooms.forEach(buildingData => {
+            buildingData.shown = false
+        })
+    }
     const checkIfBuildingRoomsShown = (id) => {
         if (showRooms.length !== 0)
         {
@@ -65,7 +77,17 @@ const Buildings = ()=> {
     }
     const showAddRoomForm = (id) => {
         setBuildingID(id)
-        setShowRoomForm(true)
+        setShowRoomForm(true) //show room form
+
+        //this is if buildingForm was open but the user wanted to add a room instead, buildingForm must be closed
+        if (showBuildingAddRoomForm != null)
+        {
+            showBuildingAddRoomForm(true) //closes building form
+        }
+        //only show rooms for the current building that is getting a room added to it
+        closeAllRooms()
+        toggleRooms(id)
+
     }
 
     const addShowRoomsButton = (building) => (
@@ -118,14 +140,18 @@ const Buildings = ()=> {
             <div>
                 {showRoomForm === true
                  && buildingID === building.id 
-                 && <AddRoomForm onClose={closeAddRoomForm} 
-                 building={building}></AddRoomForm>}
+                 && <BuildingAddRoomForm onClose={closeAddRoomForm} 
+                 building={building}></BuildingAddRoomForm>}
             </div>
             
             <div>
                 {checkIfBuildingRoomsShown(building.id) === true 
-                 && <BuildingRooms onClose={toggleRooms} 
-                 building={building}></BuildingRooms>}
+                 && <div>
+                        <div>Current Rooms: </div>
+                        <BuildingRooms onClose={toggleRooms} 
+                            building={building}></BuildingRooms>
+                    </div>}
+                 
             </div>
 
         </div>

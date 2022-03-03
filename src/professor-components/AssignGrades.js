@@ -50,7 +50,6 @@ const AssignGrades = ({onComplete, loggedInAccount}) => {
             {
                 setSelectedCourse(course)
                 findCourseStudentAccounts(course)
-                console.log("Hit")
             }
         })
     }

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { accountActionCreators } from "../actions";
 import PropTypes from 'prop-types'
 import { account } from "./account";
+import { createUniqueDefaultEmail, isEmailUnique } from "./accountDefaultEmailLogic";
+import { useEffect } from 'react'
 
 
 const AccountForm = ({accType, onComplete}) => {
@@ -14,7 +16,13 @@ const AccountForm = ({accType, onComplete}) => {
     const [password, setPassword] = useState('')
     
     const dispatch = useDispatch()
-    const { CreateAccount } = bindActionCreators(accountActionCreators, dispatch)
+    const { CreateAccount, fetchAccounts } = bindActionCreators(accountActionCreators, dispatch)
+
+    const allAccounts = useSelector(state => state.accounts.items)
+
+    useEffect(() => {
+        fetchAccounts()
+    }, [])
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -31,6 +39,10 @@ const AccountForm = ({accType, onComplete}) => {
             alert('Password is missing')
             return
         }
+        if (!isEmailUnique(email, allAccounts)) {
+            alert('Email already taken')
+            return
+        }
 
         account.accountType = accType
         account.firstName = firstName
@@ -42,6 +54,18 @@ const AccountForm = ({accType, onComplete}) => {
         
         CreateAccount(account)
         onComplete()
+    }
+
+    const setUniqueDefaultEmail = () => {
+        if (firstName === '' || lastName === '')
+        {
+            alert('First name and last name must be filled out before generating a default email.')
+            return
+        }
+        account.firstName = firstName
+        account.middleName = middleName
+        account.lastName = lastName
+        setEmail(createUniqueDefaultEmail(account, allAccounts))
     }
     
     return (
@@ -81,16 +105,6 @@ const AccountForm = ({accType, onComplete}) => {
             </div>
             
             <div>
-                <label>Email: </label>
-                <input
-                    type='text'
-                    placeholder='Email'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-            </div>
-            
-            <div>
                 <label>Password: </label>
                 <input
                 type='text'
@@ -98,6 +112,19 @@ const AccountForm = ({accType, onComplete}) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 />  
+            </div>
+
+            <div>
+                <label>Email: </label>
+                <input
+                    type='text'
+                    placeholder='...@uni.com'
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <label> &nbsp; </label>
+
+                <button type="button" onClick={setUniqueDefaultEmail}>Generate Default Email</button>
             </div>
 
             <div>

@@ -113,6 +113,39 @@
       "coursesRegisteredIn": [],
       "transcript": [],
       "id": "ddd@uni.com"
+    },
+    {
+      "accountType": "Student Account",
+      "firstName": "Karina",
+      "middleName": "Jessica",
+      "lastName": "Albers",
+      "email": "KJAlbers@uni.com",
+      "password": "1",
+      "coursesRegisteredIn": [],
+      "transcript": [],
+      "id": "KJAlbers@uni.com"
+    },
+    {
+      "accountType": "Student Account",
+      "firstName": "Elijah",
+      "middleName": "Sammy",
+      "lastName": "Barret",
+      "email": "ESBarret1@uni.com",
+      "password": "1",
+      "coursesRegisteredIn": [],
+      "transcript": [],
+      "id": "ESBarret1@uni.com"
+    },
+    {
+      "accountType": "Student Account",
+      "firstName": "Elijah",
+      "middleName": "Sammy",
+      "lastName": "Barret",
+      "email": "ESBarret@uni.com",
+      "password": "1",
+      "coursesRegisteredIn": [],
+      "transcript": [],
+      "id": "ESBarret@uni.com"
     }
   ],
   "Subjects": [

@@ -146,6 +146,28 @@
       "coursesRegisteredIn": [],
       "transcript": [],
       "id": "ESBarret@uni.com"
+    },
+    {
+      "accountType": "Professor Account",
+      "firstName": "Finan",
+      "middleName": "Elryn",
+      "lastName": "Milano",
+      "email": "FEMilano@uni.com",
+      "password": "1",
+      "coursesRegisteredIn": [],
+      "transcript": [],
+      "id": "FEMilano@uni.com"
+    },
+    {
+      "accountType": "Student Account",
+      "firstName": "Elijah",
+      "middleName": "Nils",
+      "lastName": "Barret",
+      "email": "ENBarret@uni.com",
+      "password": "1",
+      "coursesRegisteredIn": [],
+      "transcript": [],
+      "id": "ENBarret@uni.com"
     }
   ],
   "Subjects": [

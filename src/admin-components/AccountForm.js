@@ -31,6 +31,16 @@ const AccountForm = ({accType, onComplete}) => {
             alert('First name is missing')
             return
         }
+        if (!lastName) {
+            alert('Last name is missing')
+            return
+        }
+
+        if (!checkIfNamesValid() || !checkIfEmailValid()) //these methods send their own alert
+        {
+            return
+        }
+        
         if (!email) {
             alert('Email is missing')
             return
@@ -54,6 +64,51 @@ const AccountForm = ({accType, onComplete}) => {
         
         CreateAccount(account)
         onComplete()
+    }
+
+    const checkIfEmailValid = () => {
+        const msg = checkIfParensUsed(email, "email")
+        if (msg !== 'valid') //if it doesn't contain '(' or ')'
+        {
+            alert(msg)
+            setEmail('')
+            return false
+        }
+        return true
+    }
+
+    const checkIfNamesValid = () => {
+        const names = [firstName, middleName, lastName]
+        const namesPlacement = ["firstName", "middleName", "lastName"]
+        const nameSetters = [setFirstName, setMiddleName, setLastName]
+        let msg = ''
+        let valid = true
+
+        names.forEach((name, index )=> {
+            msg = checkIfParensUsed(name, namesPlacement[index])
+            if (msg !== 'valid')
+            {
+                nameSetters[index]('')
+                valid = false
+                alert(msg)
+            }
+        })
+        return valid
+    }
+
+    //first name, middle name and last name and email can not contain parenthesis since parenthesis
+    //are used in another part of the program to identify professor's, whose teaching a 
+    //semester course, email
+    const checkIfParensUsed = (name, namePlacement) => { //namePlacement is "firstName", "middleName" or "lastName", name is actually their name
+        let msg = 'valid'
+        name.split("").forEach(letter => {
+            if (letter === '(' || letter === ')')
+            {
+                msg = "Invalid symbol: " + letter + " in " + namePlacement
+                return msg
+            }
+        })
+        return msg
     }
 
     const setUniqueDefaultEmail = () => {

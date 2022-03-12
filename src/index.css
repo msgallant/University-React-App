@@ -52,6 +52,14 @@ code {
   color:brown
 }
 
+.default-mouse {
+  cursor: auto
+}
+
+.pointer {
+  cursor: pointer;
+}
+
 .block {
   display: block;
 }
@@ -64,3 +72,37 @@ code {
   padding: 10px;
 }
 
+.header {
+  width: 100%;
+  padding: 30px;
+  background: #731abc;
+  color: white;
+  font-size: 30px;
+}
+
+.aligned-right {
+  float: right;
+  margin-right: 100px;
+  width: 125px;
+}
+
+.aligned-left {
+  float: left;
+  width: 100px;
+}
+
+.form-title-size {
+  font-size: 30px;
+}
+
+.form-font-size {
+  font-size: 20px;
+}
+
+.form-btn {
+  width: 255px;
+  padding: 5px;
+  background: #731abc;
+  color: white;
+  border-radius: 12px;
+}

@@ -14,7 +14,8 @@ const SignIn = ({ onAccountRecieved }) => {
         fetchAccounts()
     }, [])
 
-    const onSubmit = () => {
+    const onSubmit = (e) => {
+        e.preventDefault()
         let accountExists = false
         accounts.forEach(account => {
             if (account.email === email) //account exists
@@ -41,24 +42,28 @@ const SignIn = ({ onAccountRecieved }) => {
 
     return (
         <form onSubmit={onSubmit}>
+            <br></br> <br></br>
             <div>
-                <label>Sign In</label>
+                <label className='form-title-size'>Sign in</label>
             </div>
-            <label>Email: </label>
-            <input
+            <br></br>
+                <input className='form-font-size'
                     type='text'
                     value={email}
+                    placeholder={"Email"}
                     onChange={(e) => setEmail(e.target.value)}
                     />
 
-            <label>Password: </label>
-            <input
+                <br></br> <br></br>
+                <input className='form-font-size'
                     type='text'
                     value={password}
+                    placeholder={"Password"}
                     onChange={(e) => setPassword(e.target.value)}
-                    />
-            <div>
-                <input type='submit' value='Sign In' />
+                    /> 
+            <div >
+                <br></br>
+                <input className='form-font-size form-btn' type='submit' value='Sign in' />
             </div>
         </form>
     )

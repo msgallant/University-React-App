@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { subjectActionCreators } from "../actions";
 import { useEffect } from 'react'
+import BorderedList from "../page-templates/BorderedList";
 
 const Subjects = ()=> {
     const dispatch = useDispatch()
@@ -28,16 +29,8 @@ const Subjects = ()=> {
         ))
 
         return (
-        
-            <div>
-                <div>
-                    <label> Current Subjects: </label>
-                </div>
-                <div>
-                    <label>{subjectItems}</label>
-    
-                </div>
-            </div>
+                <BorderedList itemListTitleName={"Current Subjects: "} listItems={subjectItems}></BorderedList>
+
         )
     
 }

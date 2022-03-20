@@ -3,6 +3,8 @@ import { subjectActionCreators } from "../actions"
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import Subjects from "./Subjects"
+import CreationForm from "../page-templates/CreationForm";
+import { InputTemplate } from "../page-templates/InputTemplate";
 
 const SubjectForm = ({ onComplete }) => {
     const [subjectName, setSubjectName] = useState('')
@@ -26,21 +28,23 @@ const SubjectForm = ({ onComplete }) => {
         onComplete()
     }
 
-    return (
-        <div>
-            <form onSubmit={onSubmit}>
-                <label>Subject name: </label>
-                    <input
-                    type='text'
-                    value={subjectName}
-                    onChange={(e) => setSubjectName(e.target.value)}
-                    />
+    const subjectFormFields = (
+        
+            <InputTemplate thePlaceholder={'Subject name '} theValue={subjectName} setTheValue={setSubjectName}>
+                        </InputTemplate>  
+        
+    )
 
-                <div>
-                    <input type='submit' value='Create New Subject' />
+    return (
+        <div className="separate-different-elements">
+
+                <div className="place-at-top">
+                    <CreationForm title={'Create a Subject'} 
+                        fields={subjectFormFields} submitButtonText={'Create New Subject'} 
+                        onSubmit={onSubmit}></CreationForm>
                 </div>
-            </form>
-            <div>
+
+            <div className="place-at-top">
                 <Subjects></Subjects>
             </div>
 

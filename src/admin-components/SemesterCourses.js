@@ -3,9 +3,7 @@ import { bindActionCreators } from "redux";
 import { semesterCourseActionCreators } from "../actions";
 import { accountActionCreators } from "../actions";
 import { useEffect, useState } from 'react'
-import {getUserLoggedIn} from "../userStorage"
-import { updateTranscriptOnCourseChanges } from "../student-components/StudentTranscriptLogic";
-import { getCopyOfSemesterCourseForAUserAccount } from "./semesterCourse";
+import BorderedList from "../page-templates/BorderedList";
 import { onRegisterCourse, onUnRegisterCourse, findIsCheckedCourseStatusInitialState,
     updateCheckedCourse} from "../student-components/registeringSemesterCourseLogic"
 
@@ -163,11 +161,8 @@ const SemesterCourses = ({canRegister, canAssignGrades, onComplete, onSelect, se
             <div>
                 
                 <form onSubmit={onSubmit}>
+                    <BorderedList itemListTitleName={"Current Courses: "} listItems={courseItems}></BorderedList>
                     <div>
-                        <label> Current Courses: </label>
-                    </div>
-                    <div>
-                        <label>{courseItems}</label>
                         {courses[0].id === "No Courses Found.." &&
                         <div>
                             <label>{courses[0].id} </label>

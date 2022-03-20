@@ -14,6 +14,9 @@ import TimeSlots from './TimeSlots';
 import SemesterCourseForm from './SemesterCourseForm';
 import SemesterCourses from './SemesterCourses';
 import {pageNames, pageNamesPrefixes, pageNamesSuffixes} from '../pageNames'
+import { personPlusButton } from '../menu-buttons/personPlusButton';
+import { listButton } from '../menu-buttons/listButton';
+import { plusButton } from '../menu-buttons/plusButton';
 
 
 
@@ -37,101 +40,67 @@ const AdminMenuBar = ({loggedInAccount}) => {
 
     return (
         <div>
-            <div className="icon-color">
-                <label className="block black">Menu </label>
+            <div className="menu-option-left-layout">
+                <label className="black form-title-size">Menu </label>
+
+                <label className="block black menu-option-font menu-option-spacing">
+                    Accounts </label>
                 {/* " Create Admin Account" */}
-                <div className="menu-icon-color" onClick={() => onClick(pageNames[0])}>
-                    <i className="fas fa-user-plus"></i>
-                    <label> {pageNames[0]}</label>
-                </div>
+                {personPlusButton(pageNames[0], onClick)}
+
                 {/* " View Admin Accounts"*/}
-                <div className="menu-icon-color" onClick={() => onClick(pageNames[1])}>
-                    <i className="far fa-list-alt"></i>
-                    <label> {pageNames[1]}</label>
-                </div>
+                {listButton(pageNames[1], onClick)}
+                
+
                 {/* " Create Professor Account" */}
-                <div className="menu-icon-color" onClick={() => onClick(pageNames[2])}>
-                    <i className="fas fa-user-plus"></i>
-                    <label> {pageNames[2]}</label>
-                </div>
+                {personPlusButton(pageNames[2], onClick)}
 
                 {/*" View Professor Accounts"*/}
-                <div className="menu-icon-color" onClick={() => onClick(pageNames[3])}>
-                    <i className="far fa-list-alt"></i>
-                    <label> {pageNames[3]} </label>
-                </div>
+                {listButton(pageNames[3], onClick)}
 
                 {/* " Create Student Account"*/}
-                <div className="menu-icon-color" onClick={() => onClick(pageNames[4])}>
-                    <i className="fas fa-user-plus"></i>
-                    <label> {pageNames[4]}</label>
-                </div>
+                {personPlusButton(pageNames[4], onClick)}
 
                 {/* " View Student Accounts"*/}
-                <div className="menu-icon-color" onClick={() => onClick(pageNames[5])}>
-                    <i className="far fa-list-alt"></i>
-                    <label>{pageNames[5]}</label>
-                </div>
+                {listButton(pageNames[5], onClick)}
+
+                <label className="block black menu-option-font menu-option-spacing">Subjects </label>
 
                 {/*  " Create Subject"*/}
-                <div className="menu-icon-color" onClick={() => onClick(pageNames[6])}>
-                    <i className="fas fa-plus"></i>
-                    <label>{pageNames[6]}</label>
-                </div>
+                {plusButton(pageNames[6], onClick)}
 
                 {/* " View Subjects", */}
-                <div className="menu-icon-color" onClick={() => onClick(pageNames[7])}>
-                    <i className="far fa-list-alt"></i>
-                    <label>{pageNames[7]}</label>
-                </div>
+                {listButton(pageNames[7], onClick)}
+
+                <label className="block black menu-option-font menu-option-spacing">University Buildings </label>
 
                 {/*" Create Building"*/}
-                <div className="menu-icon-color" onClick={() => onClick(pageNames[8])}>
-                    <i className="fas fa-plus"></i>
-                    <label>{pageNames[8]}</label>
-                </div>
+                {plusButton(pageNames[8], onClick)}
 
                 {/* " View Buildings"*/}
-                <div className="menu-icon-color" onClick={() => onClick(pageNames[9])}>
-                    <i className="far fa-list-alt"></i>
-                    <label>{pageNames[9]}</label>
-                </div>
+                {listButton(pageNames[9], onClick)}
+
+                <label className="block black menu-option-font menu-option-spacing">Course Time Slots </label>
 
                 {/* " Create Time Slot"*/}
-                <div className="menu-icon-color" onClick={() => onClick(pageNames[10])}>
-                    <i className="fas fa-plus"></i>
-                    <label>{pageNames[10]}</label>
-                </div>
+                {plusButton(pageNames[10], onClick)}
 
                 {/* " View Time Slots"*/}
-                <div className="menu-icon-color" onClick={() => onClick(pageNames[11])}>
-                    <i className="far fa-list-alt"></i>
-                    <label>{pageNames[11]}</label>
-                </div>
+                {listButton(pageNames[11], onClick)}
+
+                <label className="block black menu-option-font menu-option-spacing">Courses </label>
 
                 {/* " Create Course"*/}
-                <div className="menu-icon-color" onClick={() => onClick(pageNames[12])}>
-                    <i className="fas fa-plus"></i>
-                    <label>{pageNames[12]}</label>
-                </div>
+                {plusButton(pageNames[12], onClick)}
 
                 {/* " View Courses"*/}
-                <div className="menu-icon-color" onClick={() => onClick(pageNames[13])}>
-                    <i className="far fa-list-alt"></i>
-                    <label>{pageNames[13]}</label>
-                </div>
+                {listButton(pageNames[13], onClick)}
 
                 {/* " Create Course for the Semester" */}
-                <div className="menu-icon-color" onClick={() => onClick(pageNames[14])}>
-                    <i className="fas fa-plus"></i>
-                    <label>{pageNames[14]}</label>
-                </div>
+                {plusButton(pageNames[14], onClick)}
 
                 {/* " View Courses for the Semester"*/}
-                <div className="menu-icon-color" onClick={() => onClick(pageNames[15])}>
-                    <i className="far fa-list-alt"></i>
-                    <label>{pageNames[15]}</label>
-                </div>
+                {listButton(pageNames[15], onClick)}
             </div>
 
             <div>

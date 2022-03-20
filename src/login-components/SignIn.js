@@ -41,8 +41,8 @@ const SignIn = ({ onAccountRecieved }) => {
     }
 
     return (
-        <form onSubmit={onSubmit}>
-            <br></br> <br></br>
+        <form className='plain-border' onSubmit={onSubmit}>
+            <br></br>
             <div>
                 <label className='form-title-size'>Sign in</label>
             </div>

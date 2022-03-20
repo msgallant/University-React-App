@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { accountActionCreators } from "../actions";
 import { useEffect } from 'react'
+import BorderedList from "../page-templates/BorderedList";
 import '@fortawesome/fontawesome-free/js/all.js';
 
 const Accounts = ({ accTypes }) => {
@@ -29,21 +30,11 @@ const Accounts = ({ accTypes }) => {
             
             
         </div>
-        ))
-    
-        
+        ))    
     
     return (
         
-        <div>
-            <div>
-                <label> {accTypes} </label>
-            </div>
-            <div>
-                <label>{accountItems}</label>
-
-            </div>
-        </div>
+        <BorderedList itemListTitleName={accTypes} listItems={accountItems}></BorderedList>
     )
     }
 

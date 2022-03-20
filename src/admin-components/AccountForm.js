@@ -6,6 +6,9 @@ import PropTypes from 'prop-types'
 import { account } from "./account";
 import { createUniqueDefaultEmail, isEmailUnique } from "./accountDefaultEmailLogic";
 import { useEffect } from 'react'
+import { InputTemplate } from "../page-templates/InputTemplate";
+import { GenerateEmailButtonTemplate } from "../page-templates/ButtonTemplate";
+import CreationForm from "../page-templates/CreationForm";
 
 
 const AccountForm = ({accType, onComplete}) => {
@@ -122,72 +125,40 @@ const AccountForm = ({accType, onComplete}) => {
         account.lastName = lastName
         setEmail(createUniqueDefaultEmail(account, allAccounts))
     }
+
+    const accountFormFields = (
+        <div className="form-font-size">
+                    
+                    <InputTemplate thePlaceholder={'First name'} theValue={firstName} setTheValue={setFirstName}>
+                        </InputTemplate>
+
+                    <InputTemplate thePlaceholder={'Middle name'} theValue={middleName} setTheValue={setMiddleName}>
+                        </InputTemplate>
+                
+                    <InputTemplate thePlaceholder={'Last name'} theValue={lastName} setTheValue={setLastName}>
+                        </InputTemplate>
+                
+                    <InputTemplate thePlaceholder={'Password'} theValue={password} setTheValue={setPassword}>
+                        </InputTemplate>
+
+                    <br></br>
+                    <GenerateEmailButtonTemplate 
+                        theText={'Generate Default Email'} onClickEventFunc={setUniqueDefaultEmail}>
+                        </GenerateEmailButtonTemplate>
+                    
+
+                    <InputTemplate thePlaceholder={'Email'} theValue={email} setTheValue={setEmail}>
+                        </InputTemplate>
+
+
+            </div>
+    )
     
     return (
-        <form onSubmit={onSubmit}> 
-
-            <div>
-                <label>Account type: {accType} </label>
-            </div>
-            <div>
-                <label>First name: </label>
-                <input
-                type='text'
-                placeholder='First name'
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                />
-            </div>
-            
-            <div>
-                <label>Middle name: </label>
-                <input
-                type='text'
-                placeholder='Middle name'
-                value={middleName}
-                onChange={(e) => setMiddleName(e.target.value)}
-                />
-            </div>
-            
-            <div>
-                <label>Last name: </label>
-                <input
-                type='text'
-                placeholder='Last name'
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                />
-            </div>
-            
-            <div>
-                <label>Password: </label>
-                <input
-                type='text'
-                placeholder='Password'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                />  
-            </div>
-
-            <div>
-                <label>Email: </label>
-                <input
-                    type='text'
-                    placeholder='...@uni.com'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <label> &nbsp; </label>
-
-                <button type="button" onClick={setUniqueDefaultEmail}>Generate Default Email</button>
-            </div>
-
-            <div>
-                <input type='submit' value='Create Account' />
-            </div>
-       
-        
-        </form>
+        <div>
+            <CreationForm title={'Create a ' + accType} 
+                fields={accountFormFields} submitButtonText={'Create Account'} onSubmit={onSubmit}></CreationForm>
+        </div>
 
         
     )

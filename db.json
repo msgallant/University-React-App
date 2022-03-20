@@ -77,6 +77,15 @@
           "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
           "location": "b1 room 443",
           "id": 11
+        },
+        {
+          "name": "Canadian Society",
+          "courseDesc": "Description for Canadian Society",
+          "subject": "History",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
+          "location": "b3 room 23",
+          "id": 13
         }
       ],
       "transcript": [],
@@ -154,7 +163,17 @@
       "lastName": "Milano",
       "email": "FEMilano@uni.com",
       "password": "1",
-      "coursesRegisteredIn": [],
+      "coursesRegisteredIn": [
+        {
+          "name": "Stats",
+          "courseDesc": "Description of stats",
+          "subject": "Math",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b1 room 443",
+          "id": 14
+        }
+      ],
       "transcript": [],
       "id": "FEMilano@uni.com"
     },
@@ -168,6 +187,28 @@
       "coursesRegisteredIn": [],
       "transcript": [],
       "id": "ENBarret@uni.com"
+    },
+    {
+      "accountType": "Admin Account",
+      "firstName": "dvf",
+      "middleName": "fbg",
+      "lastName": "fgtd",
+      "email": "dffgtd@uni.com",
+      "password": "1",
+      "coursesRegisteredIn": [],
+      "transcript": [],
+      "id": "dffgtd@uni.com"
+    },
+    {
+      "accountType": "Admin Account",
+      "firstName": "trgd",
+      "middleName": "fxdbg",
+      "lastName": "tndfbgtyh",
+      "email": "tftndfbgtyh@uni.com",
+      "password": "4",
+      "coursesRegisteredIn": [],
+      "transcript": [],
+      "id": "tftndfbgtyh@uni.com"
     }
   ],
   "Subjects": [
@@ -304,6 +345,13 @@
       "days": "Monday, Thursday, Friday",
       "name": "1:00pm - 2:30pm on Monday, Thursday, Friday ",
       "id": 5
+    },
+    {
+      "startTime": "2:30pm",
+      "endTime": "3:30pm",
+      "days": "Monday, Thursday",
+      "name": "2:30pm - 3:30pm on Monday, Thursday ",
+      "id": 6
     }
   ],
   "SemesterCourses": [
@@ -358,11 +406,35 @@
         }
       ],
       "id": 12
+    },
+    {
+      "name": "Canadian Society",
+      "courseDesc": "Description for Canadian Society",
+      "subject": "History",
+      "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+      "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
+      "location": "b3 room 23",
+      "filled": 0,
+      "capacity": "26",
+      "students": [],
+      "id": 13
+    },
+    {
+      "name": "Stats",
+      "courseDesc": "Description of stats",
+      "subject": "Math",
+      "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+      "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+      "location": "b1 room 443",
+      "filled": 0,
+      "capacity": "30",
+      "students": [],
+      "id": 14
     }
   ],
   "UniqueSemesterCourseID": [
     {
-      "nextUniqueSemesterCourseID": 13,
+      "nextUniqueSemesterCourseID": 15,
       "id": 1
     }
   ]

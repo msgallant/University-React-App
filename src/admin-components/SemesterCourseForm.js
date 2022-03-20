@@ -5,8 +5,11 @@ import { courseActionCreators, timeSlotActionCreators, buildingActionCreators,
     accountActionCreators, semesterCourseActionCreators, uniqueSemesterCourseIDActionCreators } from "../actions"
 import { dataListValidOptionObjectNameChecker } from "./dataListValidOptionChecker";
 import { semesterCourse } from "./semesterCourse";
+import SemesterCourses from "./SemesterCourses"
 import { getCopyOfSemesterCourseForAUserAccount } from "./semesterCourse";
 import { assignCourseToProfessor } from "../professor-components/assignCourseToProfessor";
+import { InputDropDownListTemplate } from "../page-templates/InputTemplate";
+import CreationForm from "../page-templates/CreationForm";
 
 const SemesterCourseForm = ({profAccType, onComplete}) => {
     const [courseName, setCourseName] = useState('')
@@ -17,6 +20,7 @@ const SemesterCourseForm = ({profAccType, onComplete}) => {
     const [filled, setFilled] = useState(0)
     const [professor, setProfessor] = useState('')
     const [location, setLocation] = useState('')
+    const newCourse = 'New Course'
     
 
     const dispatch = useDispatch()
@@ -123,7 +127,8 @@ const SemesterCourseForm = ({profAccType, onComplete}) => {
         updateUniqueSemesterCourseID(nextUniqueSemesterID[0])
     }
 
-
+//instead of setting course desc directly use this method instead, so, we can find & keep track of what subject
+//the course is
     const setCourseDetails = (name) => {
             setCourseName(name) 
            
@@ -168,53 +173,45 @@ const SemesterCourseForm = ({profAccType, onComplete}) => {
         ))
     }
 
-
-    return (
-
+    const semesterCourseFormFields = (
         <div>
-             <form onSubmit={onSubmit}>
+            <div>
+                <InputDropDownListTemplate thePlaceholder={'Course: '} theValue={courseName} 
+                    allOptions={makeOptions(courses)} setTheValue={setCourseDetails}>
+                    </InputDropDownListTemplate>
 
-                <label htmlFor="registeredCourseName">Course: </label>
-                <input list="registeredCourseNames" id="registeredCourseName" name="registeredCourseName"
-                value={courseName}
-                onChange={(e) => setCourseDetails(e.target.value)}
-                    />
-                <datalist id="registeredCourseNames">
-                    {makeOptions(courses) }
-                </datalist>
+            </div> <br></br>
+            
+            <div>
+                <InputDropDownListTemplate thePlaceholder={'Schedule: '} theValue={schedule} 
+                    allOptions={makeOptions(timeSlots)} setTheValue={setSchedule}>
+                    </InputDropDownListTemplate>
+            </div> <br></br>
+            <div >
+                <InputDropDownListTemplate thePlaceholder={'Location: '} theValue={location} 
+                    allOptions={makeOptions(getBldgRoomNames())} setTheValue={setLocationDetails}>
+                    </InputDropDownListTemplate>
+            </div> <br></br>
 
-                <label htmlFor="myTimeSlot">Time Slot: </label>
-                <input list="timeSlots" id="myTimeSlot" name="myTimeSlot"
-                value={schedule}
-                onChange={(e) => setSchedule(e.target.value)}/>
-                <datalist id="timeSlots">
-                    {makeOptions(timeSlots)}
-                </datalist>
+            <div >
+                <InputDropDownListTemplate thePlaceholder={'Professor: '} theValue={professor} 
+                    allOptions={makeOptions(profNames)} setTheValue={setProfessor}>
+                    </InputDropDownListTemplate>
+            </div> <br></br>
+            
+        </div>
+    )
 
-                <label htmlFor="myBuilding">Location: </label>
-                <input list="locations" id="myBuilding" name="myBuilding"
-                value={location}
-                onChange={(e) => setLocationDetails(e.target.value)}/>
-                
-                <datalist id="locations">
-                    {makeOptions(getBldgRoomNames())} 
-                </datalist>
-
-                <label htmlFor="prof">Professor: </label>
-                <input list="professors" id="prof" name="prof"
-                value={professor}
-                onChange={(e) => setProfessor(e.target.value)}/>
-                <datalist id="professors">
-                    {makeOptions(profNames)}
-                </datalist>
-
-                
-                <div>
-                    <label>New Course: </label>
-                </div>
+    const courseInfo = (
+        <div>
                 <div>
                     {dataListValidOptionObjectNameChecker(courses, courseName) &&
-                    <label>{courseName} ({subject}) </label>}
+                    <div className="form-font-size">
+                        <label>{courseName !== '' ? courseName : ''} 
+                        {subject !== '' ? " (" + subject + ")" : ''} 
+                        </label>
+                    </div>}
+                    
                 </div>
                 <div>
                     {dataListValidOptionObjectNameChecker(profNames, professor) &&
@@ -238,14 +235,33 @@ const SemesterCourseForm = ({profAccType, onComplete}) => {
                     {dataListValidOptionObjectNameChecker(courses, courseName) &&
                     <label>Description: {courseDesc} </label>}
                 </div>
+        </div>
+    )
 
-                <div>
-                    <input type='submit' value='Register Course for Semester' />
+    const courseFormFields = (
+        <div>
+            <div className="semester-course-input-spacing">
+                {semesterCourseFormFields}
+            </div>
+            {(courseName !== '' || professor !== '' || schedule !== '' || location !== '')&&
+            <div>
+                <label className="form-font-size">New Course </label> <br></br>
+                <div className="plain-border plain-border-inside-correction">
+                    {courseInfo}
                 </div>
-
-                
-            </form>
+            </div>}
             
+            
+        </div>
+    )
+
+    return (
+
+        <div>
+            <CreationForm title={'Create a Course for the Current Semester'} 
+                fields={courseFormFields} submitButtonText={'Create Semester Course'} 
+                onSubmit={onSubmit}></CreationForm>
+
         </div>
        
     )

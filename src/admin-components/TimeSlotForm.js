@@ -7,6 +7,8 @@ import { timeSlotWeekDays } from "./timeSlotData";
 import { timeSlot } from "./timeSlot";
 import { dataListValidOptionChecker } from "./dataListValidOptionChecker";
 import { checkIfValidTime } from "./timeSlotFormat";
+import { InputTemplate, InputDropDownListTemplate } from "../page-templates/InputTemplate";
+import CreationForm from "../page-templates/CreationForm";
 
 const TimeSlotForm = ({ onComplete }) => {
     const [startTime, setStartTime] = useState('')
@@ -66,45 +68,41 @@ const TimeSlotForm = ({ onComplete }) => {
         </div>
     ))
 
+    const timeslotFormFields = (
+        <div>
+            <label className="block">**Time fields must be filled with the hour (1-12) : minutes (0-59) am/pm 
+                (eg. 1:00pm)**
+                </label> 
+            <br></br>
+            <InputTemplate thePlaceholder={'Start time (9:00am)'} theValue={startTime} setTheValue={setStartTime}>
+                    </InputTemplate> 
+
+            <InputTemplate thePlaceholder={'End time (10:00am)'} theValue={endTime} setTheValue={setEndTime}>
+            </InputTemplate> 
+            <br></br>
+            <div className="sameline days-datalist-input-spacing">
+                <InputDropDownListTemplate thePlaceholder={'Days: '} theValue={days} 
+                    allOptions={dayOptions} setTheValue={setDays}>
+                    </InputDropDownListTemplate>
+            </div>
+            
+        </div>
+         
+    
+)
 
     return (
-        <div>
-            <form onSubmit={onSubmit}>
-                <label>Time fields must be filled with the hour (1-12) : minutes (0-59) am/pm &nbsp;
-                    (eg. 1:00pm)
-                </label>
-                <label>Start Time: </label>
-                    <input
-                    type='text'
-                    placeholder={"9:00am"}
-                    value={startTime}
-                    onChange={(e) => setStartTime(e.target.value)}
-                    />
+        <div className="separate-different-elements">
+            <div className="place-at-top">
+                <CreationForm  title={'Create a Time Slot for a Course'} 
+                    fields={timeslotFormFields} submitButtonText={'Create New Time Slot'} 
+                    onSubmit={onSubmit}></CreationForm>     
+                </div>   
 
-
-                <label>End time: </label>
-                    <input
-                    type='text'
-                    placeholder={"10:00am"}
-                    value={endTime}
-                    onChange={(e) => setEndTime(e.target.value)}
-                    />
-
-                <label htmlFor="weekDays">Days: </label>
-                <input list="weekDayOpts" id="weekDays" name="weekDays"
-                value={days}
-                onChange={(e) => setDays(e.target.value)}/>
-                <datalist id="weekDayOpts" >
-                    {dayOptions}
-                </datalist>
-
-                <div>
-                    <input type='submit' value='Create New Subject' />
-                </div>
-            </form>
-            <div>
-                <TimeSlots></TimeSlots>
+            <div className="place-at-top">
+                <TimeSlots ></TimeSlots>
             </div>
+            
 
         </div>
     )

@@ -5,6 +5,8 @@ import { bindActionCreators } from "redux";
 import { newCourse } from "./course";
 import  Courses  from "./Courses"
 import { dataListValidOptionObjectNameChecker } from "./dataListValidOptionChecker";
+import { InputDropDownListTemplate, InputTemplate } from "../page-templates/InputTemplate";
+import CreationForm from "../page-templates/CreationForm";
 
 const CourseForm = ({ onComplete }) => {
     const [courseName, setCourseName] = useState('')
@@ -58,36 +60,32 @@ const CourseForm = ({ onComplete }) => {
         </div>
     ))
 
-    return (
+    const courseFormFields = (
         <div>
-            <form onSubmit={onSubmit}>
-                <label>Course Name: </label>
-                    <input
-                    type='text'
-                    value={courseName}
-                    onChange={(e) => setCourseName(e.target.value)}
-                    />
 
-                <label>Course Description: </label>
-                    <input
-                    type='textarea'
-                    value={courseDesc}
-                    onChange={(e) => setCourseDesc(e.target.value)}
-                    />
+            <InputTemplate thePlaceholder={'Course name'} theValue={courseName} setTheValue={setCourseName}>
+                    </InputTemplate> 
 
-                <label htmlFor="courseSubjects">Subject: </label>
-                <input list="subjectNames" id="courseSubjects" name="courseSubjects"
-                value={subject}
-                onChange={(e) => setSubject(e.target.value)}/>
-                <datalist id="subjectNames" >
-                    {availableSubjects}
-                </datalist>
+            <InputTemplate thePlaceholder={'Course description'} theValue={courseDesc} setTheValue={setCourseDesc}>
+            </InputTemplate> 
+            <br></br>
+            <div className="sameline subjects-datalist-input-spacing">
+                <InputDropDownListTemplate thePlaceholder={'Subject: '} theValue={subject} 
+                    allOptions={availableSubjects} setTheValue={setSubject}>
+                    </InputDropDownListTemplate>
+            </div>
+            
+        </div>
+    )
 
-                <div>
-                    <input type='submit' value='Create New Course' />
-                </div>
-            </form>
-            <div>
+    return (
+        <div className="separate-different-elements">
+            <div className="place-at-top">
+                <CreationForm title={'Create a New Course'} 
+                    fields={courseFormFields} submitButtonText={'Create New Course'} 
+                    onSubmit={onSubmit}></CreationForm>
+            </div>
+            <div className="place-at-top">
                 <Courses></Courses>
             </div>
 

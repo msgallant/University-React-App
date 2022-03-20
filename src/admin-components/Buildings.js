@@ -4,6 +4,7 @@ import { buildingActionCreators } from "../actions";
 import { useEffect, useState } from 'react'
 import BuildingAddRoomForm from './BuildingAddRoomForm'
 import BuildingRooms from "./BuildingRooms";
+import BorderedList from "../page-templates/BorderedList";
 
 
 const Buildings = ({showBuildingAddRoomForm})=> {
@@ -162,10 +163,10 @@ const Buildings = ({showBuildingAddRoomForm})=> {
             <div>
                 
                 {showRoomForm === false
-                && <div>
-                    <label> Current Buildings: </label>
-                </div>}
-                <label>{buildingItems}</label>
+                && <BorderedList itemListTitleName={"Current Buildings: "} listItems={buildingItems}></BorderedList> }
+
+                {showRoomForm === true
+                && <BorderedList itemListTitleName={""} listItems={buildingItems}></BorderedList>}
             </div>
         )
     

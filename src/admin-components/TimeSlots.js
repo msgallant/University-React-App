@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { timeSlotActionCreators } from "../actions";
 import { useEffect } from 'react'
+import BorderedList from "../page-templates/BorderedList";
 
 const TimeSlots = ()=> {
     const dispatch = useDispatch()
@@ -29,16 +30,8 @@ const TimeSlots = ()=> {
         ))
 
         return (
-        
-            <div>
-                <div>
-                    <label> Current Time Slots: </label>
-                </div>
-                <div>
-                    <label>{timeSlotItems}</label>
-    
-                </div>
-            </div>
+            <BorderedList itemListTitleName={"Current Time Slots: "} listItems={timeSlotItems}></BorderedList>
+
         )
     
 }

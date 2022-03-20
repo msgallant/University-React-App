@@ -29,7 +29,7 @@ code {
 }
 
 .select-div-color:hover {
-  background-color: rgb(193, 164, 219);
+  background-color: rgb(216, 194, 235);
 }
 
 .select-button-color {
@@ -48,8 +48,12 @@ code {
   color: red
 }
 
+.test-color {
+  background-color:rgb(56, 94, 45)
+}
+
 .test-color:hover {
-  color:brown
+  background-color:brown
 }
 
 .default-mouse {
@@ -105,4 +109,114 @@ code {
   background: #731abc;
   color: white;
   border-radius: 12px;
+}
+
+.generate-email-button {
+  position: relative;
+  top: -5px;
+  background: #7597c2;
+}
+
+.menu-option-font {
+  color: #490d7a;
+  font-size: 18px;
+}
+
+.menu-option-left-layout {
+  position: relative;
+  float: left;
+  background: #b2b0b3;
+  top: -4px;
+  padding: 10px;
+  height: 100%;
+}
+
+.menu-option-spacing {
+  padding: 10px;
+}
+
+.form-spacing {
+  padding: 15px;
+}
+
+.plain-border {
+  margin: auto;
+  max-width: 500px;
+  min-width: 500px;
+  height: auto;
+  border: 2px solid black;
+  border-radius: 6px;
+  padding: 20px;
+  position: relative;
+  top: 50px;
+}
+
+.separate-different-elements {
+  display: flex;
+}
+.place-at-top {
+  align-items: flex-start;
+  padding: 50px;
+}
+
+.outer-border {
+  margin: auto;
+  max-width: 510px;
+  min-width: 510px;
+  height: auto;
+  border: 2px solid black;
+  padding: 10px;
+  position: relative;
+  top: 50px;
+}
+
+.inner-border {
+  margin: auto;
+  max-width: 500px;
+  min-width: 500px;
+  height: auto;
+  border: 2px solid #975dc7;
+  padding: 5px;
+  position: relative;
+}
+
+.square {
+  width: 5px;
+  height: 5px;
+  border: 2px solid black;
+  position: relative;
+  float: left;
+}
+
+.square-right {
+  float: right;
+}
+
+.bottom-square-position-correction {
+  top: 15px;
+}
+
+.days-datalist-input-spacing {
+  position: relative;
+  left: -26px;
+}
+
+.subjects-datalist-input-spacing {
+  position: relative;
+  left: -36px;
+}
+
+.label-input-spacing {
+  justify-content: space-evenly;
+}
+
+.semester-course-input-spacing {
+  position: relative;
+  left: 75px;
+  text-align: left;
+}
+
+.plain-border-inside-correction {
+  top: 0px;
+  background-color: #e6e4e7;
 }

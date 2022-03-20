@@ -4,7 +4,8 @@ import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import Buildings from "./Buildings";
 import { building } from "./building";
-
+import CreationForm from "../page-templates/CreationForm";
+import { InputTemplate } from "../page-templates/InputTemplate";
 
 const BuildingForm = ({ onComplete }) => {
     const [buildingName, setBuildingName] = useState('')
@@ -33,23 +34,23 @@ const BuildingForm = ({ onComplete }) => {
         setShowAddRoomFormInstead(value)
     }
 
-    return (
-        <div>
-            {showAddRoomFormInstead === false &&
-                <form onSubmit={onSubmit}>
-                    <label>Building name: </label>
-                        <input
-                        type='text'
-                        value={buildingName}
-                        onChange={(e) => setBuildingName(e.target.value)}
-                        />
+    const buildingFormFields = (
+        
+        <InputTemplate thePlaceholder={'Building name '} theValue={buildingName} setTheValue={setBuildingName}>
+                    </InputTemplate>   
+)
 
-                    <div>
-                        <input type='submit' value='Create New Building' />
-                    </div>
-                </form>
+    return (
+        <div className="separate-different-elements">
+            {showAddRoomFormInstead === false &&
+
+                <div className="place-at-top">
+                <CreationForm title={'Create a Building'} 
+                    fields={buildingFormFields} submitButtonText={'Create New Building'} 
+                    onSubmit={onSubmit}></CreationForm>
+                </div>
             }
-            <div>
+            <div className="place-at-top">
                 <Buildings showBuildingAddRoomForm={toggleShowAddRoom}></Buildings>
             </div>
 

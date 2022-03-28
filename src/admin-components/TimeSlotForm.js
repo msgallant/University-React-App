@@ -1,7 +1,4 @@
 import { useState } from "react"
-import { timeSlotActionCreators } from "../actions"
-import { useDispatch } from "react-redux";
-import { bindActionCreators } from "redux";
 import TimeSlots from "./TimeSlots";
 import { timeSlotWeekDays } from "./timeSlotData";
 import { timeSlot } from "./timeSlot";
@@ -9,15 +6,15 @@ import { dataListValidOptionChecker } from "./dataListValidOptionChecker";
 import { checkIfValidTime } from "./timeSlotFormat";
 import { InputTemplate, InputDropDownListTemplate } from "../page-templates/InputTemplate";
 import CreationForm from "../page-templates/CreationForm";
+import SubmitAction from "../action-submitter/SubmitAction";
+import { CreateTimeSlot } from "../actions/timeSlotActions";
 
 const TimeSlotForm = ({ onComplete }) => {
     const [startTime, setStartTime] = useState('')
     const [endTime, setEndTime] = useState('')
     const [days, setDays] = useState('')
+    const [update, setUpdate] = useState(null) 
 
-
-    const dispatch = useDispatch()
-    const { createTimeSlot } = bindActionCreators(timeSlotActionCreators, dispatch)
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -57,8 +54,7 @@ const TimeSlotForm = ({ onComplete }) => {
 
         timeSlot.name = startTime + " - " + endTime + " on " + days + " "
 
-        createTimeSlot(timeSlot)
-        onComplete()
+        setUpdate(timeSlot)
     }
 
     
@@ -102,7 +98,14 @@ const TimeSlotForm = ({ onComplete }) => {
             <div className="place-at-top">
                 <TimeSlots ></TimeSlots>
             </div>
-            
+            {update !== null && 
+                <div> 
+                    <SubmitAction onComplete={() => {
+                        setUpdate(null)
+                        onComplete()}} 
+                        ActionMethod={CreateTimeSlot} data={update}></SubmitAction>
+                </div>
+            }
 
         </div>
     )

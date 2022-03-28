@@ -11,7 +11,7 @@ const CreationForm = ({title, fields, submitButtonText, onSubmit}) => {
             {fields}
 
             <div>
-                <br></br>
+                <br></br> 
                 <ButtonTemplate theText={submitButtonText}></ButtonTemplate>
             </div>
         

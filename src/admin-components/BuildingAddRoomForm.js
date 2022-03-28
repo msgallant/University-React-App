@@ -1,14 +1,11 @@
 import { useState } from "react"
-import { buildingActionCreators } from "../actions"
-import { useDispatch } from "react-redux";
-import { bindActionCreators } from "redux";
+import { UpdateBuilding } from "../actions/buildingActions";
+import SubmitAction from "../action-submitter/SubmitAction";
 
 const BuildingAddRoomForm = ({ onClose, building }) => {
     const [roomNum, setRoomNum] = useState('')
     const [capacity, setCapacity] = useState('')
-
-    const dispatch = useDispatch()
-    const { addBuildingRoom } = bindActionCreators(buildingActionCreators, dispatch)
+    const [update, setUpdate] = useState(null)
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -28,8 +25,7 @@ const BuildingAddRoomForm = ({ onClose, building }) => {
         }
         building.rooms.push(rooms)
 
-        addBuildingRoom(building)
-        onClose()
+        setUpdate(building)
     }
 
     return (
@@ -59,6 +55,11 @@ const BuildingAddRoomForm = ({ onClose, building }) => {
             <div>
 
             </div>
+            {update !== null &&  
+                <div>
+                    <SubmitAction onComplete={() => {setUpdate(null); onClose()} }
+                        ActionMethod={UpdateBuilding} data={update}></SubmitAction>
+                </div>}
 
         </div>
     )

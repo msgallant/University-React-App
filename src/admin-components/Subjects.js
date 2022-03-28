@@ -1,16 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
-import { bindActionCreators } from "redux";
-import { subjectActionCreators } from "../actions";
-import { useEffect } from 'react'
+import { useSelector } from "react-redux";
+import React, { useState } from "react";
 import BorderedList from "../page-templates/BorderedList";
+import { FetchSubjects, DeleteSubject } from "../actions/subjectActions";
+import SubmitAction from "../action-submitter/SubmitAction";
 
 const Subjects = ()=> {
-    const dispatch = useDispatch()
-    const { fetchSubjects, deleteSubject } = bindActionCreators(subjectActionCreators, dispatch)
+    const [deleteObjID, setDeleteObjID] = useState(null)
 
-    useEffect(() => {
-        fetchSubjects()
-    }, [])
+    FetchSubjects()
 
     const subjs = useSelector(state => state.subjects.items)
 
@@ -20,7 +17,7 @@ const Subjects = ()=> {
                 name: {subject.name}  &nbsp;
             </label>
             
-            <label onClick={() => deleteSubject(subject.id)}>
+            <label onClick={() => setDeleteObjID(subject.id)}>
                 <i className="fas fa-trash-alt delete-icon-color"></i>
             </label>
             
@@ -29,7 +26,15 @@ const Subjects = ()=> {
         ))
 
         return (
+            <div>
                 <BorderedList itemListTitleName={"Current Subjects: "} listItems={subjectItems}></BorderedList>
+                {deleteObjID !== null && 
+                    <div>
+                        <SubmitAction onComplete={() => setDeleteObjID(null)} 
+                                ActionMethod={DeleteSubject} data={deleteObjID}></SubmitAction>
+                    </div>}
+            </div>
+                
 
         )
     

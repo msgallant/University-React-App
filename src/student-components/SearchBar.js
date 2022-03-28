@@ -5,6 +5,9 @@ import { semesterCourseActionCreators, timeSlotActionCreators,
     accountActionCreators, subjectActionCreators} from "../actions"
 import SemesterCourses from "../admin-components/SemesterCourses";
 import { determineSelectedCourses } from "./SearchBarFilterLogic";
+import { FetchAccounts } from "../actions/accountActions";
+import { FetchSubjects } from "../actions/subjectActions";
+import { FetchSemesterCourses } from "../actions/semesterCourseActions";
 
 
 const SearchBar = ({profAccType, onComplete, loggedInAccount}) => {
@@ -17,10 +20,6 @@ const SearchBar = ({profAccType, onComplete, loggedInAccount}) => {
     const [selectedCourses, setSelectedCourses] = useState(null)
 
     const dispatch = useDispatch()
-
-    const { fetchSemesterCourses } = bindActionCreators(semesterCourseActionCreators, dispatch)
-    const { fetchAccounts } = bindActionCreators(accountActionCreators, dispatch)
-    const { fetchSubjects } = bindActionCreators(subjectActionCreators, dispatch)
 
     const subjects = useSelector(state => state.subjects.items)
     const courses = useSelector(state => state.semesterCourses.items)
@@ -36,12 +35,11 @@ const SearchBar = ({profAccType, onComplete, loggedInAccount}) => {
         return prof
         
     })
-
-    useEffect(() => {
-        fetchSemesterCourses()
-        fetchAccounts()
-        fetchSubjects()
-    }, [])
+    FetchAccounts()
+    FetchSubjects()
+    FetchSemesterCourses()
+    /*useEffect(() => { 
+    }, [])*/
 
     const getFilterCriteria = () => {
         const filterCriteria = {name: courseName, professor: professor, subject: subjectName, startTime: startTime}

@@ -21,33 +21,42 @@
       "coursesRegisteredIn": [
         {
           "name": "Painting",
-          "courseDesc": "Paint",
+          "courseDesc": "paint",
           "subject": "Art",
-          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
           "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
           "location": "b1 room 54",
-          "id": 12
+          "id": 25
         },
         {
-          "name": "Canadian Society",
-          "courseDesc": "Description for Canadian Society",
-          "subject": "History",
-          "schedule": "1:00pm - 2:00pm on Tuesday, Wednesday ",
+          "name": "Stats",
+          "courseDesc": "Description of stats",
+          "subject": "Math",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
           "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
-          "location": "b1 room 443",
-          "id": 11
+          "location": "b2 room 345",
+          "id": 27
+        },
+        {
+          "name": "Painting",
+          "courseDesc": "paint",
+          "subject": "Art",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b2 room 12",
+          "id": 35
         }
       ],
       "transcript": [
         {
           "name": "Painting",
           "grade": null,
-          "id": 12
+          "id": 25
         },
         {
-          "name": "Canadian Society",
-          "grade": "a",
-          "id": 11
+          "name": "Stats",
+          "grade": null,
+          "id": 27
         }
       ],
       "id": "jag@uni.com"
@@ -86,6 +95,132 @@
           "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
           "location": "b3 room 23",
           "id": 13
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "Description of Algebra",
+          "subject": "Math",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
+          "location": "b3 room 12",
+          "id": 15
+        },
+        {
+          "name": "Canadian Society",
+          "courseDesc": "Description for Canadian Society",
+          "subject": "History",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
+          "location": "b3 room 12",
+          "id": 19
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "Description of Algebra",
+          "subject": "Math",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
+          "location": "b2 room 43",
+          "id": 21
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "Description of Algebra",
+          "subject": "Math",
+          "schedule": "1:00pm - 2:30pm on Monday, Thursday, Friday ",
+          "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
+          "location": "b2 room 345",
+          "id": 26
+        },
+        {
+          "name": "Stats",
+          "courseDesc": "Description of stats",
+          "subject": "Math",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
+          "location": "b2 room 345",
+          "id": 27
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "Description of Algebra",
+          "subject": "Math",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
+          "location": "b2 room 43",
+          "id": 30
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "Description of Algebra",
+          "subject": "Math",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
+          "location": "b2 room 43",
+          "id": 33
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "Description of Algebra",
+          "subject": "Math",
+          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+          "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
+          "location": "b2 room 12",
+          "id": 43
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "Description of Algebra",
+          "subject": "Math",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
+          "location": "b2 room 43",
+          "id": 44
+        },
+        {
+          "name": "Painting",
+          "courseDesc": "paint",
+          "subject": "Art",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
+          "location": "b2 room 345",
+          "id": 101
+        },
+        {
+          "name": "Painting",
+          "courseDesc": "paint",
+          "subject": "Art",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
+          "location": "b2 room 345",
+          "id": 102
+        },
+        {
+          "name": "Painting",
+          "courseDesc": "paint",
+          "subject": "Art",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
+          "location": "b2 room 345",
+          "id": 110
+        },
+        {
+          "name": "bio 2",
+          "courseDesc": "rfknjgr",
+          "subject": "Biology",
+          "schedule": "1:00pm - 2:30pm on Monday, Thursday, Friday ",
+          "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
+          "location": "b2 room 345",
+          "id": 124
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
+          "location": "b2 room 43",
+          "id": 131
         }
       ],
       "transcript": [],
@@ -107,6 +242,393 @@
           "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
           "location": "b1 room 54",
           "id": 12
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "Description of Algebra",
+          "subject": "Math",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b3 room 12",
+          "id": 17
+        },
+        {
+          "name": "Canadian Society",
+          "courseDesc": "Description for Canadian Society",
+          "subject": "History",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b3 room 12",
+          "id": 18
+        },
+        {
+          "name": "Canadian Society",
+          "courseDesc": "Description for Canadian Society",
+          "subject": "History",
+          "schedule": "1:00pm - 2:30pm on Monday, Thursday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 345",
+          "id": 20
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "Description of Algebra",
+          "subject": "Math",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 345",
+          "id": 22
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "Description of Algebra",
+          "subject": "Math",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 345",
+          "id": 23
+        },
+        {
+          "name": "Canadian Society",
+          "courseDesc": "Description for Canadian Society",
+          "subject": "History",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 12",
+          "id": 24
+        },
+        {
+          "name": "Painting",
+          "courseDesc": "paint",
+          "subject": "Art",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b1 room 54",
+          "id": 25
+        },
+        {
+          "name": "Painting",
+          "courseDesc": "paint",
+          "subject": "Art",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b1 room 35",
+          "id": 29
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "Description of Algebra",
+          "subject": "Math",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 12",
+          "id": 36
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "Description of Algebra",
+          "subject": "Math",
+          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 43",
+          "id": 42
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 345",
+          "id": 62
+        },
+        {
+          "name": "Painting",
+          "courseDesc": "paint",
+          "subject": "Art",
+          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 12",
+          "id": 67
+        },
+        {
+          "name": "bio 2",
+          "courseDesc": "rfknjgr",
+          "subject": "Biology",
+          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b3 room 12",
+          "id": 69
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "aaa",
+          "subject": "Math",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 345",
+          "id": 70
+        },
+        {
+          "name": "Painting",
+          "courseDesc": "paint",
+          "subject": "Art",
+          "schedule": "1:00pm - 2:30pm on Monday, Thursday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 345",
+          "id": 77
+        },
+        {
+          "name": "thgrfet55",
+          "courseDesc": "55",
+          "subject": "Art",
+          "schedule": "1:00pm - 2:30pm on Monday, Thursday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 43",
+          "id": 78
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b3 room 23",
+          "id": 79
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "aaa",
+          "subject": "Math",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 345",
+          "id": 80
+        },
+        {
+          "name": "bio 2",
+          "courseDesc": "rfknjgr",
+          "subject": "Biology",
+          "schedule": "1:00pm - 2:30pm on Monday, Thursday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 12",
+          "id": 82
+        },
+        {
+          "name": "bio 2",
+          "courseDesc": "rfknjgr",
+          "subject": "Biology",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 345",
+          "id": 94
+        },
+        {
+          "name": "bio 2",
+          "courseDesc": "rfknjgr",
+          "subject": "Biology",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 345",
+          "id": 95
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b3 room 12",
+          "id": 96
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b3 room 12",
+          "id": 97
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b3 room 12",
+          "id": 98
+        },
+        {
+          "name": "bio 2",
+          "courseDesc": "rfknjgr",
+          "subject": "Biology",
+          "schedule": "1:00pm - 2:30pm on Monday, Thursday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 12",
+          "id": 99
+        },
+        {
+          "name": "bio 2",
+          "courseDesc": "rfknjgr",
+          "subject": "Biology",
+          "schedule": "1:00pm - 2:30pm on Monday, Thursday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 12",
+          "id": 100
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "aaa",
+          "subject": "Math",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b3 room 12",
+          "id": 103
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "aaa",
+          "subject": "Math",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b3 room 12",
+          "id": 104
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b3 room 12",
+          "id": 105
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b3 room 12",
+          "id": 106
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b3 room 12",
+          "id": 107
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 12",
+          "id": 108
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 12",
+          "id": 109
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 345",
+          "id": 114
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "1:00pm - 2:30pm on Monday, Thursday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 345",
+          "id": 115
+        },
+        {
+          "name": "bio 2",
+          "courseDesc": "rfknjgr",
+          "subject": "Biology",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 345",
+          "id": 115
+        },
+        {
+          "name": "Stats",
+          "courseDesc": "sdhtr",
+          "subject": "Math",
+          "schedule": "2:30pm - 3:30pm on Monday, Thursday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 12",
+          "id": 115
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "aaa",
+          "subject": "Math",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 4321",
+          "id": 117
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "aaa",
+          "subject": "Math",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 12",
+          "id": 117
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "aaa",
+          "subject": "Math",
+          "schedule": "1:00pm - 2:30pm on Monday, Thursday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 345",
+          "id": 125
+        },
+        {
+          "name": "bio 2",
+          "courseDesc": "rfknjgr",
+          "subject": "Biology",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 43",
+          "id": 127
+        },
+        {
+          "name": "bio 2",
+          "courseDesc": "rfknjgr",
+          "subject": "Biology",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 43",
+          "id": 128
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 345",
+          "id": 130
         }
       ],
       "transcript": [],
@@ -172,6 +694,249 @@
           "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
           "location": "b1 room 443",
           "id": 14
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "Description of Algebra",
+          "subject": "Math",
+          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b3 room 12",
+          "id": 16
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "Description of Algebra",
+          "subject": "Math",
+          "schedule": "2:30pm - 3:30pm on Monday, Thursday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 4321",
+          "id": 28
+        },
+        {
+          "name": "Canadian Society",
+          "courseDesc": "Description for Canadian Society",
+          "subject": "History",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 345",
+          "id": 31
+        },
+        {
+          "name": "Canadian Society",
+          "courseDesc": "Description for Canadian Society",
+          "subject": "History",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 43",
+          "id": 32
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "Description of Algebra",
+          "subject": "Math",
+          "schedule": "1:00pm - 2:30pm on Monday, Thursday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b3 room 12",
+          "id": 34
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 345",
+          "id": 72
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 345",
+          "id": 73
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 4321",
+          "id": 83
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 4321",
+          "id": 84
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 4321",
+          "id": 85
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 4321",
+          "id": 86
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 4321",
+          "id": 87
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 4321",
+          "id": 88
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 4321",
+          "id": 89
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 4321",
+          "id": 90
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 4321",
+          "id": 91
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 4321",
+          "id": 92
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 4321",
+          "id": 93
+        },
+        {
+          "name": "Painting",
+          "courseDesc": "paint",
+          "subject": "Art",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 12",
+          "id": 113
+        },
+        {
+          "name": "thgrfet55",
+          "courseDesc": "55",
+          "subject": "Art",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b3 room 12",
+          "id": 115
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 345",
+          "id": 116
+        },
+        {
+          "name": "Painting",
+          "courseDesc": "paint",
+          "subject": "Art",
+          "schedule": "1:00pm - 2:30pm on Monday, Thursday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 12",
+          "id": 118
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b3 room 12",
+          "id": 119
+        },
+        {
+          "name": "thgrfet55",
+          "courseDesc": "55",
+          "subject": "Art",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 43",
+          "id": 120
+        },
+        {
+          "name": "Painting",
+          "courseDesc": "paint",
+          "subject": "Art",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 4321",
+          "id": 122
+        },
+        {
+          "name": "bio 2",
+          "courseDesc": "rfknjgr",
+          "subject": "Biology",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 12",
+          "id": 124
+        },
+        {
+          "name": "Stats",
+          "courseDesc": "sdhtr",
+          "subject": "Math",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 12",
+          "id": 126
         }
       ],
       "transcript": [],
@@ -209,6 +974,394 @@
       "coursesRegisteredIn": [],
       "transcript": [],
       "id": "tftndfbgtyh@uni.com"
+    },
+    {
+      "accountType": "Admin Account",
+      "firstName": "gtfd",
+      "middleName": "",
+      "lastName": "ytd",
+      "email": "gytd@uni.com",
+      "password": "1",
+      "coursesRegisteredIn": [],
+      "transcript": [],
+      "id": "gytd@uni.com"
+    },
+    {
+      "accountType": "Admin Account",
+      "firstName": "Jade",
+      "middleName": "Elenora",
+      "lastName": "htedg",
+      "email": "JEhtedg@uni.com",
+      "password": "1",
+      "coursesRegisteredIn": [],
+      "transcript": [],
+      "id": "JEhtedg@uni.com"
+    },
+    {
+      "accountType": "Professor Account",
+      "firstName": "wwwww",
+      "middleName": "w",
+      "lastName": "w",
+      "email": "www@uni.com",
+      "password": "w",
+      "coursesRegisteredIn": [
+        {
+          "name": "Painting",
+          "courseDesc": "paint",
+          "subject": "Art",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b2 room 12",
+          "id": 35
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "Description of Algebra",
+          "subject": "Math",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b2 room 12",
+          "id": 37
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "Description of Algebra",
+          "subject": "Math",
+          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b2 room 4321",
+          "id": 38
+        },
+        {
+          "name": "Canadian Society",
+          "courseDesc": "Description for Canadian Society",
+          "subject": "History",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b2 room 12",
+          "id": 39
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b2 room 43",
+          "id": 40
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b3 room 23",
+          "id": 41
+        },
+        {
+          "name": "bio 2",
+          "courseDesc": "rfknjgr",
+          "subject": "Biology",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b2 room 345",
+          "id": 66
+        },
+        {
+          "name": "Painting",
+          "courseDesc": "paint",
+          "subject": "Art",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b2 room 345",
+          "id": 68
+        },
+        {
+          "name": "Painting",
+          "courseDesc": "paint",
+          "subject": "Art",
+          "schedule": "1:20pm - 2:20pm on Monday, Friday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b2 room 345",
+          "id": 74
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "aaa",
+          "subject": "Math",
+          "schedule": "1:00pm - 2:30pm on Monday, Thursday, Friday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b3 room 12",
+          "id": 75
+        },
+        {
+          "name": "bio 2",
+          "courseDesc": "rfknjgr",
+          "subject": "Biology",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b2 room 12",
+          "id": 76
+        },
+        {
+          "name": "Painting",
+          "courseDesc": "paint",
+          "subject": "Art",
+          "schedule": "2:30pm - 3:30pm on Monday, Thursday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b2 room 345",
+          "id": 81
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b2 room 4321",
+          "id": 111
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b2 room 4321",
+          "id": 112
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b2 room 345",
+          "id": 115
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "aaa",
+          "subject": "Math",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b2 room 12",
+          "id": 121
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b2 room 12",
+          "id": 123
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b2 room 345",
+          "id": 129
+        }
+      ],
+      "transcript": [],
+      "id": "www@uni.com"
+    },
+    {
+      "accountType": "Student Account",
+      "firstName": "alice",
+      "middleName": "s",
+      "lastName": "da",
+      "email": "asda@uni.com",
+      "password": "1",
+      "coursesRegisteredIn": [
+        {
+          "name": "Painting",
+          "courseDesc": "paint",
+          "subject": "Art",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b2 room 12",
+          "id": 35
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "Description of Algebra",
+          "subject": "Math",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b2 room 12",
+          "id": 37
+        }
+      ],
+      "transcript": [
+        {
+          "name": "Painting",
+          "grade": "a",
+          "id": 35
+        },
+        {
+          "name": "Algebra",
+          "grade": "b-",
+          "id": 37
+        }
+      ],
+      "id": "asda@uni.com"
+    },
+    {
+      "accountType": "Student Account",
+      "firstName": "student",
+      "middleName": "s",
+      "lastName": "student",
+      "email": "ssstudent@uni.com",
+      "password": "1",
+      "coursesRegisteredIn": [
+        {
+          "name": "bio 2",
+          "courseDesc": "rfknjgr",
+          "subject": "Biology",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 12",
+          "id": 124
+        },
+        {
+          "name": "bio 2",
+          "courseDesc": "rfknjgr",
+          "subject": "Biology",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 12",
+          "id": 124
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b2 room 12",
+          "id": 123
+        },
+        {
+          "name": "Painting",
+          "courseDesc": "paint",
+          "subject": "Art",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 4321",
+          "id": 122
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "aaa",
+          "subject": "Math",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 345",
+          "id": 80
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "aaa",
+          "subject": "Math",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b2 room 12",
+          "id": 121
+        },
+        {
+          "name": "Painting",
+          "courseDesc": "paint",
+          "subject": "Art",
+          "schedule": "2:30pm - 3:30pm on Monday, Thursday ",
+          "professor": "Dr. wwwww w w (www@uni.com)",
+          "location": "b2 room 345",
+          "id": 81
+        },
+        {
+          "name": "bio 2",
+          "courseDesc": "rfknjgr",
+          "subject": "Biology",
+          "schedule": "1:00pm - 2:30pm on Monday, Thursday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 12",
+          "id": 82
+        },
+        {
+          "name": "thgrfet55",
+          "courseDesc": "55",
+          "subject": "Art",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 43",
+          "id": 120
+        },
+        {
+          "name": "Cell Biology",
+          "courseDesc": "Cell functions",
+          "subject": "Biology",
+          "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b3 room 12",
+          "id": 119
+        },
+        {
+          "name": "Painting",
+          "courseDesc": "paint",
+          "subject": "Art",
+          "schedule": "1:00pm - 2:30pm on Monday, Thursday, Friday ",
+          "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
+          "location": "b2 room 12",
+          "id": 118
+        },
+        {
+          "name": "Algebra",
+          "courseDesc": "aaa",
+          "subject": "Math",
+          "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
+          "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+          "location": "b2 room 4321",
+          "id": 117
+        }
+      ],
+      "transcript": [
+        {
+          "name": "bio 2",
+          "grade": null,
+          "id": 124
+        },
+        {
+          "name": "Cell Biology",
+          "grade": null,
+          "id": 123
+        },
+        {
+          "name": "Painting",
+          "grade": null,
+          "id": 122
+        },
+        {
+          "name": "Algebra",
+          "grade": null,
+          "id": 80
+        },
+        {
+          "name": "Algebra",
+          "grade": null,
+          "id": 121
+        },
+        {
+          "name": "thgrfet55",
+          "grade": null,
+          "id": 120
+        }
+      ],
+      "id": "ssstudent@uni.com"
     }
   ],
   "Subjects": [
@@ -223,6 +1376,10 @@
     {
       "name": "History",
       "id": 7
+    },
+    {
+      "name": "Biology",
+      "id": 8
     }
   ],
   "Buildings": [
@@ -286,6 +1443,22 @@
         {
           "roomNum": "356",
           "capacity": "57"
+        },
+        {
+          "roomNum": "357",
+          "capacity": "12"
+        },
+        {
+          "roomNum": "358",
+          "capacity": "20"
+        },
+        {
+          "roomNum": "359",
+          "capacity": "5"
+        },
+        {
+          "roomNum": "360",
+          "capacity": "23"
         }
       ],
       "id": 4
@@ -293,28 +1466,34 @@
   ],
   "Courses": [
     {
-      "name": "Stats",
-      "description": "Description of stats",
-      "subject": "Math",
-      "id": 4
+      "name": "Painting",
+      "description": "paint",
+      "subject": "Art",
+      "id": 8
+    },
+    {
+      "name": "Cell Biology",
+      "description": "Cell functions",
+      "subject": "Biology",
+      "id": 9
+    },
+    {
+      "name": "bio 2",
+      "description": "rfknjgr",
+      "subject": "Biology",
+      "id": 10
     },
     {
       "name": "Algebra",
-      "description": "Description of Algebra",
+      "description": "aaa",
       "subject": "Math",
-      "id": 5
+      "id": 12
     },
     {
-      "name": "Canadian Society",
-      "description": "Description for Canadian Society",
-      "subject": "History",
-      "id": 7
-    },
-    {
-      "name": "Painting",
-      "description": "Paint",
-      "subject": "Art",
-      "id": 8
+      "name": "Stats",
+      "description": "sdhtr",
+      "subject": "Math",
+      "id": 13
     }
   ],
   "TimeSlots": [
@@ -352,89 +1531,92 @@
       "days": "Monday, Thursday",
       "name": "2:30pm - 3:30pm on Monday, Thursday ",
       "id": 6
+    },
+    {
+      "startTime": "1:20pm",
+      "endTime": "2:20pm",
+      "days": "Monday, Friday",
+      "name": "1:20pm - 2:20pm on Monday, Friday ",
+      "id": 7
     }
   ],
   "SemesterCourses": [
     {
-      "name": "Algebra",
-      "courseDesc": "Description of Algebra",
-      "subject": "Math",
-      "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
-      "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
-      "location": "b1 room 443",
-      "filled": 0,
-      "capacity": "30",
-      "students": [],
-      "id": 10
-    },
-    {
-      "name": "Canadian Society",
-      "courseDesc": "Description for Canadian Society",
-      "subject": "History",
-      "schedule": "1:00pm - 2:00pm on Tuesday, Wednesday ",
-      "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
-      "location": "b1 room 443",
-      "filled": 1,
-      "capacity": "30",
-      "students": [
-        {
-          "firstName": "Julian",
-          "middleName": "Alberto",
-          "lastName": "Garnier",
-          "email": "jag@uni.com",
-          "id": "jag@uni.com"
-        }
-      ],
-      "id": 11
-    },
-    {
-      "name": "Painting",
-      "courseDesc": "Paint",
-      "subject": "Art",
-      "schedule": "10:30am - 11:30am on Monday, Wednesday, Friday ",
-      "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
-      "location": "b1 room 54",
-      "filled": 1,
-      "capacity": "432",
-      "students": [
-        {
-          "firstName": "Julian",
-          "middleName": "Alberto",
-          "lastName": "Garnier",
-          "email": "jag@uni.com",
-          "id": "jag@uni.com"
-        }
-      ],
-      "id": 12
-    },
-    {
-      "name": "Canadian Society",
-      "courseDesc": "Description for Canadian Society",
-      "subject": "History",
-      "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
-      "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
-      "location": "b3 room 23",
-      "filled": 0,
-      "capacity": "26",
-      "students": [],
-      "id": 13
-    },
-    {
       "name": "Stats",
-      "courseDesc": "Description of stats",
+      "courseDesc": "sdhtr",
       "subject": "Math",
       "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
       "professor": "Dr. Finan Elryn Milano (FEMilano@uni.com)",
-      "location": "b1 room 443",
+      "location": "b2 room 12",
       "filled": 0,
-      "capacity": "30",
+      "capacity": "100",
       "students": [],
-      "id": 14
+      "id": 126
+    },
+    {
+      "name": "bio 2",
+      "courseDesc": "rfknjgr",
+      "subject": "Biology",
+      "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+      "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+      "location": "b2 room 43",
+      "filled": 0,
+      "capacity": "54",
+      "students": [],
+      "id": 127
+    },
+    {
+      "name": "bio 2",
+      "courseDesc": "rfknjgr",
+      "subject": "Biology",
+      "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+      "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+      "location": "b2 room 43",
+      "filled": 0,
+      "capacity": "54",
+      "students": [],
+      "id": 128
+    },
+    {
+      "name": "Cell Biology",
+      "courseDesc": "Cell functions",
+      "subject": "Biology",
+      "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+      "professor": "Dr. wwwww w w (www@uni.com)",
+      "location": "b2 room 345",
+      "filled": 0,
+      "capacity": "54",
+      "students": [],
+      "id": 129
+    },
+    {
+      "name": "Cell Biology",
+      "courseDesc": "Cell functions",
+      "subject": "Biology",
+      "schedule": "9:00am - 10:00am on Monday, Tuesday, Friday ",
+      "professor": "Dr. Jade Elenora Abel (jea@uni.com)",
+      "location": "b2 room 345",
+      "filled": 0,
+      "capacity": "54",
+      "students": [],
+      "id": 130
+    },
+    {
+      "name": "Cell Biology",
+      "courseDesc": "Cell functions",
+      "subject": "Biology",
+      "schedule": "1:30pm - 3:00pm on Tuesday, Thursday ",
+      "professor": "Dr. Loki Nils Wolffe (lnw@uni.com)",
+      "location": "b2 room 43",
+      "filled": 0,
+      "capacity": "54",
+      "students": [],
+      "id": 131
     }
   ],
   "UniqueSemesterCourseID": [
     {
-      "nextUniqueSemesterCourseID": 15,
+      "nextUniqueSemesterCourseID": 132,
       "id": 1
     }
   ]

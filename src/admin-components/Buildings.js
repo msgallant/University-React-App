@@ -1,23 +1,19 @@
-import { useDispatch, useSelector } from "react-redux";
-import { bindActionCreators } from "redux";
-import { buildingActionCreators } from "../actions";
-import { useEffect, useState } from 'react'
+import { useSelector } from "react-redux";
+import { useState } from 'react'
 import BuildingAddRoomForm from './BuildingAddRoomForm'
 import BuildingRooms from "./BuildingRooms";
 import BorderedList from "../page-templates/BorderedList";
-
+import { FetchBuildings, DeleteBuilding } from "../actions/buildingActions";
+import SubmitAction from "../action-submitter/SubmitAction";
 
 const Buildings = ({showBuildingAddRoomForm})=> {
     const [showRoomForm, setShowRoomForm] = useState(false)
     const [buildingID, setBuildingID] = useState(0)
-    const dispatch = useDispatch()
-    const { fetchBuildings, deleteBuilding } = bindActionCreators(buildingActionCreators, dispatch)
+    const [deleteObjID, setDeleteObjID] = useState(null)
 
     //contains {buildingId: id, shown: true/false} shown is if the building's rooms are being shown or not  
     const [showRooms, setShowRooms] = useState([]) 
-    useEffect(() => {
-        fetchBuildings()
-    }, [])
+    FetchBuildings()
     
     const buildings = useSelector(state => state.buildings.items)
     //buiding ids
@@ -108,7 +104,7 @@ const Buildings = ({showBuildingAddRoomForm})=> {
         </div>
     )
     const trashCan = (building) => (
-        <div className="same-line" onClick={() => deleteBuilding(building.id)}>
+        <div className="same-line" onClick={() => setDeleteObjID(building.id)}>
             <label>
                 <i className="fas fa-trash-alt delete-icon-color"></i>
             </label> 
@@ -167,6 +163,12 @@ const Buildings = ({showBuildingAddRoomForm})=> {
 
                 {showRoomForm === true
                 && <BorderedList itemListTitleName={""} listItems={buildingItems}></BorderedList>}
+
+                {deleteObjID !== null && 
+                    <div>
+                        <SubmitAction onComplete={() => setDeleteObjID(null)} 
+                                ActionMethod={DeleteBuilding} data={deleteObjID}></SubmitAction>
+                    </div>}
             </div>
         )
     

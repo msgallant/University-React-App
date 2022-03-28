@@ -1,16 +1,13 @@
 import { useState } from "react"
-import { subjectActionCreators } from "../actions"
-import { useDispatch } from "react-redux";
-import { bindActionCreators } from "redux";
 import Subjects from "./Subjects"
 import CreationForm from "../page-templates/CreationForm";
 import { InputTemplate } from "../page-templates/InputTemplate";
+import { CreateSubject } from "../actions/subjectActions";
+import SubmitAction from "../action-submitter/SubmitAction";
 
 const SubjectForm = ({ onComplete }) => {
     const [subjectName, setSubjectName] = useState('')
-
-    const dispatch = useDispatch()
-    const { createSubject } = bindActionCreators(subjectActionCreators, dispatch)
+    const [update, setUpdate] = useState(null) 
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -24,8 +21,7 @@ const SubjectForm = ({ onComplete }) => {
             name: subjectName
         }
 
-        createSubject(newSubject)
-        onComplete()
+        setUpdate(newSubject)
     }
 
     const subjectFormFields = (
@@ -47,6 +43,15 @@ const SubjectForm = ({ onComplete }) => {
             <div className="place-at-top">
                 <Subjects></Subjects>
             </div>
+
+            {update !== null && 
+                <div> 
+                    <SubmitAction onComplete={() => {
+                        setUpdate(null)
+                        onComplete()}} 
+                        ActionMethod={CreateSubject} data={update}></SubmitAction>
+                </div>
+            }
 
         </div>
     )

@@ -1,12 +1,12 @@
 //profTitleAndEmail contains:
 // "Dr. " + acc.firstName + " " + acc.middleName + " " + acc.lastName + " (" + acc.email + ")"
-export const assignCourseToProfessor = (semesterCourseCopy, profTitleAndEmail, allProfAccs, updateAccount ) => {
+export const assignCourseToProfessor = (semesterCourseCopy, profTitleAndEmail, allProfAccs ) => {
     const profAcc = findProfAccountGivenTitleAndEmail(profTitleAndEmail, allProfAccs)
     if (profAcc !=="Error - no prof matching account")
     {
         profAcc.coursesRegisteredIn.push(semesterCourseCopy)
-        updateAccount(profAcc)
     }
+    return profAcc
     
 }
 

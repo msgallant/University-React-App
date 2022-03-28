@@ -1,49 +1,17 @@
 import { FETCH_TIME_SLOTS, DELETE_TIME_SLOT, ADD_TIME_SLOT } from "./types"
+import useFetch from "../actions-methods/useFetch";
+import useCreate from "../actions-methods/useCreate";
+import useDelete from "../actions-methods/useDelete";
 const serverURL = 'http://localhost:5000/TimeSlots'
 
-export const fetchTimeSlots = () => {
-  return (dispatch) => {
-    fetch(serverURL)
-      .then(res => res.json())
-      .then(timeSlots =>
-        dispatch({
-          type: FETCH_TIME_SLOTS,
-          payload: timeSlots
-        })
-      )
+export const FetchTimeSlots = () => {
+  useFetch(serverURL, FETCH_TIME_SLOTS)
   }
-  }
-export const createTimeSlot = (timeSlotData) => {
-    return (dispatch) => { 
-        fetch(serverURL, {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json'
-          },
-          body: JSON.stringify(timeSlotData)
-        })
-          .then(res => res.json())
-          .then(timeSlot =>
-            dispatch({
-              type: ADD_TIME_SLOT,
-              payload: timeSlot
-            })
-          )
-        }
+export const CreateTimeSlot = (objData) => {
+  useCreate(objData, serverURL, ADD_TIME_SLOT)
+    
 }
 
-export const deleteTimeSlot = (id) => {
-  return (dispatch) => {
-    const url = serverURL + `/${id}`
-    fetch(url, {
-      method: 'DELETE',
-      headers: {
-        'content-type': 'application/json'
-      }
-    })
-    dispatch({
-        type: DELETE_TIME_SLOT,
-        payload: id
-      })
-  }
+export const DeleteTimeSlot = (id) => {
+  useDelete(id, serverURL, DELETE_TIME_SLOT)
 }

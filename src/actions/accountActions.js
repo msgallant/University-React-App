@@ -1,7 +1,13 @@
 import { FETCH_ACCOUNTS, ADD_ACCOUNT, DELETE_ACCOUNT, UPDATE_ACCOUNT} from "./types";
-
+import useFetch from "../actions-methods/useFetch";
+import useCreate from "../actions-methods/useCreate";
+import useDelete from "../actions-methods/useDelete";
+import useUpdate from "../actions-methods/useUpdate";
 const serverAccountsURL = 'http://localhost:5000/Accounts'
 
+export const FetchAccounts = () => {
+  useFetch(serverAccountsURL, FETCH_ACCOUNTS)
+}
 
 export const fetchAccounts = () => {
   return (dispatch) => {
@@ -14,62 +20,21 @@ export const fetchAccounts = () => {
         })
       )
   }
-  }
+}
+
   
   export const CreateAccount = (accountData) => {
-    return (dispatch) => { 
-    fetch(serverAccountsURL, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(accountData)
-    })
-      .then(res => res.json())
-      .then(account =>
-        dispatch({
-          type: ADD_ACCOUNT,
-          payload: account
-        })
-      )
-    }
+   useCreate(accountData, serverAccountsURL, ADD_ACCOUNT)
+
   }
 
-  export const deleteAccount = (id) => {
-    return (dispatch) => {
-      const accountUrl = serverAccountsURL + `/${id}`
-      fetch(accountUrl, {
-        method: 'DELETE',
-        headers: {
-          'content-type': 'application/json'
-        }
-      })
-      dispatch({
-          type: DELETE_ACCOUNT,
-          payload: id
-        })
-    }
+  export const DeleteAccount = (id) => {
+    useDelete(id, serverAccountsURL, DELETE_ACCOUNT)
   }
 
-  export const updateAccount = (acc) => {
-    console.log("change dispatch type for this")
-    return (dispatch) => {
-      const url = serverAccountsURL + `/${acc.id}`
-      fetch(url, {
-        method: 'PUT',
-        headers: {
-          'content-type': 'application/json'
-        },
-        body: JSON.stringify(acc)
-      })
-        .then(res => res.json())
-        .then(acc =>
-          dispatch({
-            type: UPDATE_ACCOUNT,
-            payload: acc
-          })
-        )
-    }
+  export const UpdateAccount = (acc) => {
+    useUpdate(acc, serverAccountsURL, UPDATE_ACCOUNT)
   }
+  
 
 

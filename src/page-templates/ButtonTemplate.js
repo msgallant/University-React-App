@@ -1,6 +1,5 @@
 export const ButtonTemplate = ({theText}) => (
     <div>
-        
         <input className="form-font-size form-btn" type='submit' value={theText} />
     </div>
 

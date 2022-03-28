@@ -1,17 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
-import { bindActionCreators } from "redux";
-import { accountActionCreators } from "../actions";
-import { useEffect } from 'react'
+import { useSelector } from "react-redux";
+import React, { useState } from "react";
 import BorderedList from "../page-templates/BorderedList";
 import '@fortawesome/fontawesome-free/js/all.js';
+import { FetchAccounts, DeleteAccount } from "../actions/accountActions";
+import SubmitAction from "../action-submitter/SubmitAction";
 
 const Accounts = ({ accTypes }) => {
-    const dispatch = useDispatch()
-    const { fetchAccounts, deleteAccount } = bindActionCreators(accountActionCreators, dispatch)
 
-    useEffect(() => {
-        fetchAccounts()
-    }, [])
+    FetchAccounts()
+    const [deleteObjID, setDeleteObjID] = useState(null)
 
     const accType = accTypes.substring(0, (accTypes.length-1)) //get rid of the s
     const accounts = useSelector(state => state.accounts.items.filter(account => 
@@ -24,7 +21,7 @@ const Accounts = ({ accTypes }) => {
                 &nbsp; email: {account.email} &nbsp;
             </label>
             
-            <label onClick={() => deleteAccount(account.id)}>
+            <label onClick={() => setDeleteObjID(account.id)}>
                 <i className="fas fa-trash-alt delete-icon-color"></i>
             </label>
             
@@ -33,8 +30,14 @@ const Accounts = ({ accTypes }) => {
         ))    
     
     return (
-        
-        <BorderedList itemListTitleName={accTypes} listItems={accountItems}></BorderedList>
+        <div>
+            <BorderedList itemListTitleName={accTypes} listItems={accountItems}></BorderedList>
+            {deleteObjID !== null && 
+            <div>
+                <SubmitAction onComplete={() => setDeleteObjID(null)} 
+                        ActionMethod={DeleteAccount} data={deleteObjID}></SubmitAction>
+            </div>}
+        </div>  
     )
     }
 

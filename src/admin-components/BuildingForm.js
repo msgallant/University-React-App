@@ -6,13 +6,15 @@ import Buildings from "./Buildings";
 import { building } from "./building";
 import CreationForm from "../page-templates/CreationForm";
 import { InputTemplate } from "../page-templates/InputTemplate";
+import { CreateBuilding } from "../actions/buildingActions";
+import SubmitAction from "../action-submitter/SubmitAction";
 
 const BuildingForm = ({ onComplete }) => {
     const [buildingName, setBuildingName] = useState('')
     const [showAddRoomFormInstead, setShowAddRoomFormInstead] = useState(false)
+    const [update, setUpdate] = useState(null)
 
     const dispatch = useDispatch()
-    const { createBuilding } = bindActionCreators(buildingActionCreators, dispatch)
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -24,9 +26,7 @@ const BuildingForm = ({ onComplete }) => {
 
         building.name = buildingName
 
-
-        createBuilding(building)
-        onComplete()
+        setUpdate(building)
     }
     
 //don't show buildingForm and show BuildingAddRoomForm instead
@@ -54,6 +54,14 @@ const BuildingForm = ({ onComplete }) => {
                 <Buildings showBuildingAddRoomForm={toggleShowAddRoom}></Buildings>
             </div>
 
+            {update !== null && 
+                <div> 
+                    <SubmitAction onComplete={() => {
+                        setUpdate(null)
+                        onComplete()}} 
+                        ActionMethod={CreateBuilding} data={update}></SubmitAction>
+                </div>
+            }
         </div>
     )
 }

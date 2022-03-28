@@ -1,18 +1,13 @@
-import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from "react-redux";
-import { bindActionCreators } from "redux";
-import { accountActionCreators } from "../actions";
+import { useState } from 'react'
+import { useSelector } from "react-redux";
+import { FetchAccounts } from "../actions/accountActions";
 
 const SignIn = ({ onAccountRecieved }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const dispatch = useDispatch()
-    const { fetchAccounts } = bindActionCreators(accountActionCreators, dispatch)
     const accounts = useSelector(state => state.accounts.items)
 
-    useEffect(() => {
-        fetchAccounts()
-    }, [])
+    FetchAccounts()
 
     const onSubmit = (e) => {
         e.preventDefault()

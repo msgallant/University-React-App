@@ -1,8 +1,4 @@
-import { transcriptEntry } from "./transcriptEntry"
-import { accountActionCreators } from "../actions"
-import { useDispatch } from "react-redux"
-import { bindActionCreators } from "redux";
-import { useState } from "react";
+
 
 const makeEmptyTranscriptEntry = (name, id) => {
 

@@ -1,26 +1,22 @@
 import UserCourses from "../student-components/UserCourses"
 import StudentGradeEntryForm from "./StudentGradeEntryForm";
-import { useDispatch, useSelector } from "react-redux";
-import { bindActionCreators } from "redux";
-import { semesterCourseActionCreators } from "../actions";
-import { accountActionCreators } from "../actions";
-import { useEffect, useState } from 'react'
+import { useSelector } from "react-redux";
+import { useState } from 'react'
+import { FetchAccounts, UpdateAccount } from "../actions/accountActions";
+import SubmitAction from "../action-submitter/SubmitAction";
+import { FetchSemesterCourses } from "../actions/semesterCourseActions";
 const AssignGrades = ({onComplete, loggedInAccount}) => {
-    const dispatch = useDispatch()
-    const { fetchSemesterCourses } = bindActionCreators(semesterCourseActionCreators, dispatch)
-    const { fetchAccounts, updateAccount  } = bindActionCreators(accountActionCreators, dispatch)
 
     const allCourses = useSelector(state => state.semesterCourses.items)
     const accounts = useSelector(state => state.accounts.items)
-    const [selectedCourse, setSelectedCourse] = useState(null)
-    const [selectedStudentAccounts, setSelectedStudentAccounts] = useState(null)
+    const [selectedCourse, setSelectedCourse] = useState(null) //course that prof wants to entry grades for
+    const [selectedStudentAccounts, setSelectedStudentAccounts] = useState(null) //students enrolled in course that prof is assigning grades for
     const [storeGradeEntries, setStoreGradeEntries] = useState([]) //contain grade: grade and studentID
+    const [update, setUpdate] = useState(null)
 
+    FetchAccounts()
+    FetchSemesterCourses()
 
-    useEffect(() => {
-        fetchSemesterCourses()
-        fetchAccounts()
-    }, [])
 
     const onSubmit = () => {
         //going through all students registered in course
@@ -34,14 +30,12 @@ const AssignGrades = ({onComplete, loggedInAccount}) => {
                         if (student.id === finalGrade.studentID)
                         {
                             entry.grade = finalGrade.grade
-                            updateAccount(student)
+                            setUpdate({updatedAccount: student})
                         }
                     })
                 }
             })
         })
-
-        onComplete()
     }
 //finds course that professor wants to input grades for
     const findSelectedCourse = (id) => {
@@ -119,9 +113,12 @@ const AssignGrades = ({onComplete, loggedInAccount}) => {
                         <input type='submit' value='Assign Final Grades' />
                     </form>
                 </div>
-            
             }
-            
+            {update !== null &&  
+                <div>
+                    <SubmitAction onComplete={onComplete} 
+                        ActionMethod={UpdateAccount} data={update.updatedAccount}></SubmitAction>
+                </div>}
         </div>
     )
 }

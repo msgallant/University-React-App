@@ -1,27 +1,23 @@
-import { useState, useEffect } from "react"
-import { courseActionCreators, subjectActionCreators } from "../actions"
-import { useDispatch, useSelector } from "react-redux";
-import { bindActionCreators } from "redux";
+import { useState } from "react"
+import { useSelector } from "react-redux";
 import { newCourse } from "./course";
 import  Courses  from "./Courses"
 import { dataListValidOptionObjectNameChecker } from "./dataListValidOptionChecker";
 import { InputDropDownListTemplate, InputTemplate } from "../page-templates/InputTemplate";
 import CreationForm from "../page-templates/CreationForm";
+import SubmitAction from "../action-submitter/SubmitAction";
+import { CreateCourse } from "../actions/courseActions";
+import { FetchSubjects } from "../actions/subjectActions";
 
 const CourseForm = ({ onComplete }) => {
     const [courseName, setCourseName] = useState('')
     const [courseDesc, setCourseDesc] = useState('')
     const [subject, setSubject] = useState('')
-
-    const dispatch = useDispatch()
-    const { createCourse } = bindActionCreators(courseActionCreators, dispatch)
-    const { fetchSubjects } = bindActionCreators(subjectActionCreators, dispatch)
+    const [update, setUpdate] = useState(null)
 
     const subjects = useSelector(state => state.subjects.items)
+    FetchSubjects()
 
-    useEffect(() => {
-        fetchSubjects()
-    }, [])
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -50,8 +46,8 @@ const CourseForm = ({ onComplete }) => {
         }
         newCourse.subject = subject
         
-        createCourse(newCourse)
-        onComplete()
+        setUpdate(newCourse)
+
     }
 
      const availableSubjects = subjects.map((subj) => (
@@ -88,6 +84,13 @@ const CourseForm = ({ onComplete }) => {
             <div className="place-at-top">
                 <Courses></Courses>
             </div>
+
+            {update !== null && 
+                <div> 
+                    <SubmitAction onComplete={onComplete} 
+                        ActionMethod={CreateCourse} data={newCourse}></SubmitAction>
+                </div>
+            }
 
         </div>
     )

@@ -13,6 +13,7 @@ export const DELETE_SUBJECT = 'DELETE_SUBJECT'
 export const ADD_BUILDING = 'ADD_BUILDING'
 export const FETCH_BUILDINGS = 'FETCH_BUILDINGS'
 export const DELETE_BUILDING = 'DELETE_BUILDING'
+export const UPDATE_BUILDING = 'UPDATE_BUILDING'
 export const ADD_ROOM = 'ADD_ROOM'
 
 //courseActions

@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { bindActionCreators } from "redux";
-import { accountActionCreators } from "../actions";
+import { useSelector } from "react-redux";
 import PropTypes from 'prop-types'
 import { account } from "./account";
 import { createUniqueDefaultEmail, isEmailUnique } from "./accountDefaultEmailLogic";
-import { useEffect } from 'react'
 import { InputTemplate } from "../page-templates/InputTemplate";
 import { GenerateEmailButtonTemplate } from "../page-templates/ButtonTemplate";
 import CreationForm from "../page-templates/CreationForm";
+import { FetchAccounts, CreateAccount } from "../actions/accountActions";
+import SubmitAction from "../action-submitter/SubmitAction";
 
 
 const AccountForm = ({accType, onComplete}) => {
@@ -17,15 +16,12 @@ const AccountForm = ({accType, onComplete}) => {
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    
-    const dispatch = useDispatch()
-    const { CreateAccount, fetchAccounts } = bindActionCreators(accountActionCreators, dispatch)
+    const [update, setUpdate] = useState(false)
+
+    FetchAccounts()
 
     const allAccounts = useSelector(state => state.accounts.items)
 
-    useEffect(() => {
-        fetchAccounts()
-    }, [])
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -65,8 +61,7 @@ const AccountForm = ({accType, onComplete}) => {
         account.password = password
         account.id = email
         
-        CreateAccount(account)
-        onComplete()
+        setUpdate(true)
     }
 
     const checkIfEmailValid = () => {
@@ -158,9 +153,15 @@ const AccountForm = ({accType, onComplete}) => {
         <div>
             <CreationForm title={'Create a ' + accType} 
                 fields={accountFormFields} submitButtonText={'Create Account'} onSubmit={onSubmit}></CreationForm>
+
+            {update !== false && 
+                <div> 
+                    <SubmitAction onComplete={onComplete} 
+                        ActionMethod={CreateAccount} data={account}></SubmitAction>
+                </div>
+            }
         </div>
 
-        
     )
 }
 

@@ -1,4 +1,4 @@
-import { ADD_BUILDING, DELETE_BUILDING, FETCH_BUILDINGS, ADD_ROOM}  from "../actions/types"
+import { ADD_BUILDING, DELETE_BUILDING, FETCH_BUILDINGS, UPDATE_BUILDING}  from "../actions/types"
 
 const initialState = {
     items: [],
@@ -23,11 +23,16 @@ const buildingReducer = (state =initialState, action) => {
             ...state,
             items: newObjs
           }
-        case ADD_ROOM:
-          const i = state.items.filter(objs => (objs.id !== action.payload.id))
+        case UPDATE_BUILDING:
+          const updatedBldg = action.payload
+          const bldgs = state.items.filter(bldg => (bldg.id !== updatedBldg.id))
+          bldgs.push(updatedBldg)
           console.log("adding room")
-          console.log(i)
-          return state
+          console.log(bldgs)
+          return {
+            ...state,
+            items: bldgs
+          }
         default:
             return state
     }

@@ -1,72 +1,25 @@
 import { FETCH_SEMESTER_COURSES, DELETE_SEMESTER_COURSE, ADD_SEMESTER_COURSE,
   UPDATE_SEMESTER_COURSE } from "./types"
+import useFetch from "../actions-methods/useFetch";
+import useCreate from "../actions-methods/useCreate";
+import useDelete from "../actions-methods/useDelete";
+import useUpdate from "../actions-methods/useUpdate";
+
 const serverURL = 'http://localhost:5000/SemesterCourses'
 
-export const fetchSemesterCourses = () => {
-  return (dispatch) => {
-    fetch(serverURL)
-      .then(res => res.json())
-      .then(courses =>
-        dispatch({
-          type: FETCH_SEMESTER_COURSES,
-          payload: courses
-        })
-      )
+export const FetchSemesterCourses = () => {
+  useFetch(serverURL, FETCH_SEMESTER_COURSES)
   }
+  export const CreateSemesterCourse = (objData) => {
+    useCreate(objData, serverURL, ADD_SEMESTER_COURSE)
   }
-export const createSemesterCourse = (courseData) => {
-    return (dispatch) => { 
-        fetch(serverURL, {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json'
-          },
-          body: JSON.stringify(courseData)
-        })
-          .then(res => res.json())
-          .then(course =>
-            dispatch({
-              type: ADD_SEMESTER_COURSE,
-              payload: course
-            })
-          )
-        }
-}
 
-export const deleteSemesterCourse = (id) => {
-  return (dispatch) => {
-    const url = serverURL + `/${id}`
-    fetch(url, {
-      method: 'DELETE',
-      headers: {
-        'content-type': 'application/json'
-      }
-    })
-    dispatch({
-        type: DELETE_SEMESTER_COURSE,
-        payload: id
-      })
-  }
+export const DeleteSemesterCourse = (id) => {
+  useDelete(id, serverURL, DELETE_SEMESTER_COURSE)
 }
 
 //register a student to this course
-export const updateSemesterCourse = (semesterCourse) => {
-  return (dispatch) => {
-    const url = serverURL + `/${semesterCourse.id}`
-    fetch(url, {
-      method: 'PUT',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(semesterCourse)
-    })
-      .then(res => res.json())
-      .then(semesterCourse =>
-        dispatch({
-          type: UPDATE_SEMESTER_COURSE,
-          payload: semesterCourse
-        })
-      )
-  }
+export const UpdateSemesterCourse = (semesterCourse) => {
+  useUpdate(semesterCourse, serverURL, UPDATE_SEMESTER_COURSE)
   
 }

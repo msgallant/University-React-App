@@ -1,11 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
-import { bindActionCreators } from "redux";
-import { semesterCourseActionCreators } from "../actions";
-import { accountActionCreators } from "../actions";
-import { useEffect, useState } from 'react'
+import { useSelector } from "react-redux";
+import {  useState } from 'react'
 import BorderedList from "../page-templates/BorderedList";
 import { onRegisterCourse, onUnRegisterCourse, findIsCheckedCourseStatusInitialState,
     updateCheckedCourse} from "../student-components/registeringSemesterCourseLogic"
+import { FetchAccounts } from "../actions/accountActions";
+import SubmitAction from "../action-submitter/SubmitAction";
+import { ButtonTemplate } from "../page-templates/ButtonTemplate";
+import { FetchSemesterCourses, DeleteSemesterCourse } from "../actions/semesterCourseActions";
+
 
 //if canRegister is false and selectedCourses is undefined, that means display all courses since the admin
 //is trying to view them all, if canRegister is true and selectedCourses is not undefined and
@@ -25,13 +27,16 @@ import { onRegisterCourse, onUnRegisterCourse, findIsCheckedCourseStatusInitialS
 //professor can click on a course to assign final grades to the students in that course
 const SemesterCourses = ({canRegister, canAssignGrades, onComplete, onSelect, selectedCourses, loggedInAccount, reloadSearchBar,
     canUnregister})=> {
-    const dispatch = useDispatch()
-    const { fetchSemesterCourses, deleteSemesterCourse, updateSemesterCourse } = bindActionCreators(semesterCourseActionCreators, dispatch)
-    const { fetchAccounts, updateAccount } = bindActionCreators(accountActionCreators, dispatch)
-    const accs = useSelector(state => state.accounts.items)
+    const [deleteObjID, setDeleteObjID] = useState(null)
+
+    //const accs = useSelector(state => state.accounts.items)
     let allCourses = useSelector(state => state.semesterCourses.items)
     //need this not to be null and empty since a const variable references these with the forEach method
     const [courses, setCourses] = useState([{null: null, id: "Courses not set up yet"}])
+    const [updates, setUpdates] = useState({updAcc: null, 
+        updSemCourses: null})
+    const updatesReady = "Updates Ready"
+    const [lookForUpdates, setLookForUpdates] = useState("false")  
 
     //isCheckedCourseStatus contains: 
     //check: false/true,
@@ -41,31 +46,30 @@ const SemesterCourses = ({canRegister, canAssignGrades, onComplete, onSelect, se
     const [loadedCourses, setLoadedCourses] = useState(false) //is selectedCourses not undefined meaning
     //only certain courses should be displayed, so, change the value of courses to the selected courses
     //otherwise just set them to allCourses
-    const [updateTranscript, setUpdateTranscript] = useState(null)
 
-    useEffect(() => {
-        fetchSemesterCourses()
-        fetchAccounts()
-    }, [])
+    FetchAccounts()
+    FetchSemesterCourses()
+
     //this method is only called when student is registering for classes
     const onSubmit = (e) => {
+        let updates = null
         if (canUnregister === true)
         {//need to also send allCourses, since courses is missing the students attribute and
             //need to delete student from reg
-            onUnRegisterCourse(e, loggedInAccount, allCourses, isCheckedCourseStatus,
-                updateAccount, setUpdateTranscript, updateSemesterCourse, onComplete)
+            updates = onUnRegisterCourse(e, loggedInAccount, allCourses, isCheckedCourseStatus)
+            
         }
         else{ 
-            onRegisterCourse(e, loggedInAccount, courses, isCheckedCourseStatus,
-            updateAccount, setUpdateTranscript, updateSemesterCourse, onComplete)
+            updates = onRegisterCourse(e, loggedInAccount, courses, isCheckedCourseStatus)
         }
-        
-    }
+        setUpdates(updates)
+        setLookForUpdates("true")
+    }   
 //selecting a course is only done by professor who are selecting a course to input final grades
 //for their students
     const selectCourse = (selectedCourseID) => {
         if (canAssignGrades === true)
-        {console.log("on Select:" + selectedCourseID)
+        {
             onSelect(selectedCourseID)
         }
         
@@ -79,14 +83,25 @@ const SemesterCourses = ({canRegister, canAssignGrades, onComplete, onSelect, se
                 setCourses(selectedCourses)
             }
             else{
-                setCourses([{id: "No Courses Found.."}])
+                setNoCourses()
             }
             
         }
         else{ //admin looking at all semester courses
-                setCourses(allCourses)
+                if (allCourses.length !== 0)
+                {
+                    setCourses(allCourses)
+                }
+                else{
+                    setNoCourses()
+                }
+                
         }
         setLoadedCourses(true)
+    }
+
+    const setNoCourses = () => {
+        setCourses([{id: "No Courses Found.."}])
     }
 
     const setIsCheckedCourseStatusInitialState = () => {
@@ -95,6 +110,35 @@ const SemesterCourses = ({canRegister, canAssignGrades, onComplete, onSelect, se
 
     const checkCourse= (id)=> {
         updateCheckedCourse(id, isCheckedCourseStatus, setIsCheckedCourses)
+    }
+
+    const checkForUpdates = () => {
+        console.log(updates)
+        console.log("updates")
+        if (updates.updAcc !== null && updates.updSemCourses !== null )
+        {
+            console.log("UPDS ready")
+            setLookForUpdates(updatesReady)
+        } 
+        else
+        {
+            setLookForUpdates("false")
+            setLookForUpdates("true")
+        }
+    }
+
+    const deleteSemCourse = (id) => {
+        const c = courses.filter(course => (course.id !== id))
+        if (c.length !== 0 )
+        {
+            setCourses(c)
+            setDeleteObjID(id)
+        }
+        else
+        {
+            setNoCourses()
+        }
+        
     }
 
     const courseItemDetails = (course) => {
@@ -107,8 +151,8 @@ const SemesterCourses = ({canRegister, canAssignGrades, onComplete, onSelect, se
                     {/** trash can only pops up if admin viewing courses since only admin can delete courses
                      * if you put selectedCourses == null
                      */}
-                    { selectedCourses == null &&
-                    <label onClick={() => deleteSemesterCourse(course.id)}>
+                    { selectedCourses === null &&
+                    <label onClick={() => deleteSemCourse(course.id)}>
                             <i className="fas fa-trash-alt delete-icon-color"></i>
                         </label> }
                 
@@ -139,7 +183,7 @@ const SemesterCourses = ({canRegister, canAssignGrades, onComplete, onSelect, se
             {/*/set courses */}
             {loadedCourses === false && allCourses != null && allCourses.length !== 0 && setSelectedCourses()}
             {/*/create an object for each course that holds whether or not the user has checked/selected that course */}
-            { isCheckedCourseStatus == null && loadedCourses === true && setIsCheckedCourseStatusInitialState()}
+            { isCheckedCourseStatus === null && loadedCourses === true && setIsCheckedCourseStatusInitialState()}
             {/* students can register for courses*/ }
             {(canRegister === true || canUnregister === true) && loaded === true && loadedCourses === true 
             && courses[0].id !== "No Courses Found.." &&
@@ -161,11 +205,12 @@ const SemesterCourses = ({canRegister, canAssignGrades, onComplete, onSelect, se
             <div>
                 
                 <form onSubmit={onSubmit}>
-                    <BorderedList itemListTitleName={"Current Courses: "} listItems={courseItems}></BorderedList>
+                    {(courses[0].id !== "No Courses Found.." && courses[0].id !== "Courses not set up yet") &&
+                    <BorderedList itemListTitleName={"Current Courses: "} listItems={courseItems}></BorderedList>}
                     <div>
-                        {courses[0].id === "No Courses Found.." &&
+                        {(courses[0].id === "No Courses Found.." || courses[0].id === "Courses not set up yet") &&
                         <div>
-                            <label>{courses[0].id} </label>
+                            <label>No Courses Found.. </label>
                         </div>
                         }
         
@@ -173,14 +218,33 @@ const SemesterCourses = ({canRegister, canAssignGrades, onComplete, onSelect, se
                     {(canRegister === true || canUnregister === true) &&
                     <div>
                         {courses[0].id !== "No Courses Found.." &&
-                        <input type='submit' value={canRegister==true ? 'Register Selected Courses' : 'Unregister Selected Courses' }/>
+                        <div>
+                            <br></br> <br></br> <br></br> 
+                            <ButtonTemplate 
+                            theText={canRegister===true ? 'Register Selected Courses' : 'Unregister Selected Courses'}></ButtonTemplate>
+                        </div>
+                        
+                        //<input type='submit' value={canRegister==true ? 'Register Selected Courses' : 'Unregister Selected Courses' }/>
                         }
 
-                        {canRegister==true &&
+                        {canRegister===true &&
                         <button onClick={reloadSearchBar}>Go Back</button>}
                     </div>
                     }
                 </form>
+
+                {lookForUpdates === "true" && <div> {checkForUpdates()} {console.log("lookForUpdates")}</div>}
+                {lookForUpdates === updatesReady
+                && <div> <SubmitAction onComplete={onComplete} 
+                        data={updates}
+                        multipleData={true}></SubmitAction> {console.log("hit")} </div>}
+
+                {deleteObjID !== null && 
+                    <div>
+                        <SubmitAction onComplete={() => setDeleteObjID(null)} 
+                                ActionMethod={DeleteSemesterCourse} data={deleteObjID}></SubmitAction>
+                    </div>}
+
             </div>
             
         )

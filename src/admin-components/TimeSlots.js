@@ -1,16 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
-import { bindActionCreators } from "redux";
-import { timeSlotActionCreators } from "../actions";
-import { useEffect } from 'react'
+import { useSelector } from "react-redux";
+import { useState } from "react";
+import SubmitAction from "../action-submitter/SubmitAction";
 import BorderedList from "../page-templates/BorderedList";
+import { FetchTimeSlots, DeleteTimeSlot   } from "../actions/timeSlotActions";
 
 const TimeSlots = ()=> {
-    const dispatch = useDispatch()
-    const { fetchTimeSlots, deleteTimeSlot } = bindActionCreators(timeSlotActionCreators, dispatch)
+    const [deleteObjID, setDeleteObjID] = useState(null)
+    FetchTimeSlots()
 
-    useEffect(() => {
-        fetchTimeSlots()
-    }, [])
 
     const timeSlots = useSelector(state => state.timeSlots.items)
 
@@ -21,7 +18,7 @@ const TimeSlots = ()=> {
                      {slot.name}
                 </label>
 
-                <label onClick={() => deleteTimeSlot(slot.id)}>
+                <label onClick={() => setDeleteObjID(slot.id)}>
                     <i className="fas fa-trash-alt delete-icon-color"></i>
                 </label>
             </div>
@@ -30,7 +27,15 @@ const TimeSlots = ()=> {
         ))
 
         return (
-            <BorderedList itemListTitleName={"Current Time Slots: "} listItems={timeSlotItems}></BorderedList>
+            <div>
+                <BorderedList itemListTitleName={"Current Time Slots: "} listItems={timeSlotItems}></BorderedList>
+                {deleteObjID !== null && 
+                    <div>
+                        <SubmitAction onComplete={() => setDeleteObjID(null)} 
+                                ActionMethod={DeleteTimeSlot} data={deleteObjID}></SubmitAction>
+                    </div>}
+            </div>
+            
 
         )
     

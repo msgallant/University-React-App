@@ -219,4 +219,6 @@ code {
 .plain-border-inside-correction {
   top: 0px;
   background-color: #e6e4e7;
+  max-width: 450px;
+  min-width: 450px;
 }

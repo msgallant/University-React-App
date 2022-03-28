@@ -1,23 +1,15 @@
-import { accountActionCreators } from "../actions"
-import { useDispatch, useSelector } from "react-redux";
-import { bindActionCreators } from "redux";
-import { useEffect,  useState} from 'react'
-import { getUserLoggedIn } from "../userStorage";
+import { useSelector } from "react-redux";
+import {  useState} from 'react'
+import { FetchAccounts } from "../actions/accountActions";
 
-const StudentTranscript = ({}) => {
-    const dispatch = useDispatch()
-    const { fetchAccounts } = bindActionCreators(accountActionCreators, dispatch)
+const StudentTranscript = ({loggedInAccount}) => {
     const accs = useSelector(state => state.accounts.items)
     const [userTranscript, setUserTranscript] = useState(null)
-    const [loadTranscript, setLoadTranscript] = useState(false)
 
-    useEffect(() => {
-        fetchAccounts()
-    }, [])
+    FetchAccounts()
 
     const getTranscript = () => {
-        const user = getUserLoggedIn(accs)
-        setUserTranscript(user.transcript)
+        setUserTranscript(loggedInAccount.transcript)
     }
 
     const makeEntries= (entries) => {
@@ -38,15 +30,16 @@ const StudentTranscript = ({}) => {
 
     return (
         <div>
-            {accs != null && accs.length !== 0 && userTranscript == null &&
+            {accs !== null && accs.length !== 0 && userTranscript === null &&
             getTranscript() }
 
             <div>
                 <label> Course: </label>
                 <label> Grade: </label>
+                
             </div>
 
-            {userTranscript != null && userTranscript !== 0 && 
+            {userTranscript !== null && userTranscript.length !== 0 && 
             <div>
                 {makeEntries(userTranscript)}
             </div>} 

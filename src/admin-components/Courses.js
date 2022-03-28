@@ -1,16 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
-import { bindActionCreators } from "redux";
-import { courseActionCreators } from "../actions";
-import { useEffect } from 'react'
+import { useSelector } from "react-redux";
+import React, { useState } from "react";
 import BorderedList from "../page-templates/BorderedList";
+import SubmitAction from "../action-submitter/SubmitAction";
+import { FetchCourses, DeleteCourse } from "../actions/courseActions";
+
 
 const Courses = ()=> {
-    const dispatch = useDispatch()
-    const { fetchCourses, deleteCourse } = bindActionCreators(courseActionCreators, dispatch)
+    const [deleteCourseID, setDeleteCourseID] = useState(null)
 
-    useEffect(() => {
-        fetchCourses()
-    }, [])
+    FetchCourses()
 
     const courses = useSelector(state => state.courses.items)
 
@@ -21,7 +19,7 @@ const Courses = ()=> {
                     name: {course.name}  &nbsp;
                 </label>
                 
-                <label onClick={() => deleteCourse(course.id)}>
+                <label onClick={() => setDeleteCourseID(course.id)}>
                     <i className="fas fa-trash-alt delete-icon-color"></i>
                 </label>
             </div>
@@ -37,8 +35,15 @@ const Courses = ()=> {
         ))
 
         return (
-        
-            <BorderedList itemListTitleName={"Current Courses: "} listItems={courseItems}></BorderedList>
+            <div>
+                <BorderedList itemListTitleName={"Current Courses: "} listItems={courseItems}></BorderedList>
+                {deleteCourseID !== null && 
+                    <div>
+                        <SubmitAction onComplete={() => setDeleteCourseID(null)} 
+                                ActionMethod={DeleteCourse} data={deleteCourseID}></SubmitAction>
+                    </div>}
+            </div>
+            
         )
     
 }

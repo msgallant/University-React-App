@@ -11,8 +11,6 @@ const accountReducer = (state = initialState, action) => {
               ...state,
               items: action.payload
             }
-        case 'UPDATE_ACCOUNTS':
-            return state;
         case ADD_ACCOUNT:
             return {
               ...state,

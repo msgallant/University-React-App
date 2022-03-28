@@ -1,15 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { bindActionCreators } from "redux";
-import { courseActionCreators, timeSlotActionCreators, buildingActionCreators, 
-    accountActionCreators, semesterCourseActionCreators, uniqueSemesterCourseIDActionCreators } from "../actions"
 import { dataListValidOptionObjectNameChecker } from "./dataListValidOptionChecker";
 import { semesterCourse } from "./semesterCourse";
-import SemesterCourses from "./SemesterCourses"
 import { getCopyOfSemesterCourseForAUserAccount } from "./semesterCourse";
 import { assignCourseToProfessor } from "../professor-components/assignCourseToProfessor";
 import { InputDropDownListTemplate } from "../page-templates/InputTemplate";
 import CreationForm from "../page-templates/CreationForm";
+import { FetchUniqueSemesterCourseID} from "../actions/uniqueSemesterCourseIDActions";
+import { FetchAccounts } from "../actions/accountActions";
+import { FetchCourses } from "../actions/courseActions";
+import { FetchTimeSlots } from "../actions/timeSlotActions";
+import { FetchBuildings } from "../actions/buildingActions";
+import SubmitAction from "../action-submitter/SubmitAction";
 
 const SemesterCourseForm = ({profAccType, onComplete}) => {
     const [courseName, setCourseName] = useState('')
@@ -19,18 +21,19 @@ const SemesterCourseForm = ({profAccType, onComplete}) => {
     const [capacity, setCapacity] = useState('')
     const [filled, setFilled] = useState(0)
     const [professor, setProfessor] = useState('')
-    const [location, setLocation] = useState('')
-    const newCourse = 'New Course'
-    
+    const [location, setLocation] = useState('')  
+    const [lookForUpdates, setLookForUpdates] = useState("false")  
+    const [updated, setUpdated] = useState({updAcc: null, 
+        createSemCourse: null, updUniqueSemesterID: null})
+    const updatesReady = "Updates Ready"
+
+    FetchAccounts()
+    FetchCourses()
+    FetchTimeSlots()
+    FetchUniqueSemesterCourseID()
+    FetchBuildings()
 
     const dispatch = useDispatch()
-
-    const { createSemesterCourse } = bindActionCreators(semesterCourseActionCreators, dispatch)
-    const { fetchCourses } = bindActionCreators(courseActionCreators, dispatch)
-    const { fetchTimeSlots } = bindActionCreators(timeSlotActionCreators, dispatch)
-    const { fetchBuildings } = bindActionCreators(buildingActionCreators, dispatch)
-    const { fetchAccounts, updateAccount  } = bindActionCreators(accountActionCreators, dispatch)
-    const { fetchUniqueSemesterCourseID, updateUniqueSemesterCourseID } = bindActionCreators(uniqueSemesterCourseIDActionCreators, dispatch)
 
     const courses = useSelector(state => state.courses.items)
     const timeSlots = useSelector(state => state.timeSlots.items)
@@ -66,20 +69,9 @@ const SemesterCourseForm = ({profAccType, onComplete}) => {
         })
         return theRoomNames
     }
-
-
-
-    useEffect(() => {
-        fetchCourses()
-        fetchAccounts()
-        fetchTimeSlots()
-        fetchBuildings()
-        fetchUniqueSemesterCourseID()
-    }, [])
     
     const onSubmit = (e) => {
         e.preventDefault()
-
         if (!dataListValidOptionObjectNameChecker(timeSlots, schedule)){
             alert('Time slot does not exist')
             return
@@ -111,20 +103,24 @@ const SemesterCourseForm = ({profAccType, onComplete}) => {
         semesterCourse.capacity = capacity
         semesterCourse.id = scID
 
-        updateNextSemesterCourseID(scID + 1) 
+        let updates = updated
+        updateNextSemesterCourseID(scID, updates) 
 
-        createSemesterCourse(semesterCourse)
-        assignCourseToProfessor(getCopyOfSemesterCourseForAUserAccount(semesterCourse), professor, profAccounts, updateAccount )
+        updates.createSemCourse = semesterCourse
 
-        onComplete()
+        const updProfAcc = assignCourseToProfessor(getCopyOfSemesterCourseForAUserAccount(semesterCourse), professor, profAccounts )
+        updates.updAcc = updProfAcc
+        setUpdated(updates)
+        setLookForUpdates("true")
+
     }
 
 //all semester course id's must be unique, so, when current one used, add 1 and update it to hold next unqiue id
 //this must be done because need to store a copy of the semester to the professor and the id must be determined
 //before can store in professor's account
-    const updateNextSemesterCourseID = (nextID) => {
-        nextUniqueSemesterID[0].nextUniqueSemesterCourseID = nextID
-        updateUniqueSemesterCourseID(nextUniqueSemesterID[0])
+    const updateNextSemesterCourseID = (prevID, updates) => {
+        nextUniqueSemesterID[0].nextUniqueSemesterCourseID = prevID + 1
+        updates.updUniqueSemesterID = nextUniqueSemesterID[0]
     }
 
 //instead of setting course desc directly use this method instead, so, we can find & keep track of what subject
@@ -158,6 +154,18 @@ const SemesterCourseForm = ({profAccType, onComplete}) => {
             }
         })
 }
+
+    const checkForUpdates = () => {
+        if (updated.updAcc !== null && updated.createSemCourse !== null && updated.updUniqueSemesterID !== null)
+        {
+            setLookForUpdates(updatesReady)
+        } 
+        else
+        {
+            setLookForUpdates("false")
+            setLookForUpdates("true")
+        }
+    }
 
 
     const getBldgRoomName = (bldg, room) => {
@@ -243,14 +251,15 @@ const SemesterCourseForm = ({profAccType, onComplete}) => {
             <div className="semester-course-input-spacing">
                 {semesterCourseFormFields}
             </div>
-            {(courseName !== '' || professor !== '' || schedule !== '' || location !== '')&&
-            <div>
-                <label className="form-font-size">New Course </label> <br></br>
-                <div className="plain-border plain-border-inside-correction">
-                    {courseInfo}
-                </div>
-            </div>}
-            
+            <div className="block">
+                {(courseName !== '' || professor !== '' || schedule !== '' || location !== '')&&
+                <div>
+                    <label className="form-font-size">New Course </label> <br></br>
+                    <div className="plain-border plain-border-inside-correction">
+                        {courseInfo}
+                    </div>
+                </div>}
+            </div>
             
         </div>
     )
@@ -261,6 +270,11 @@ const SemesterCourseForm = ({profAccType, onComplete}) => {
             <CreationForm title={'Create a Course for the Current Semester'} 
                 fields={courseFormFields} submitButtonText={'Create Semester Course'} 
                 onSubmit={onSubmit}></CreationForm>
+            {lookForUpdates === "true" && <div> {checkForUpdates()} </div>}
+            {lookForUpdates === updatesReady
+            && <SubmitAction onComplete={onComplete} 
+                    data={updated}
+                    multipleData={true}></SubmitAction>}
 
         </div>
        

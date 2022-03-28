@@ -19,9 +19,6 @@ import { listButton } from '../menu-buttons/listButton';
 import { plusButton } from '../menu-buttons/plusButton';
 
 
-
-
-
 const AdminMenuBar = ({loggedInAccount}) => {
 
     //order of lists cannot be changed but things can be added to list
@@ -162,7 +159,8 @@ const AdminMenuBar = ({loggedInAccount}) => {
                 { checkPrefix(pageNamesPrefixes[0], showThisPage.toString()) === true
                     && checkSuffix(pageNamesSuffixes[5], showThisPage.toString()) === true
                 && <SemesterCourseForm onComplete={closeForm} 
-                profAccType={pageNames[2].substring(pageNamesPrefixes[0].length)}></SemesterCourseForm>}
+                    profAccType={pageNames[2].substring(pageNamesPrefixes[0].length)}
+                    ></SemesterCourseForm>}
 
                 {/* if showThisPage has prefix ' View ' and suffix 'Semester' or 'Semesters' */}
                 { checkPrefix(pageNamesPrefixes[1], showThisPage.toString()) === true

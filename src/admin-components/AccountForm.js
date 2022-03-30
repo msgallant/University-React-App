@@ -156,7 +156,7 @@ const AccountForm = ({accType, onComplete}) => {
 
             {update !== false && 
                 <div> 
-                    <SubmitAction onComplete={onComplete} 
+                    <SubmitAction onComplete={() => {setUpdate(null); onComplete()}}
                         ActionMethod={CreateAccount} data={account}></SubmitAction>
                 </div>
             }

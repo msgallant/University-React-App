@@ -116,7 +116,7 @@ const AssignGrades = ({onComplete, loggedInAccount}) => {
             }
             {update !== null &&  
                 <div>
-                    <SubmitAction onComplete={onComplete} 
+                    <SubmitAction onComplete={() => {setUpdate(null); onComplete()}} 
                         ActionMethod={UpdateAccount} data={update.updatedAccount}></SubmitAction>
                 </div>}
         </div>

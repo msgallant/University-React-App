@@ -76,7 +76,7 @@ const TimeSlotForm = ({ onComplete }) => {
             <InputTemplate thePlaceholder={'End time (10:00am)'} theValue={endTime} setTheValue={setEndTime}>
             </InputTemplate> 
             <div>
-                <InputDropDownListTemplate thePlaceholder={'Days: '} theValue={days} 
+                <InputDropDownListTemplate thePlaceholder={'Days '} theValue={days} 
                     allOptions={dayOptions} setTheValue={setDays}>
                     </InputDropDownListTemplate>
             </div>

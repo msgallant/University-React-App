@@ -65,7 +65,7 @@ const CourseForm = ({ onComplete }) => {
             <InputTemplate thePlaceholder={'Course description'} theValue={courseDesc} setTheValue={setCourseDesc}>
             </InputTemplate> 
             <div>
-                <InputDropDownListTemplate thePlaceholder={'Subject: '} theValue={subject} 
+                <InputDropDownListTemplate thePlaceholder={'Subject '} theValue={subject} 
                     allOptions={availableSubjects} setTheValue={setSubject}>
                     </InputDropDownListTemplate>
             </div>
@@ -86,7 +86,7 @@ const CourseForm = ({ onComplete }) => {
 
             {update !== null && 
                 <div> 
-                    <SubmitAction onComplete={onComplete} 
+                    <SubmitAction onComplete={() => {setUpdate(null); onComplete()}}
                         ActionMethod={CreateCourse} data={newCourse}></SubmitAction>
                 </div>
             }

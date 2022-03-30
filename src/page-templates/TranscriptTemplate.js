@@ -1,17 +1,17 @@
-
+import TitleAndTwoColumnsTemplate from "./TitleAndTwoColumnsTemplate"
 const makeEntries= (entries) => {
         return (
             <div>
             {entries.map((entry, index)=>  { return (
-            <div key={index} className="select-div-color">
+            <div key={index} className="select-div-color padding">
                 <div>
-                    <div className="center-left">
+                    <div className="center-left ">
                         <div>
                             {entry.name}
                         </div>
                     </div>
 
-                    <div className="center-right">
+                    <div className="center-right grade-box">
                         <div>
                             {entry.grade != null ? entry.grade : 'n/a'}
                         </div>
@@ -28,17 +28,9 @@ const makeEntries= (entries) => {
 const TranscriptTemplate = ({title, leftFieldTitle, rightFieldTitle, entries}) => {
     return (
         <div className="plain-border">
-            <div className="form-title-size">
-                <label> {title} </label>
-            </div>
-            <div className="center-left form-font-size">
-                <label>{leftFieldTitle}</label>
-            </div>
-            <div className="center-right form-font-size">
-                <label>{rightFieldTitle}</label>
-            </div>
-            <br></br>
-            <label className="hidden"> &nbsp;</label>
+            <TitleAndTwoColumnsTemplate title={title} 
+            leftFieldTitle={leftFieldTitle} rightFieldTitle={rightFieldTitle}></TitleAndTwoColumnsTemplate>
+
             <div className="form-font-size block">
                 {makeEntries(entries)}
             </div>

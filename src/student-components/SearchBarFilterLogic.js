@@ -41,9 +41,7 @@ export const determineSelectedCourses = (criteria, selectedCourses, setMatches, 
 //course meets user criteria must remove it
 const removeCoursesUserAlreadyRegisteredIn = (matches, setMatches, studentCourses) => {
     let validMatches = []
-    console.log("testing rmve corses")
-    console.log(matches)
-    console.log(studentCourses)
+
     matches.forEach((match) => {
         let alreadyRegistered = false
         studentCourses.forEach(studentCourse => {

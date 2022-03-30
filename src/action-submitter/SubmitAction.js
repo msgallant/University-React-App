@@ -21,12 +21,23 @@ const SubmitAction = ({onComplete, ActionMethod, data, multipleData}) => {
             UpdateUniqueSemesterCourseID(data.updUniqueSemesterID)
             console.log("updating semester id")
         }
+
         if (data.updSemCourses != null) //may be more than 1 sem course to update
         {
+            
             data.updSemCourses.forEach(course => {
                 UpdateSemesterCourse(course)
+                console.log("updating a semester course")
             })
-            console.log("updating semester courses")
+        }
+
+        if (data.updAccs != null) //may be more than 1 account to update when grades are assigned
+        {
+            
+            data.updAccs.forEach(acc => {
+                UpdateAccount(acc)
+                console.log("updating a Account")
+            })
         }
         
     }

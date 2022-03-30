@@ -23,7 +23,7 @@ const StudentTranscript = ({loggedInAccount}) => {
             <div>
                  {userTranscript.length !== 0 && <div>
                         <TranscriptTemplate title={"Transcript"}
-                            leftFieldTitle={"Course: "} rightFieldTitle={"Grade: "}
+                            leftFieldTitle={"Course "} rightFieldTitle={"Grade "}
                             entries={userTranscript}></TranscriptTemplate>
 
                     </div>}

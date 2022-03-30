@@ -23,8 +23,8 @@ import { GoBackButtonTemplate } from "../page-templates/ButtonTemplate";
 //if we store them in prof or student accound, so,  when looking at course copies in student or prof acc
 //must make sure conditions for amount of students and capacity are NOT MET.
 //if canRegister === false && canUnregister={"not true"} and selectedCourses != null than
-//professor can view their courses
-//if canRegister === false && canUnregister !== true and selectedCourses != null than
+//professor can view their courses 
+//if canRegister === false && canUnregister={"not true"} and selectedCourses != null than
 //professor can click on a course to assign final grades to the students in that course
 const SemesterCourses = ({canRegister, canAssignGrades, onComplete, onSelect, selectedCourses, loggedInAccount, reloadSearchBar,
     canUnregister})=> {
@@ -47,6 +47,7 @@ const SemesterCourses = ({canRegister, canAssignGrades, onComplete, onSelect, se
     const [loadedCourses, setLoadedCourses] = useState(false) //is selectedCourses not undefined meaning
     //only certain courses should be displayed, so, change the value of courses to the selected courses
     //otherwise just set them to allCourses
+    const noCoursesFoundMsg = "No Courses Found.."
 
     FetchAccounts()
     FetchSemesterCourses()
@@ -103,7 +104,7 @@ const SemesterCourses = ({canRegister, canAssignGrades, onComplete, onSelect, se
     }
 
     const setNoCourses = () => {
-        setCourses([{id: "No Courses Found.."}])
+        setCourses([{id: noCoursesFoundMsg}])
     }
 
     const setIsCheckedCourseStatusInitialState = () => {
@@ -150,7 +151,7 @@ const SemesterCourses = ({canRegister, canAssignGrades, onComplete, onSelect, se
                     {/** trash can only pops up if admin viewing courses since only admin can delete courses
                      * if you put selectedCourses == null
                      */}
-                    { selectedCourses === null &&
+                    { selectedCourses === undefined &&
                     <label onClick={() => deleteSemCourse(course.id)}>
                             <i className="fas fa-trash-alt delete-icon-color"></i>
                         </label> }

@@ -112,11 +112,11 @@ const Buildings = ({showBuildingAddRoomForm, openBuildingAddRoomFormPage})=> {
 
                 {addShowRoomsButton(building)}
 
-                <label className="same-line building-padding"> </label>
+                <label className="same-line padding"> </label>
 
                 {addRoomButton(building)}
                     
-                <label className="same-line building-padding"> </label>
+                <label className="same-line padding"> </label>
 
                 {trashCan(building)}
 

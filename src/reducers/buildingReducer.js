@@ -27,8 +27,6 @@ const buildingReducer = (state =initialState, action) => {
           const updatedBldg = action.payload
           const bldgs = state.items.filter(bldg => (bldg.id !== updatedBldg.id))
           bldgs.push(updatedBldg)
-          console.log("adding room")
-          console.log(bldgs)
           return {
             ...state,
             items: bldgs

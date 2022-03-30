@@ -1,11 +1,13 @@
 import UserCourses from "../student-components/UserCourses"
-import StudentGradeEntryForm from "./StudentGradeEntryForm";
+import AssignGradesTemplate, {EmptyAssignGradesTemplate} from "../page-templates/AssignGradesTemplate";
 import { useSelector } from "react-redux";
 import { useState } from 'react'
-import { FetchAccounts, UpdateAccount } from "../actions/accountActions";
+import { FetchAccounts } from "../actions/accountActions";
 import SubmitAction from "../action-submitter/SubmitAction";
 import { FetchSemesterCourses } from "../actions/semesterCourseActions";
-const AssignGrades = ({onComplete, loggedInAccount}) => {
+import { ButtonTemplate, GoBackButtonTemplate } from "../page-templates/ButtonTemplate";
+
+const AssignGrades = ({onComplete, loggedInAccount, canUnregister}) => {
 
     const allCourses = useSelector(state => state.semesterCourses.items)
     const accounts = useSelector(state => state.accounts.items)
@@ -18,7 +20,9 @@ const AssignGrades = ({onComplete, loggedInAccount}) => {
     FetchSemesterCourses()
 
 
-    const onSubmit = () => {
+    const onSubmit = (e) => {
+        e.preventDefault()
+        let updatedAccounts = []
         //going through all students registered in course
         selectedStudentAccounts.forEach(student => { 
             //looking for a student transcript entry that matches this course
@@ -30,12 +34,14 @@ const AssignGrades = ({onComplete, loggedInAccount}) => {
                         if (student.id === finalGrade.studentID)
                         {
                             entry.grade = finalGrade.grade
-                            setUpdate({updatedAccount: student})
+                            updatedAccounts.push(student)
+                            
                         }
                     })
                 }
             })
         })
+        setUpdate({updAccs: updatedAccounts})
     }
 //finds course that professor wants to input grades for
     const findSelectedCourse = (id) => {
@@ -63,6 +69,8 @@ const AssignGrades = ({onComplete, loggedInAccount}) => {
             })
             
         })
+        console.log("realAccs")
+        console.log(realAccs)
         setSelectedStudentAccounts(realAccs)
     }
 //storing all the grades the professor inputted
@@ -73,51 +81,64 @@ const AssignGrades = ({onComplete, loggedInAccount}) => {
             studentID: studentAccountID
         }
         allGradeEntries.push(newGradeEntry)
-        console.log("storing grade inputted, list is: ")
-        console.log(allGradeEntries)
         setStoreGradeEntries(allGradeEntries)
 
     }
-
-    const makeEntryForms = (selectedCourseStudentAccounts) => {
-        return selectedCourseStudentAccounts.map((student, index)=> (
-            <div key={index} className="select-div-color">
-                <StudentGradeEntryForm studentAccount={student}
-                courseID={selectedCourse.id}
-                onGradeEntryReceived={storeGradeEntryReceived}></StudentGradeEntryForm>              
-            </div>
-        ))
-    }
-
 
     return (
         <div>
             {selectedCourse == null &&
             <div>
-                <label >Select the course you want to assign final grades for: </label>
+                <div className="plain-border hidden">
+                    <label className="unhidden form-font-size">Select the course you want to assign final grades for: 
+                        </label>
+                </div>
                 <UserCourses 
                 canAssignGrades={true}
                 onSelect={findSelectedCourse}
-                loggedInAccount={loggedInAccount} ></UserCourses>
+                loggedInAccount={loggedInAccount}
+                canUnregister={canUnregister} ></UserCourses>
             </div>
             }
 
-            {selectedCourse != null && selectedCourse.students.length !== 0 && selectedStudentAccounts !== null 
-                &&selectedStudentAccounts.length !== 0 &&
+            {selectedCourse != null && selectedStudentAccounts !== null 
+                &&
                 <div>
+                    {selectedStudentAccounts.length !== 0 &&
+                        <div>
+                            <form onSubmit={onSubmit}>
+                                <AssignGradesTemplate title={selectedCourse.name} 
+                                leftFieldTitle="Name" rightFieldTitle="Grade"
+                                studentGradeEntries={selectedStudentAccounts}
+                                selectedCourseID={selectedCourse.id} 
+                                storeGradeEntryReceived={storeGradeEntryReceived}></AssignGradesTemplate>
 
-                    <label >{selectedCourse.name}</label>
-                    {makeEntryForms(selectedStudentAccounts)}
+                                <br></br><br></br><br></br>
 
-                    <form onSubmit={onSubmit}>
-                        <input type='submit' value='Assign Final Grades' />
-                    </form>
+                                <ButtonTemplate theText={'Assign Final Grades'}></ButtonTemplate>
+
+                            </form>
+                        </div>}
+                    {selectedStudentAccounts.length === 0 &&
+                        <div>
+                            <EmptyAssignGradesTemplate title={selectedCourse.name} ></EmptyAssignGradesTemplate>
+                            <br></br> <br></br> <br></br>
+                            </div>}
+                    <br></br>
+
+                    <GoBackButtonTemplate onClickEventFunc={() => {
+                            setSelectedCourse(null)
+                            setSelectedStudentAccounts(null)
+                        }} 
+                            theText={"Go Back"}
+                            ></GoBackButtonTemplate>
+                    
                 </div>
             }
             {update !== null &&  
                 <div>
                     <SubmitAction onComplete={() => {setUpdate(null); onComplete()}} 
-                        ActionMethod={UpdateAccount} data={update.updatedAccount}></SubmitAction>
+                        multipleData={true} data={update}></SubmitAction>
                 </div>}
         </div>
     )

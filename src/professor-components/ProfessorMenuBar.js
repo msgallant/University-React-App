@@ -3,9 +3,11 @@ import {pageNames, pageNamesPrefixes, pageNamesSuffixes} from '../pageNames'
 import UserCourses from '../student-components/UserCourses';
 import AssignGrades from './AssignGrades';
 import { useState } from 'react';
+import { listButton } from '../menu-buttons/listButton';
 
 const ProfessorMenuBar = ({loggedInAccount}) => {
     const [showThisPage, setShowThisPage] = useState('')
+    const [data, setData] = useState('')
 
     const onClick = (pageName) => {
         setShowThisPage([pageName])
@@ -16,22 +18,28 @@ const ProfessorMenuBar = ({loggedInAccount}) => {
         setShowThisPage('')
     }
 
+    const openForm = (nextPage, theData) => {
+        console.log("opening form")
+        setData(theData)
+        setShowThisPage(nextPage)
+    }
+
     return (
         <div>
-            <div className="icon-color">
-                <label className="block black">Menu </label>
+            <div className="menu-option-left-layout">
+                <label className="black form-title-size">Menu </label>
+
+                <label className="block black menu-option-font menu-option-spacing">
+                    Courses </label>
 
                 {/* " View Class Schedule"*/}
-                <div className="menu-icon-color" onClick={() => onClick(pageNames[17])}>
-                        <i className="far fa-list-alt"></i>
-                        <label>{pageNames[17]}</label>
-                    </div>
+                {listButton(pageNames[17], onClick)}
+
+                <label className="block black menu-option-font menu-option-spacing">
+                    Grades </label>
 
                 {/* " Assign Student Grades" */}
-                <div className="menu-icon-color" onClick={() => onClick(pageNames[19])}>
-                        <i className="far fa-list-alt"></i>
-                        <label>{pageNames[19]}</label>
-                    </div>
+                {listButton(pageNames[19], onClick)}
 
 
             </div>
@@ -48,7 +56,8 @@ const ProfessorMenuBar = ({loggedInAccount}) => {
                 {/* if showThisPage has (spaces matter) prefix ' Assign ' and suffix 'Grades' or 'Gradess' */}             
                 {checkPrefix(pageNamesPrefixes[3], showThisPage.toString()) === true
                     && checkSuffix(pageNamesSuffixes[8], showThisPage.toString()) === true
-                    && <AssignGrades onComplete={closeForm} loggedInAccount={loggedInAccount}  /> }
+                    && <AssignGrades onComplete={closeForm} loggedInAccount={loggedInAccount} 
+                    canUnregister={"not true"} goBack={openForm}/> }
             </div>
         </div>
     )

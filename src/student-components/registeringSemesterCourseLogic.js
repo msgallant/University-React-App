@@ -57,12 +57,7 @@ export const onUnRegisterCourse = (e, loggedInAccount, courses, isCheckedCourseS
         if (status.courseID === course.id && status.check === true)
         {
             course.filled = course.filled - 1
-            let updatedCourseStudentList = course.students.filter(courseStudent => {
-                if (courseStudent.id !== studentAcc.id)
-                {
-                    return courseStudent
-                }
-            })
+            let updatedCourseStudentList = course.students.filter(courseStudent => (courseStudent.id !== studentAcc.id))
             course.students = updatedCourseStudentList //list of students in course excluding user now
             unregisteredCourses.push(course) //need to remove student account that unregistered on server
 
@@ -82,7 +77,7 @@ export const onUnRegisterCourse = (e, loggedInAccount, courses, isCheckedCourseS
     const updatedStudAcc = removeUnregisteredCoursesIfAny(studentAcc) 
     //gets rid of transcript entry & course entry for course/s that was just unregistered on server
 
-    return {updAcc:updatedStudAcc, updSemCourses: userCourses}
+    return {updAcc:updatedStudAcc, updSemCourses: unregisteredCourses}
 }
 
 //sets all courses to not checked

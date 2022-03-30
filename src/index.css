@@ -117,6 +117,12 @@ code {
   background: #7597c2;
 }
 
+.go-back-button {
+  position: relative;
+  top: -5px;
+  background: #7597c2;
+}
+
 .menu-option-font {
   color: #490d7a;
   font-size: 18px;
@@ -192,6 +198,10 @@ code {
   float: right;
 }
 
+.square-left {
+  float: left;
+}
+
 .bottom-square-position-correction {
   top: 15px;
 }
@@ -221,4 +231,18 @@ code {
   background-color: #e6e4e7;
   max-width: 450px;
   min-width: 450px;
+}
+
+.center-left {
+  float: left;
+  text-align: left;
+}
+
+.center-right {
+  float: right;
+  text-align: right;
+}
+
+.hidden-space-label {
+  visibility: hidden;
 }

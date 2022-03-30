@@ -1,13 +1,12 @@
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { bindActionCreators } from "redux";
-import { semesterCourseActionCreators, timeSlotActionCreators, 
-    accountActionCreators, subjectActionCreators} from "../actions"
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import SemesterCourses from "../admin-components/SemesterCourses";
 import { determineSelectedCourses } from "./SearchBarFilterLogic";
 import { FetchAccounts } from "../actions/accountActions";
 import { FetchSubjects } from "../actions/subjectActions";
 import { FetchSemesterCourses } from "../actions/semesterCourseActions";
+import CreationForm from "../page-templates/CreationForm";
+import { InputTemplate, InputDropDownListTemplate } from "../page-templates/InputTemplate";
 
 
 const SearchBar = ({profAccType, onComplete, loggedInAccount}) => {
@@ -18,8 +17,6 @@ const SearchBar = ({profAccType, onComplete, loggedInAccount}) => {
     const [matches, setMatches] = useState(null)
 
     const [selectedCourses, setSelectedCourses] = useState(null)
-
-    const dispatch = useDispatch()
 
     const subjects = useSelector(state => state.subjects.items)
     const courses = useSelector(state => state.semesterCourses.items)
@@ -56,6 +53,7 @@ const SearchBar = ({profAccType, onComplete, loggedInAccount}) => {
     //loading all the courses into selectedCourses at the beggining of the program
     //if user wants to go back and make a different search, reseting matches to null
     const loadCourses = () => {
+        console.log("reloading courses for search bar")
         setMatches(null)
         setSelectedCourses(courses)
     }
@@ -68,49 +66,34 @@ const SearchBar = ({profAccType, onComplete, loggedInAccount}) => {
         ))
     }
 
+    const SearchBarFormFields = (
+        <div className="form-font-size">
+
+                        <InputDropDownListTemplate thePlaceholder={'Course'} theValue={courseName} 
+                    allOptions={makeOptions(courses)} setTheValue={setCourseName}>
+                    </InputDropDownListTemplate>
+
+                    <InputDropDownListTemplate thePlaceholder={'Subject'} theValue={subjectName} 
+                    allOptions={makeOptions(subjects)} setTheValue={setSubjectName}>
+                    </InputDropDownListTemplate>
+
+                    <InputDropDownListTemplate thePlaceholder={'Professor'} theValue={professor} 
+                    allOptions={makeOptions(profNames)} setTheValue={setProfessor}>
+                    </InputDropDownListTemplate>
+
+                    <InputTemplate thePlaceholder={'Start time (eg. 9:00am)'} theValue={startTime} setTheValue={setStartTime}>
+                        </InputTemplate>
+
+            </div>
+    )
+
     return (
         <div>
-            <label>Search</label>
             {selectedCourses == null && courses != null && courses.length !== 0 && loadCourses()}
             {selectedCourses != null && matches == null &&
-            <form onSubmit={onSubmit}>
-
-
-                    <label htmlFor="searchForCourse">Course: </label>
-                    <input list="searchForCourseNames" id="searchForCourse" name="searchForCourse"
-                    value={courseName}
-                    onChange={(e) => setCourseName(e.target.value)}
-                        />
-                    <datalist id="searchForCourseNames">
-                        {makeOptions(courses) }
-                    </datalist>
-
-                    <label htmlFor="searchSubject">Subject: </label>
-                    <input list="searchSubjectNames" id="searchSubject" name="searchSubject"
-                    value={subjectName}
-                    onChange={(e) => setSubjectName(e.target.value)}
-                        />
-                    <datalist id="searchSubjectNames">
-                        {makeOptions(subjects) }
-                    </datalist>
-
-                <label htmlFor="search prof">Professor: </label>
-                    <input list="search professors" id="search prof" name="search prof"
-                    value={professor}
-                    onChange={(e) => setProfessor(e.target.value)}/>
-                    <datalist id="search professors">
-                        {makeOptions(profNames)}
-                    </datalist>
-
-                <label htmlFor="search start time">Start Time: </label>
-                    <input id="search start time" name="search start time"
-                    placeholder="9:00am"
-                    value={startTime}
-                    onChange={(e) => setStartTime(e.target.value)}/>
-
-                <input type='submit' value='Search for Courses' />
-
-            </form>}
+                <CreationForm title={'Search'} 
+                fields={SearchBarFormFields} 
+                submitButtonText={'Search for Courses'} onSubmit={onSubmit}></CreationForm>}
 
             <div>
 

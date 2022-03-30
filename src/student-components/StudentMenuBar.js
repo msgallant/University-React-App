@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import SemesterCourses from '../admin-components/SemesterCourses';
 import { checkPrefix, checkSuffix } from '../pageNameChecker';
 import SearchBar from './SearchBar';
 import {pageNames, pageNamesPrefixes, pageNamesSuffixes} from '../pageNames'
 import UserCourses from './UserCourses';
 import StudentTranscript from './StudentTranscript';
-
+import { listButton } from '../menu-buttons/listButton';
 //order of lists cannot be changed but things can be added to list
 //Can't have page name with same prefix and suffix
 const StudentMenuBar = ({loggedInAccount}) => {
@@ -23,26 +22,24 @@ const StudentMenuBar = ({loggedInAccount}) => {
 
     return (
         <div>
-            <div className="icon-color">
-                <label className="block black">Menu </label>
+            <div className="menu-option-left-layout">
+                <label className="black form-title-size">Menu </label>
+
+                <label className="block black menu-option-font menu-option-spacing">
+                    Courses </label>
 
                 {/* " Search for Courses"*/}
-                <div className="menu-icon-color" onClick={() => onClick(pageNames[16])}>
-                        <i className="far fa-list-alt"></i>
-                        <label>{pageNames[16]}</label>
-                    </div>
+                {listButton(pageNames[16], onClick)}
 
-                    {/* " View Class Schedule"*/}
-                <div className="menu-icon-color" onClick={() => onClick(pageNames[17])}>
-                        <i className="far fa-list-alt"></i>
-                        <label>{pageNames[17]}</label>
-                    </div>
 
-                    {/* " View Transcript"*/}
-                <div className="menu-icon-color" onClick={() => onClick(pageNames[18])}>
-                        <i className="far fa-list-alt"></i>
-                        <label>{pageNames[18]}</label>
-                    </div>
+                {/* " View Class Schedule"*/}
+                {listButton(pageNames[17], onClick)}
+
+                <label className="block black menu-option-font menu-option-spacing">
+                    Transcript </label>
+
+                {/* " View Transcript"*/}
+                {listButton(pageNames[18], onClick)}
             </div>
 
 

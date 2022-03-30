@@ -11,3 +11,11 @@ export const GenerateEmailButtonTemplate = ({theText, onClickEventFunc}) => (
             type="button" onClick={onClickEventFunc}> {theText} </button>
     </div>
 )
+
+export const GoBackButtonTemplate = ({theText, onClickEventFunc}) => (
+    <div>
+        <button className="form-font-size form-btn go-back-button" 
+            type="button" onClick={() => {
+                onClickEventFunc()}}> {theText} </button>
+    </div>
+)

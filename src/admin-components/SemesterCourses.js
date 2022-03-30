@@ -7,6 +7,7 @@ import { FetchAccounts } from "../actions/accountActions";
 import SubmitAction from "../action-submitter/SubmitAction";
 import { ButtonTemplate } from "../page-templates/ButtonTemplate";
 import { FetchSemesterCourses, DeleteSemesterCourse } from "../actions/semesterCourseActions";
+import { GoBackButtonTemplate } from "../page-templates/ButtonTemplate";
 
 
 //if canRegister is false and selectedCourses is undefined, that means display all courses since the admin
@@ -52,6 +53,7 @@ const SemesterCourses = ({canRegister, canAssignGrades, onComplete, onSelect, se
 
     //this method is only called when student is registering for classes
     const onSubmit = (e) => {
+        e.preventDefault()
         let updates = null
         if (canUnregister === true)
         {//need to also send allCourses, since courses is missing the students attribute and
@@ -113,11 +115,8 @@ const SemesterCourses = ({canRegister, canAssignGrades, onComplete, onSelect, se
     }
 
     const checkForUpdates = () => {
-        console.log(updates)
-        console.log("updates")
         if (updates.updAcc !== null && updates.updSemCourses !== null )
         {
-            console.log("UPDS ready")
             setLookForUpdates(updatesReady)
         } 
         else
@@ -226,18 +225,27 @@ const SemesterCourses = ({canRegister, canAssignGrades, onComplete, onSelect, se
                         
                         //<input type='submit' value={canRegister==true ? 'Register Selected Courses' : 'Unregister Selected Courses' }/>
                         }
+                        <br></br>
+                        {//<button onClick={reloadSearchBar} className="form-font-size form-btn go-back-button">Go Back</button>
+                        //<GoBackButtonTemplate onClick={reloadSearchBar} theText={"Go Back"}
+                            //></GoBackButtonTemplate>
+                            }
 
-                        {canRegister===true &&
-                        <button onClick={reloadSearchBar}>Go Back</button>}
                     </div>
                     }
                 </form>
+                {canRegister===true &&
+                        <div>
+                            <GoBackButtonTemplate onClickEventFunc={reloadSearchBar} theText={"Go Back"}
+                            ></GoBackButtonTemplate>
+                        </div>
+                }
 
-                {lookForUpdates === "true" && <div> {checkForUpdates()} {console.log("lookForUpdates")}</div>}
+                {lookForUpdates === "true" && <div> {checkForUpdates()} </div>}
                 {lookForUpdates === updatesReady
                 && <div> <SubmitAction onComplete={onComplete} 
                         data={updates}
-                        multipleData={true}></SubmitAction> {console.log("hit")} </div>}
+                        multipleData={true}></SubmitAction> </div>}
 
                 {deleteObjID !== null && 
                     <div>

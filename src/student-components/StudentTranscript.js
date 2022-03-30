@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import {  useState} from 'react'
 import { FetchAccounts } from "../actions/accountActions";
+import TranscriptTemplate from "../page-templates/TranscriptTemplate";
 
 const StudentTranscript = ({loggedInAccount}) => {
     const accs = useSelector(state => state.accounts.items)
@@ -11,37 +12,25 @@ const StudentTranscript = ({loggedInAccount}) => {
     const getTranscript = () => {
         setUserTranscript(loggedInAccount.transcript)
     }
-
-    const makeEntries= (entries) => {
-        return (
-            <div>
-            {entries.map((entry, index)=>  { return (
-            <div key={index} className="select-div-color">
-
-                <label>
-                    {entry.name}  {entry.grade != null ? entry.grade : 'n/a'}
-                </label>              
-            </div>
-        )})}
-        </div>
-        )
-    }
     
-
     return (
         <div>
             {accs !== null && accs.length !== 0 && userTranscript === null &&
             getTranscript() }
 
-            <div>
-                <label> Course: </label>
-                <label> Grade: </label>
-                
-            </div>
 
-            {userTranscript !== null && userTranscript.length !== 0 && 
+            {userTranscript !== null && 
             <div>
-                {makeEntries(userTranscript)}
+                 {userTranscript.length !== 0 && <div>
+                        <TranscriptTemplate title={"Transcript"}
+                            leftFieldTitle={"Course: "} rightFieldTitle={"Grade: "}
+                            entries={userTranscript}></TranscriptTemplate>
+
+                    </div>}
+                {userTranscript.length === 0 && <div>
+                    <label>No Courses Found..</label>
+                    </div>}
+                
             </div>} 
         </div>
     )

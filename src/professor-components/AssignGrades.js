@@ -69,8 +69,6 @@ const AssignGrades = ({onComplete, loggedInAccount, canUnregister}) => {
             })
             
         })
-        console.log("realAccs")
-        console.log(realAccs)
         setSelectedStudentAccounts(realAccs)
     }
 //storing all the grades the professor inputted

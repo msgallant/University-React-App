@@ -32,17 +32,8 @@ const AdminMenuBar = ({loggedInAccount}) => {
         setShowThisPage([pageName])
     }
 
-    const closeForm = (nextPage, theData) => {
-        if (nextPage != null)
-        {
-            setShowThisPage('')
-        }
-        else
-        {
-            setData(theData)
-            setShowThisPage([nextPage])
-        }
-        
+    const closeForm = () => {
+            setShowThisPage('')  
     }
 
     const openForm = (nextPage, theData) => {

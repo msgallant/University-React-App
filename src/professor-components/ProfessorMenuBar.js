@@ -7,7 +7,6 @@ import { listButton } from '../menu-buttons/listButton';
 
 const ProfessorMenuBar = ({loggedInAccount}) => {
     const [showThisPage, setShowThisPage] = useState('')
-    const [data, setData] = useState('')
 
     const onClick = (pageName) => {
         setShowThisPage([pageName])
@@ -16,12 +15,6 @@ const ProfessorMenuBar = ({loggedInAccount}) => {
     const closeForm = () => {
         console.log("closing professor menu")
         setShowThisPage('')
-    }
-
-    const openForm = (nextPage, theData) => {
-        console.log("opening form")
-        setData(theData)
-        setShowThisPage(nextPage)
     }
 
     return (
@@ -57,7 +50,7 @@ const ProfessorMenuBar = ({loggedInAccount}) => {
                 {checkPrefix(pageNamesPrefixes[3], showThisPage.toString()) === true
                     && checkSuffix(pageNamesSuffixes[8], showThisPage.toString()) === true
                     && <AssignGrades onComplete={closeForm} loggedInAccount={loggedInAccount} 
-                    canUnregister={"not true"} goBack={openForm}/> }
+                    canUnregister={"not true"}/> }
             </div>
         </div>
     )

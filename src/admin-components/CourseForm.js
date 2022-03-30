@@ -64,8 +64,7 @@ const CourseForm = ({ onComplete }) => {
 
             <InputTemplate thePlaceholder={'Course description'} theValue={courseDesc} setTheValue={setCourseDesc}>
             </InputTemplate> 
-            <br></br>
-            <div className="sameline subjects-datalist-input-spacing">
+            <div>
                 <InputDropDownListTemplate thePlaceholder={'Subject: '} theValue={subject} 
                     allOptions={availableSubjects} setTheValue={setSubject}>
                     </InputDropDownListTemplate>

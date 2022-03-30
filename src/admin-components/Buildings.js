@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
 import { useState } from 'react'
-import BuildingAddRoomForm from './BuildingAddRoomForm'
 import BuildingRooms from "./BuildingRooms";
 import BorderedList from "../page-templates/BorderedList";
 import { FetchBuildings, DeleteBuilding } from "../actions/buildingActions";
 import SubmitAction from "../action-submitter/SubmitAction";
+import { CREATE_ROOM_PAGE_NAME } from "../pageNames";
 
-const Buildings = ({showBuildingAddRoomForm})=> {
+const Buildings = ({showBuildingAddRoomForm, openBuildingAddRoomFormPage})=> {
     const [showRoomForm, setShowRoomForm] = useState(false)
     const [buildingID, setBuildingID] = useState(0)
     const [deleteObjID, setDeleteObjID] = useState(null)
@@ -27,16 +27,6 @@ const Buildings = ({showBuildingAddRoomForm})=> {
 
     const loadShowRooms = () => {
         setShowRooms(buildingRoomsShown)
-        
-    }
-    const closeAddRoomForm = () => {
-        setShowRoomForm(false) //close room form
-        //this is if buildingForm was open but the user wanted to add a room instead, buildingForm was closed
-        //but building add room was closed now, so, reopen building form
-        if (showBuildingAddRoomForm != null)
-        {
-            showBuildingAddRoomForm(false) 
-        }
         
     }
 
@@ -117,7 +107,7 @@ const Buildings = ({showBuildingAddRoomForm})=> {
             && <div>
 
                 <label>
-                name: {building.name}  &nbsp;
+                 {building.name}  &nbsp;
                 </label>
 
                 {addShowRoomsButton(building)}
@@ -137,8 +127,7 @@ const Buildings = ({showBuildingAddRoomForm})=> {
             <div>
                 {showRoomForm === true
                  && buildingID === building.id 
-                 && <BuildingAddRoomForm onClose={closeAddRoomForm} 
-                 building={building}></BuildingAddRoomForm>}
+                 && openBuildingAddRoomFormPage(CREATE_ROOM_PAGE_NAME, building)}
             </div>
             
             <div>

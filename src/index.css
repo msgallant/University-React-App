@@ -206,24 +206,8 @@ code {
   top: 15px;
 }
 
-.days-datalist-input-spacing {
-  position: relative;
-  left: -26px;
-}
-
-.subjects-datalist-input-spacing {
-  position: relative;
-  left: -36px;
-}
-
 .label-input-spacing {
   justify-content: space-evenly;
-}
-
-.semester-course-input-spacing {
-  position: relative;
-  left: 75px;
-  text-align: left;
 }
 
 .plain-border-inside-correction {
@@ -243,6 +227,9 @@ code {
   text-align: right;
 }
 
-.hidden-space-label {
+.hidden {
   visibility: hidden;
+}
+.unhidden {
+  visibility: visible;
 }

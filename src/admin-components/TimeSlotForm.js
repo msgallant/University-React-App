@@ -75,8 +75,7 @@ const TimeSlotForm = ({ onComplete }) => {
 
             <InputTemplate thePlaceholder={'End time (10:00am)'} theValue={endTime} setTheValue={setEndTime}>
             </InputTemplate> 
-            <br></br>
-            <div className="sameline days-datalist-input-spacing">
+            <div>
                 <InputDropDownListTemplate thePlaceholder={'Days: '} theValue={days} 
                     allOptions={dayOptions} setTheValue={setDays}>
                     </InputDropDownListTemplate>

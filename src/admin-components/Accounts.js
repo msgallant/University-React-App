@@ -17,8 +17,8 @@ const Accounts = ({ accTypes }) => {
     const accountItems = accounts.map(account => (
         <div key={account.id} className="select-div-color">
             <label>
-                name: {account.firstName} {account.middleName} {account.lastName}
-                &nbsp; email: {account.email} &nbsp;
+                 {account.firstName} {account.middleName} {account.lastName}
+                &nbsp; ({account.email}) &nbsp;
             </label>
             
             <label onClick={() => setDeleteObjID(account.id)}>

@@ -14,7 +14,7 @@ const Subjects = ()=> {
     const subjectItems = subjs.map(subject => (
         <div key={subject.id} className="select-div-color">
             <label>
-                name: {subject.name}  &nbsp;
+                 {subject.name}  &nbsp;
             </label>
             
             <label onClick={() => setDeleteObjID(subject.id)}>

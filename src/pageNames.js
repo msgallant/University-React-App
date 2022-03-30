@@ -10,7 +10,9 @@ export const pageNames = [" Create Admin Account", " View Admin Accounts", " Cre
                         //student menu bar page names start here (View Class Schedule is also used for professor menu bar)
                         " Search for Courses", " View Class Schedule", " View Transcript",
                     //Professor menu bar page names start here (view class schedule is also used in student menu bar)
-                        " Assign Student Grades"]
+                        " Assign Student Grades",
+                        //in buildings menu option for admins, they can create a room
+                        " Create Room"]
 
                         //menu bar prefixes
 export const pageNamesPrefixes = [" Create ", " View ", 
@@ -21,4 +23,9 @@ export const pageNamesSuffixes = ["Account", "Subject", "Building", "Time Slot",
                                 //student menu bar suffixes
                                 "Class Schedule", "Transcript",
                             //professor menu bar suffixes (also use "Class Schedule" like student menu bar)
-                                "Grades"]
+                                "Grades",
+                            //in buildings admin menu option, you can create room
+                                "Room"]
+
+export const CREATE_ROOM_PAGE_NAME = " Create Room"
+export const VIEW_BUILDINGS_PAGE_NAME = " View Buildings"

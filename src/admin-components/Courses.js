@@ -16,7 +16,7 @@ const Courses = ()=> {
         <div key={course.id} className="select-div-color">
             <div>
                 <label>
-                    name: {course.name}  &nbsp;
+                     {course.name}  &nbsp;
                 </label>
                 
                 <label onClick={() => setDeleteCourseID(course.id)}>

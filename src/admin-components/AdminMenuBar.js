@@ -13,6 +13,7 @@ import TimeSlotForm from './TimeSlotForm';
 import TimeSlots from './TimeSlots';
 import SemesterCourseForm from './SemesterCourseForm';
 import SemesterCourses from './SemesterCourses';
+import BuildingAddRoomForm from './BuildingAddRoomForm';
 import {pageNames, pageNamesPrefixes, pageNamesSuffixes} from '../pageNames'
 import { personPlusButton } from '../menu-buttons/personPlusButton';
 import { listButton } from '../menu-buttons/listButton';
@@ -25,13 +26,28 @@ const AdminMenuBar = ({loggedInAccount}) => {
     //"Admin Account, Student Account, Professor Account are the types of accounts that can be made"
     //Can't have page name with same prefix and suffix
     const [showThisPage, setShowThisPage] = useState('')
+    const [data, setData] = useState('')
 
     const onClick = (pageName) => {
         setShowThisPage([pageName])
     }
 
-    const closeForm = () => {
-        setShowThisPage('')
+    const closeForm = (nextPage, theData) => {
+        if (nextPage != null)
+        {
+            setShowThisPage('')
+        }
+        else
+        {
+            setData(theData)
+            setShowThisPage([nextPage])
+        }
+        
+    }
+
+    const openForm = (nextPage, theData) => {
+        setData(theData)
+        setShowThisPage(nextPage)
     }
     
 
@@ -125,12 +141,12 @@ const AdminMenuBar = ({loggedInAccount}) => {
                 {/* if showThisPage has prefix ' Create ' and suffix 'Building' or 'Buildings' */}
                 {checkPrefix(pageNamesPrefixes[0], showThisPage.toString()) === true
                     && checkSuffix(pageNamesSuffixes[2], showThisPage.toString()) === true
-                    && <BuildingForm onComplete={closeForm} ></BuildingForm>}
+                    && <BuildingForm onComplete={closeForm} openBuildingAddRoomFormPage={openForm}></BuildingForm>}
 
                 {/* if showThisPage has prefix ' view ' and suffix 'Building' or 'Buildings' */}
                 {checkPrefix(pageNamesPrefixes[1], showThisPage.toString()) === true
                     && checkSuffix(pageNamesSuffixes[2], showThisPage.toString()) === true
-                    && <Buildings></Buildings>}
+                    && <Buildings openBuildingAddRoomFormPage={openForm}></Buildings>}
 
                 {/* if showThisPage has prefix ' Create ' and suffix 'Time Slot' or 'Time Slots' */}
                 { checkPrefix(pageNamesPrefixes[0], showThisPage.toString()) === true
@@ -166,6 +182,13 @@ const AdminMenuBar = ({loggedInAccount}) => {
                 { checkPrefix(pageNamesPrefixes[1], showThisPage.toString()) === true
                     && checkSuffix(pageNamesSuffixes[5], showThisPage.toString()) === true
                 && <SemesterCourses canRegister={false} ></SemesterCourses>}
+
+                {/* in buildings, admin can click add room which needs to take you to the BuildingAddRoomForm
+                So,  if showThisPage has prefix ' Create ' and suffix 'Room' or 'Rooms'*/}
+                { checkPrefix(pageNamesPrefixes[0], showThisPage.toString()) === true
+                    && checkSuffix(pageNamesSuffixes[9], showThisPage.toString()) === true
+                && <BuildingAddRoomForm openBuildingsForm={openForm} 
+                building={data}></BuildingAddRoomForm>}
                
             </div>
 

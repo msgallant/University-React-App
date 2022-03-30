@@ -38,7 +38,7 @@ const TranscriptTemplate = ({title, leftFieldTitle, rightFieldTitle, entries}) =
                 <label>{rightFieldTitle}</label>
             </div>
             <br></br>
-            <label className="hidden-space-label"> &nbsp;</label>
+            <label className="hidden"> &nbsp;</label>
             <div className="form-font-size block">
                 {makeEntries(entries)}
             </div>

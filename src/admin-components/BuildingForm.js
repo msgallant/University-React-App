@@ -1,7 +1,5 @@
 import { useState } from "react"
-import { buildingActionCreators } from "../actions"
 import { useDispatch } from "react-redux";
-import { bindActionCreators } from "redux";
 import Buildings from "./Buildings";
 import { building } from "./building";
 import CreationForm from "../page-templates/CreationForm";
@@ -9,7 +7,7 @@ import { InputTemplate } from "../page-templates/InputTemplate";
 import { CreateBuilding } from "../actions/buildingActions";
 import SubmitAction from "../action-submitter/SubmitAction";
 
-const BuildingForm = ({ onComplete }) => {
+const BuildingForm = ({ onComplete, openBuildingAddRoomFormPage }) => {
     const [buildingName, setBuildingName] = useState('')
     const [showAddRoomFormInstead, setShowAddRoomFormInstead] = useState(false)
     const [update, setUpdate] = useState(null)
@@ -51,7 +49,8 @@ const BuildingForm = ({ onComplete }) => {
                 </div>
             }
             <div className="place-at-top">
-                <Buildings showBuildingAddRoomForm={toggleShowAddRoom}></Buildings>
+                <Buildings showBuildingAddRoomForm={toggleShowAddRoom} 
+                openBuildingAddRoomFormPage={openBuildingAddRoomFormPage}></Buildings>
             </div>
 
             {update !== null && 

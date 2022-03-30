@@ -184,28 +184,28 @@ const SemesterCourseForm = ({profAccType, onComplete}) => {
     const semesterCourseFormFields = (
         <div>
             <div>
-                <InputDropDownListTemplate thePlaceholder={'Course: '} theValue={courseName} 
+                <InputDropDownListTemplate thePlaceholder={'Course '} theValue={courseName} 
                     allOptions={makeOptions(courses)} setTheValue={setCourseDetails}>
                     </InputDropDownListTemplate>
 
-            </div> <br></br>
+            </div> 
             
             <div>
-                <InputDropDownListTemplate thePlaceholder={'Schedule: '} theValue={schedule} 
+                <InputDropDownListTemplate thePlaceholder={'Schedule '} theValue={schedule} 
                     allOptions={makeOptions(timeSlots)} setTheValue={setSchedule}>
                     </InputDropDownListTemplate>
-            </div> <br></br>
+            </div> 
             <div >
-                <InputDropDownListTemplate thePlaceholder={'Location: '} theValue={location} 
+                <InputDropDownListTemplate thePlaceholder={'Location '} theValue={location} 
                     allOptions={makeOptions(getBldgRoomNames())} setTheValue={setLocationDetails}>
                     </InputDropDownListTemplate>
-            </div> <br></br>
+            </div> 
 
             <div >
-                <InputDropDownListTemplate thePlaceholder={'Professor: '} theValue={professor} 
+                <InputDropDownListTemplate thePlaceholder={'Professor '} theValue={professor} 
                     allOptions={makeOptions(profNames)} setTheValue={setProfessor}>
                     </InputDropDownListTemplate>
-            </div> <br></br>
+            </div> 
             
         </div>
     )
@@ -248,7 +248,7 @@ const SemesterCourseForm = ({profAccType, onComplete}) => {
 
     const courseFormFields = (
         <div>
-            <div className="semester-course-input-spacing">
+            <div>
                 {semesterCourseFormFields}
             </div>
             <div className="block">

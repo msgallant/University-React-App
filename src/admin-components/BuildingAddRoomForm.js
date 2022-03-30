@@ -1,8 +1,12 @@
 import { useState } from "react"
 import { UpdateBuilding } from "../actions/buildingActions";
 import SubmitAction from "../action-submitter/SubmitAction";
+import { InputTemplate } from "../page-templates/InputTemplate";
+import CreationForm from "../page-templates/CreationForm";
+import { GoBackButtonTemplate } from "../page-templates/ButtonTemplate";
+import { VIEW_BUILDINGS_PAGE_NAME } from "../pageNames";
 
-const BuildingAddRoomForm = ({ onClose, building }) => {
+const BuildingAddRoomForm = ({ openBuildingsForm, building }) => {
     const [roomNum, setRoomNum] = useState('')
     const [capacity, setCapacity] = useState('')
     const [update, setUpdate] = useState(null)
@@ -28,36 +32,40 @@ const BuildingAddRoomForm = ({ onClose, building }) => {
         setUpdate(building)
     }
 
+    const buildingRoomFormFields = (
+        <div>
+            <InputTemplate thePlaceholder={'Room Number'} theValue={roomNum} setTheValue={setRoomNum}>
+                    </InputTemplate>   
+            <InputTemplate thePlaceholder={'Capacity'} theValue={capacity} setTheValue={setCapacity}>
+                    </InputTemplate> 
+        </div>
+         
+)
+
     return (
         <div>
-            <label>Add room to {building.name} </label>
-            <form onSubmit={onSubmit}>
-                <label>Room Number: </label>
-                    <input
-                    type='text'
-                    value={roomNum}
-                    onChange={(e) => setRoomNum(e.target.value)}
-                    />
 
-                <label>Capacity: </label>
-                    <input
-                    type='text'
-                    value={capacity}
-                    onChange={(e) => setCapacity(e.target.value)}
-                    />
-
-                <div>
-                    <input type='submit' value='Add New Building Room' />
+                <CreationForm title={'Add room to ' + building.name} 
+                    fields={buildingRoomFormFields} submitButtonText={'Add New Building Room'} 
+                    onSubmit={onSubmit}></CreationForm>
+    
+                <div className="plain-border hidden">
+                    <div className="unhidden">
+                        <GoBackButtonTemplate onClickEventFunc={() => 
+                        {openBuildingsForm(VIEW_BUILDINGS_PAGE_NAME)}} theText={"Go Back"}
+                            ></GoBackButtonTemplate>
+                    </div>
+                    
                 </div>
-            </form>
-
-                <button onClick={onClose}>Go Back</button>
+               
             <div>
+
+            
 
             </div>
             {update !== null &&  
                 <div>
-                    <SubmitAction onComplete={() => {setUpdate(null); onClose()} }
+                    <SubmitAction onComplete={() => {setUpdate(null); openBuildingsForm(VIEW_BUILDINGS_PAGE_NAME)} }
                         ActionMethod={UpdateBuilding} data={update}></SubmitAction>
                 </div>}
 

@@ -1321,6 +1321,14 @@
         {
           "roomNum": "54",
           "capacity": "432"
+        },
+        {
+          "roomNum": "12",
+          "capacity": "1"
+        },
+        {
+          "roomNum": "3456789",
+          "capacity": "5"
         }
       ],
       "id": 1
@@ -1357,6 +1365,10 @@
         {
           "roomNum": "23",
           "capacity": "26"
+        },
+        {
+          "roomNum": "32",
+          "capacity": "23"
         }
       ],
       "id": 3
@@ -1383,6 +1395,14 @@
         {
           "roomNum": "360",
           "capacity": "23"
+        },
+        {
+          "roomNum": "65432",
+          "capacity": "34"
+        },
+        {
+          "roomNum": "65",
+          "capacity": "666"
         }
       ],
       "id": 4

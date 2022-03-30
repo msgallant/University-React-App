@@ -223,13 +223,8 @@ const SemesterCourses = ({canRegister, canAssignGrades, onComplete, onSelect, se
                             theText={canRegister===true ? 'Register Selected Courses' : 'Unregister Selected Courses'}></ButtonTemplate>
                         </div>
                         
-                        //<input type='submit' value={canRegister==true ? 'Register Selected Courses' : 'Unregister Selected Courses' }/>
                         }
                         <br></br>
-                        {//<button onClick={reloadSearchBar} className="form-font-size form-btn go-back-button">Go Back</button>
-                        //<GoBackButtonTemplate onClick={reloadSearchBar} theText={"Go Back"}
-                            //></GoBackButtonTemplate>
-                            }
 
                     </div>
                     }

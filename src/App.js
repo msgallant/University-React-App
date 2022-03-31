@@ -11,7 +11,7 @@ function App() {
   }
   
   return (
-    <div className="App">
+    <div className="App full-height">
       {userAccount === null &&
       ////logged in is a 0 or 1, 0 representing logged out, 1 representing logged in
         <Header onAccountRecieved={onAccountRecieved} currentUserAccount={userAccount} loggedIn={0} ></Header>
@@ -19,10 +19,9 @@ function App() {
       {userAccount !== null &&
       //onAccountReceived needed since opens its own header that's given the account but user
       //can log out, which will do onAccountReceived(null)
-        <MenuBarController loggedInAccount={userAccount} onAccountRecieved={onAccountRecieved} setUserAccount={setUserAccount}
+        <MenuBarController className='full-height' loggedInAccount={userAccount} onAccountRecieved={onAccountRecieved} setUserAccount={setUserAccount}
         ></MenuBarController>
       }
-      
     </div>
   );
 }

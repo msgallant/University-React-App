@@ -137,6 +137,16 @@ code {
   height: 100%;
 }
 
+.full-height {
+  height: 100%;
+}
+body > #root > div {
+  height: 100vh;
+}
+.c {
+  background-color: aquamarine;
+}
+
 .menu-option-spacing {
   padding: 10px;
 }

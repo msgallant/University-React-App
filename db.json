@@ -284,6 +284,18 @@
       "description": "probabilities",
       "subject": "Math",
       "id": 13
+    },
+    {
+      "name": "Calc",
+      "description": "calculus...",
+      "subject": "Math",
+      "id": 14
+    },
+    {
+      "name": "Calc 2",
+      "description": "more calc",
+      "subject": "Math",
+      "id": 15
     }
   ],
   "TimeSlots": [

@@ -21,8 +21,8 @@ const StudentMenuBar = ({loggedInAccount}) => {
     }
 
     return (
-        <div>
-            <div className="menu-option-left-layout">
+        <div className='full-height'>
+            <div className="menu-option-left-layout full-height">
                 <label className="black form-title-size">Menu </label>
 
                 <label className="block black menu-option-font menu-option-spacing">

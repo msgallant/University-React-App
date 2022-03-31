@@ -10,23 +10,36 @@ const MenuBarController = ({loggedInAccount, onAccountRecieved, setUserAccount})
     const adminAccType = pageNames[0].substring(pageNamesPrefixes[0].length)
 
     return (
-        <div>
+        <div className='full-height'>
             {/*logged in is a 0 or 1, 0 representing logged out, 1 representing logged in*/}
             <Header onAccountRecieved={onAccountRecieved} currentUserAccount={loggedInAccount} 
             loggedIn={1}></Header>
             
+            <div className='full-height'>
 
-            {loggedInAccount.accountType === adminAccType &&
-                <AdminMenuBar loggedInAccount={loggedInAccount}></AdminMenuBar>
-            }
+            
+                {loggedInAccount.accountType === adminAccType &&
+                    <div className='full-height'>
+                        <AdminMenuBar className='full-height' loggedInAccount={loggedInAccount}></AdminMenuBar>
 
-            {loggedInAccount.accountType === studentAccType &&
-                <StudentMenuBar loggedInAccount={loggedInAccount}></StudentMenuBar>
-            }
+                    </div>
+                }
 
-            {loggedInAccount.accountType === profAccType &&
-                <ProfessorMenuBar loggedInAccount={loggedInAccount}></ProfessorMenuBar>
-            }
+                {loggedInAccount.accountType === studentAccType &&
+                    <div className='full-height'>
+                        <StudentMenuBar className='full-height' loggedInAccount={loggedInAccount}></StudentMenuBar>
+
+                    </div>
+                }
+
+                {loggedInAccount.accountType === profAccType &&
+                    <div className='full-height'>
+                        <ProfessorMenuBar className='full-height' loggedInAccount={loggedInAccount}></ProfessorMenuBar>
+
+                    </div>
+                }
+
+            </div>
 
 
         </div>

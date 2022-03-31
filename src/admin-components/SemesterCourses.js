@@ -218,22 +218,28 @@ const SemesterCourses = ({canRegister, canAssignGrades, onComplete, onSelect, se
                     {(canRegister === true || canUnregister === true) &&
                     <div>
                         {courses[0].id !== "No Courses Found.." &&
-                        <div>
-                            <br></br> <br></br> <br></br> 
-                            <ButtonTemplate 
-                            theText={canRegister===true ? 'Register Selected Courses' : 'Unregister Selected Courses'}></ButtonTemplate>
+                        <div className="plain-border hidden">
+                            
+                            <div className="unhidden">
+                                <ButtonTemplate 
+                                theText={canRegister===true ? 'Register Selected Courses' : 'Unregister Selected Courses'}>
+                                </ButtonTemplate>
+                            </div>
                         </div>
                         
                         }
-                        <br></br>
+
 
                     </div>
                     }
                 </form>
                 {canRegister===true &&
-                        <div>
-                            <GoBackButtonTemplate onClickEventFunc={reloadSearchBar} theText={"Go Back"}
-                            ></GoBackButtonTemplate>
+                        <div className="plain-border hidden ">
+                            <div className="unhidden button-hidden-border-spacing-correction">
+                                <br></br>
+                                <GoBackButtonTemplate onClickEventFunc={reloadSearchBar} theText={"Go Back"}
+                                ></GoBackButtonTemplate>
+                            </div>
                         </div>
                 }
 

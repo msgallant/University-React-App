@@ -111,26 +111,31 @@ const AssignGrades = ({onComplete, loggedInAccount, canUnregister}) => {
                                 selectedCourseID={selectedCourse.id} 
                                 storeGradeEntryReceived={storeGradeEntryReceived}></AssignGradesTemplate>
 
-                                <br></br><br></br><br></br>
-
-                                <ButtonTemplate theText={'Assign Final Grades'}></ButtonTemplate>
-
+                                <div className="plain-border hidden ">
+                                    <div className="unhidden">
+                                        <ButtonTemplate theText={'Assign Final Grades'}></ButtonTemplate>
+                                    </div>
+                                </div>
                             </form>
                         </div>}
                     {selectedStudentAccounts.length === 0 &&
                         <div>
+                            <br></br>
+                            
                             <EmptyAssignGradesTemplate title={selectedCourse.name} ></EmptyAssignGradesTemplate>
-                            <br></br> <br></br> <br></br>
                             </div>}
                     <br></br>
-
-                    <GoBackButtonTemplate onClickEventFunc={() => {
-                            setSelectedCourse(null)
-                            setSelectedStudentAccounts(null)
-                        }} 
-                            theText={"Go Back"}
-                            ></GoBackButtonTemplate>
-                    
+                    <div className="plain-border hidden ">
+                        <div className="unhidden button-hidden-border-spacing-correction">
+                            <GoBackButtonTemplate className=" button-hidden-border-spacing-correction"
+                            onClickEventFunc={() => {
+                                    setSelectedCourse(null)
+                                    setSelectedStudentAccounts(null)
+                                }} 
+                                theText={"Go Back"}
+                                    ></GoBackButtonTemplate>
+                        </div>
+                    </div>
                 </div>
             }
             {update !== null &&  

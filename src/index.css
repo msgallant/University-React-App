@@ -135,6 +135,8 @@ code {
   top: -4px;
   padding: 10px;
   height: 100%;
+  max-width: 15%;
+  min-width: 15%;
 }
 
 .full-height {
@@ -167,6 +169,10 @@ body > #root > div {
   left: -15px;
 }
 
+.button-hidden-border-spacing-correction {
+  position: relative;
+  top: -50px;
+}
 .plain-border {
   margin: auto;
   max-width: 500px;

@@ -2,9 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+May need to run npm install in order to run scripts
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm run server`
+
+Runs a JSON server.
 
 ### `npm start`
 
